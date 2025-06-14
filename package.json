@@ -7,7 +7,7 @@
     "start": "concurrently \"cd service && node app.js\" \"cd react && npm start\"",
     "install-all": "npm install --legacy-peer-deps && cd react && npm install --legacy-peer-deps && cd ../service && npm install",
     "build": "cd react && npm install --legacy-peer-deps && npm run build",
-    "build:prod": "npm run install-all && cd react && npm run build && cd ../service && npm install",
+    "build:prod": "npm run install-all && cd react && GENERATE_SOURCEMAP=false npm run build && cd ../service && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ci": "npm install --legacy-peer-deps --progress=false --loglevel=error --fetch-retries=3 && cd react && npm install --legacy-peer-deps --progress=false --loglevel=error --fetch-retries=3 && cd ../service && npm install --legacy-peer-deps --progress=false --loglevel=error --fetch-retries=3"
   },
