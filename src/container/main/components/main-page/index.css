@@ -1,0 +1,272 @@
+.main-page {
+    width: 100%;
+    color: #FFFFFF;
+    font-family: 'TT Travels', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.main-page-container {
+    position: relative;
+    width: 1280px;
+}
+
+.main-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/src/assets/images/main_back.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+}
+
+.main-title-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-title-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-nft-market {
+    margin: 20px 0 0 200px;
+    display: flex;
+    justify-content: center;
+    font-size: 80pt;
+    font-weight: 800;
+}
+
+.main-with-discounts {
+    margin: 15px 200px 20px 0;
+    display: flex;
+    justify-content: left;
+    font-size: 75pt;
+    font-style: italic;
+}
+
+.main-nft-market, .main-with-discounts {
+    line-height: 0.75;
+}
+
+.main-logo-part {
+    position: relative;
+    width: 240px;
+}
+
+.main-cat-logo {
+    width: 72%;
+    height: auto;
+    padding: 12px;
+    position: absolute;
+    top: -29px;
+    left: 0px;
+}
+
+.main-undercat-logo {
+    width: 77%;
+    height: auto;
+    padding: 12px;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+}
+
+.main-logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 350ms;
+}
+
+.main-button-buy-nft-wrapper {
+    cursor: pointer;
+}
+
+.main-button-buy-nft-wrapper:hover ~ .main-logo {
+    transform: scale(1.2) translateX(10%);
+}
+
+.main-two-buttoms {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.main-button-buy-nft-wrapper:hover .main-button-buy-nft {
+    transform: translateY(-7px);
+    background: white;
+}
+
+.main-button-buy-nft {
+    background-color: #EFDA1C;
+    color: black;
+    border: none;
+    margin: 0;
+    border-radius: 30px;
+    height: 66px;
+    width: 170px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'TT Travels', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 200ms;
+}
+
+.main-button-galery {
+    box-sizing: border-box;
+    background-color: #ffffff00;
+    color: #29E8E8;
+    border: 2px solid #29E8E8;
+    border-radius: 30px;
+    margin: 0 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 66px;
+    transition: all 300ms;
+}
+
+.main-button-galery:hover {
+    transform: translateY(-5px);
+}
+
+.main-text-about-nft {
+    color: #29E8E8;
+    font-family: 'TT Travels', sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+    text-align: left;
+    white-space: pre;
+    margin: 0;
+}
+
+.main-down-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 270px 0 0;
+}
+
+
+.main-invis-icon {
+    margin: 0px 10px 20px;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: none;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.main-icons-wrapper {
+    position: relative;
+    border: 0 solid;
+    border-radius: 30px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.main-icons {
+    width: 100%;
+    height: 214px;
+    background: linear-gradient(to right top, #1EF1F1, #E3FF30);
+    border-radius: 30px;
+    transition: all 250ms;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.main-nft-icon {
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 30px;
+    transition: all 250ms;
+    transform-origin: 50% 90%;
+    width: 100%;
+}
+
+.main-button:hover ~ .main-icons-wrapper .main-icons {
+    height: 230px;
+}
+
+.main-button:hover ~ .main-icons-wrapper .main-nft-icon {
+    transform: scale(1.1);
+}
+
+.main-button {
+    z-index:1;
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 67px;
+    height: 67px;
+    border-radius: 50%;
+    background: #ffffff45;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 1350ms;
+    overflow: hidden;
+}
+
+.main-button:hover::before {
+    opacity: 1;
+}
+
+.main-button:hover::after {
+    color: black;
+}
+
+.main-button::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    background: linear-gradient(to right top, #1EF1F1, #E3FF30);
+    transition: all 250ms;
+    z-index: -1;
+}
+
+.main-button::after {
+    transition: all 250ms;
+    content: 'i';
+    font-size: 40px;
+    font-weight: 600;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    color: #FFFFFF;
+}
+
+.main-fix-link {
+    text-decoration: none;
+    color: #29E8E8;
+}
+
+.main-fix-link-buy {
+    text-decoration: none;
+    color: black;
+}

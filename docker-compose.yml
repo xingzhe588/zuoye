@@ -1,0 +1,13 @@
+services:
+  backend:
+    build: .
+    volumes:
+      - ".:/app/"
+    ports:
+      - "8001:8000"
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
