@@ -1,0 +1,167 @@
+.create-nft-page-first {
+    font-family: 'TT Travels', sans-serif;
+    font-weight: 500;
+    color: #222;
+
+    background: url('../../assets/images/main_back.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+}
+.create-nft-page-first::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+}
+.create-nft-header, .create-nft-box, .create-nft-left-panel, .create-nft-tips, .create-nft-input-field, .create-nft-rectangle, .create-nft-rectangle .content {
+    position: relative;
+    z-index: 1;
+}
+
+.create-nft-header {
+    margin: 2px 3% 0 3%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    font-size: calc(10px + 40%);
+    color: white;
+}
+  
+.create-nft-box {
+    flex: 1 1 150px; 
+    margin: 5px;
+    gap: 5rem;
+}
+
+.create-nft-left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 350px;
+    max-width: 420px;
+    background: rgba(255,255,255,0.10);
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #1ef1f122;
+    padding: 32px 28px 18px 28px;
+    margin-right: 32px;
+    margin-bottom: 18px;
+}
+
+.create-nft-tips {
+    margin-bottom: 22px;
+    color: #222;
+    font-size: 1.08rem;
+    line-height: 1.6;
+}
+.create-nft-tips h2 {
+    font-size: 1.25rem;
+    color: #FFD700;
+    margin-bottom: 8px;
+}
+.create-nft-tips ul {
+    margin: 10px 0 0 18px;
+    padding: 0;
+    color: #1EF1F1;
+    font-size: 0.98rem;
+}
+.create-nft-tips li {
+    margin-bottom: 4px;
+}
+
+.create-nft-tips p {
+    color: #fff;
+}
+
+.create-nft-input-field {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+}
+  
+.create-nft-input-field input {
+    width: 70%;
+    min-width: 180px;
+    max-width: 320px;
+    height: 44px;
+    border-radius: 18px;
+    border: 2px solid #1EF1F1;
+    background: rgba(255,255,255,0.95);
+    color: #222;
+    font-size: 1.08rem;
+    padding: 0 16px;
+    box-shadow: 0 2px 8px #1ef1f122;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.create-nft-input-field input:focus {
+    border: 2.5px solid #FFD700;
+    box-shadow: 0 0 12px #FFD70088;
+}
+.create-nft-input-field input::placeholder {
+    color: #888;
+}
+  
+.create-nft-input-field button {
+    width: 28%;
+    min-width: 120px;
+    height: 44px;
+    font-weight: 900;
+    font-size: 0.98rem;
+    color: #005fa3;
+    border-radius: 18px;
+    border: none;
+    background: linear-gradient(90deg, #FFD700 10%, #1EF1F1 90%);
+    cursor: pointer;
+    box-shadow: 0 2px 8px #FFD70033;
+    transition: all 0.18s;
+    margin-left: 12px;
+}
+.create-nft-input-field button:hover:not(:disabled) {
+    transform: scale(1.06);
+    box-shadow: 0 4px 18px #FFD70088;
+    filter: brightness(1.1);
+}
+.create-nft-input-field button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.create-nft-rectangle {
+    margin: 0px 100px 20px;
+    position: relative;
+    width: 522px;
+    height: 545px;
+}
+
+.create-nft-rectangle .content {
+    margin: 0 20% 0 0;
+    width: 522px;
+    height: 545px;
+    border: 3px solid;
+    border-color: #1EF1F1;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-nft-rectangle .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.create-nft-rectangle .content p {
+    color: #111;
+} 

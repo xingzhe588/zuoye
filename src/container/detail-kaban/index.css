@@ -1,0 +1,143 @@
+.detail-block {
+    display: flex;
+    justify-content: center;
+    font-family: "TT Travels", sans-serif;
+}
+
+.detail-block-1 {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 100px 0;
+}
+
+.detail-biboppng {
+    width: 340px;
+    height: 350px;
+    border-radius: 10px;
+    background-image: url('src/assets/images/Kaban.png');   
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.detail-icons {
+    margin: 0px 0 10px;
+    position: relative;
+    width: 340px;
+    height: 350px;
+    background: linear-gradient(to right top, #1EF1F1, #E3FF30);
+    border-radius: 10px;
+}
+
+.detail-my-class {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/images/profile/Фон.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+}
+
+.detail-details {
+    width: 340px;
+    height: 140px;
+    color: white;
+    border: 3px solid #C6DB3F;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-top: 5px;
+}
+
+.detail-detail {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 5px;
+}
+
+.detail-string {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.detail-padd {
+    font-size: 15px;
+    margin: 3px 10px;
+}
+
+.detail-block-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-profile-description {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 60px;
+}
+
+.detail-cyberpunk {
+    color: #E3FF30;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+.detail-bibop {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.detail-price {
+    position: relative;
+    bottom: -10px;
+    font-size: 17px;
+}
+
+.detail-table {
+    font-size: 17px;
+    margin-top: 30px;
+}
+
+.detail-table th, .table td {
+    text-align: left;
+}
+
+.detail-table th {
+    border-bottom: 1px solid #C6DB3F;
+}
+
+.detail-table td {
+    padding-top: 12px;
+}
+
+.detail-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-button {
+    width: 322px;
+    height: 42px;
+    background-color: #c6db40;
+    font-size: 20px;
+    margin: 120px 10px 0;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.detail-button:hover {
+    transform: translateY(-2px);
+    scale: 1.05;
+    box-shadow: #c6db40 0px 0px 40px 6px;
+}

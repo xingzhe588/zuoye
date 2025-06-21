@@ -1,0 +1,111 @@
+.header-header {
+    background: none;
+    color: white;
+    padding: 20px;
+    display: flex;
+    font-family: 'TT Travels', sans-serif;
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .header-logo {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    border-radius: 14px;
+    padding: 3px 12px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 2px 8px rgba(30,241,241,0.08);
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    display: flex;
+    align-items: center;
+    user-select: none;
+  }
+  
+  .header-logo a, .header-logo span {
+    background: linear-gradient(90deg, #FFD700 10%, #1EF1F1 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    transition: filter 0.18s;
+  }
+  
+  .header-logo:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 6px 32px 0 rgba(30,241,241,0.18), 0 1.5px 8px 0 #FFD70044;
+    background: rgba(255,255,255,0.18);
+  }
+  
+  .header-logo:hover a, .header-logo:hover span {
+    filter: brightness(1.2) drop-shadow(0 2px 8px #FFD70088);
+  }
+  
+  .header-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+  }
+  
+  .header-nav__item {
+    margin-left: 20px; 
+  }
+  
+  .header-nav__link {
+    background: linear-gradient(90deg, #FFD700 10%, #1EF1F1 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: filter 0.18s;
+  }
+
+  .header-nav__link:hover {
+    filter: brightness(1.3) drop-shadow(0 2px 8px #FFD70088);
+    background-image: linear-gradient(to right top, #1EF1F1, #FFD700);
+  }
+  
+
+  @media (max-width: 768px) {
+    .header-header {
+      flex-direction: column;  
+      align-items: flex-start; 
+    }
+  
+    .header-nav {
+      display: none; 
+      width: 100%;
+    }
+  
+    .header-nav--open {
+      display: block;
+    }
+  
+    .header-nav__list {
+      flex-direction: column;  
+    }
+  
+    .header-nav__item {
+      margin: 10px 0; 
+    }
+  
+    .header-menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 0;
+    }
+  }
+  @media (min-width: 769px){
+    .header-menu-toggle {
+        display: none;
+      }
+  }
