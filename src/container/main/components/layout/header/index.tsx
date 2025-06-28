@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getNavigationValue } from '@brojs/cli';
 import { RootState } from '../../../../../store';
 import Logo from '../logo/logo';
+import { useTranslation } from 'react-i18next';
 
 import './index.css';
 
@@ -12,78 +13,107 @@ interface NavigationItem {
   href: string;
 }
 
-const navigationItems: NavigationItem[] = [
-  {
-    name: 'Коллекция',
-    href: getNavigationValue('project-monday.collection')
-  },
-  {
-    name: 'Создать',
-    href: getNavigationValue('project-monday.create-nft')
-  },
-  {
-    name: 'Контакты',
-    href: getNavigationValue('project-monday.contact')
-  },
-
-];
-
 const Header = (): React.ReactElement => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { t, i18n } = useTranslation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleChangeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const navigationItems: NavigationItem[] = [
+    {
+      name: t('collection'),
+      href: getNavigationValue('project-monday.collection')
+    },
+    {
+      name: t('create'),
+      href: getNavigationValue('project-monday.create-nft')
+    },
+    {
+      name: t('contact'),
+      href: getNavigationValue('project-monday.contact')
+    },
+  ];
+
   return (
-    <header className="header-header">
-      <div className="header-logo">
-          <Link to={getNavigationValue('project-monday.main')}>
-              <span>ArtCollab</span>
-          </Link>
+    <header className="header-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 10 }}>
+      <div className="header-logo" style={{ flex: '0 0 auto' }}>
+        <Link to={getNavigationValue('project-monday.main')}>
+          <span>ArtCollab</span>
+        </Link>
       </div>
 
-      <button className="header-menu-toggle" onClick={toggleMenu}>
-          ☰
-      </button>
-
-      <nav className={`header-nav ${isMenuOpen ? 'header-nav--open' : ''}`}>
-        <ul className="header-nav__list">
-        
-        {navigationItems.map((item) => (
-          item.href ? (
-            <li key={item.name} className="header-nav__item">
-              <Link to={item.href} className="header-nav__link">
-                {item.name}
+      <nav className={`header-nav ${isMenuOpen ? 'header-nav--open' : ''}`} style={{ flex: '1 1 auto', display: 'flex', justifyContent: 'center' }}>
+        <ul className="header-nav__list" style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: 0 }}>
+          {navigationItems.map((item) => (
+            item.href ? (
+              <li key={item.name} className="header-nav__item">
+                <Link to={item.href} className="header-nav__link">
+                  {item.name}
+                </Link>
+              </li>
+            ) : null
+          ))}
+          {isAuthenticated ? (
+            <>
+              <li className="header-nav__item">
+                <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
+                  {t('user_center')}
+                </Link>
+              </li>
+              <li className="header-nav__item">
+                <span className="header-user-info">
+                  {t('welcome')}, {user?.username}
+                </span>
+              </li>
+            </>
+          ) : (
+            <li className="header-nav__item">
+              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
+                {t('login_register')}
               </Link>
             </li>
-          ) : null
-        ))}
-
-        {/* Навигация аутентификации */}
-        {isAuthenticated ? (
-          <>
-            <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
-                Личный кабинет
-              </Link>
-            </li>
-            <li className="header-nav__item">
-              <span className="header-user-info">
-                Добро пожаловать, {user?.username}
-              </span>
-            </li>
-          </>
-        ) : (
-          <li className="header-nav__item">
-            <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
-              Вход/Регистрация
-            </Link>
-          </li>
-        )}
+          )}
         </ul>
       </nav>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '0 0 auto', zIndex: 20 }}>
+        <button 
+          onClick={() => handleChangeLanguage('ru')} 
+          style={{ 
+            padding: '4px 8px', 
+            cursor: 'pointer', 
+            border: '1px solid #ccc', 
+            borderRadius: '4px',
+            backgroundColor: i18n.language === 'ru' ? '#007bff' : 'transparent',
+            color: i18n.language === 'ru' ? 'white' : 'black'
+          }}
+        >
+          RU
+        </button>
+        <button 
+          onClick={() => handleChangeLanguage('en')} 
+          style={{ 
+            padding: '4px 8px', 
+            cursor: 'pointer', 
+            border: '1px solid #ccc', 
+            borderRadius: '4px',
+            backgroundColor: i18n.language === 'en' ? '#007bff' : 'transparent',
+            color: i18n.language === 'en' ? 'white' : 'black'
+          }}
+        >
+          EN
+        </button>
+        <button className="header-menu-toggle" onClick={toggleMenu} style={{ cursor: 'pointer' }}>
+          ☰
+        </button>
+      </div>
     </header>
   );
 };

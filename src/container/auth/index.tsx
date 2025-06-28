@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNavigationValue } from '@brojs/cli';
 import { loginUser, registerUser } from '../../features/auth/model/authStore';
 import { RootState } from '../../store';
+import { useTranslation } from 'react-i18next';
 import './index.css';
 
 const AuthContainer: React.FC = () => {
@@ -20,6 +21,7 @@ const AuthContainer: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useSelector((state: RootState) => state.auth);
+  const { t } = useTranslation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -39,7 +41,7 @@ const AuthContainer: React.FC = () => {
         }) as any);
       } else {
         if (formData.password !== formData.confirmPassword) {
-          alert('Пароли не совпадают');
+          alert(t('passwords_do_not_match'));
           return;
         }
         await dispatch(registerUser({
@@ -67,8 +69,8 @@ const AuthContainer: React.FC = () => {
     <div className="auth-container">
       <div className="auth-wrapper">
         <div className="auth-header">
-          <h1>ArtCollab</h1>
-          <p>Платформа ИИ-искусства</p>
+          <h1>{t('artcollab')}</h1>
+          <p>{t('ai_art_platform')}</p>
         </div>
 
         <div className="auth-tabs">
@@ -76,13 +78,13 @@ const AuthContainer: React.FC = () => {
             className={`auth-tab ${isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(true)}
           >
-            Вход
+            {t('login_tab')}
           </button>
           <button
             className={`auth-tab ${!isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(false)}
           >
-            Регистрация
+            {t('register_tab')}
           </button>
         </div>
 
@@ -90,26 +92,28 @@ const AuthContainer: React.FC = () => {
           {error && <div className="auth-error">{error}</div>}
 
           <div className="form-group">
-            <label htmlFor="username">Имя пользователя</label>
+            <label htmlFor="username">{t('username')}</label>
             <input
               type="text"
               id="username"
               name="username"
               value={formData.username}
               onChange={handleChange}
+              placeholder={t('enter_username')}
               required
             />
           </div>
 
           {!isLogin && (
             <div className="form-group">
-              <label htmlFor="email">Электронная почта</label>
+              <label htmlFor="email">{t('email')}</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder={t('enter_email')}
                 required
               />
             </div>
@@ -118,49 +122,53 @@ const AuthContainer: React.FC = () => {
           {!isLogin && (
             <>
               <div className="form-group">
-                <label htmlFor="firstName">Имя</label>
+                <label htmlFor="firstName">{t('first_name')}</label>
                 <input
                   type="text"
                   id="firstName"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
+                  placeholder={t('enter_first_name')}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastName">Фамилия</label>
+                <label htmlFor="lastName">{t('last_name')}</label>
                 <input
                   type="text"
                   id="lastName"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
+                  placeholder={t('enter_last_name')}
                 />
               </div>
             </>
           )}
 
           <div className="form-group">
-            <label htmlFor="password">Пароль</label>
+            <label htmlFor="password">{t('password')}</label>
             <input
               type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
+              placeholder={t('enter_password')}
               required
             />
           </div>
 
           {!isLogin && (
             <div className="form-group">
-              <label htmlFor="confirmPassword">Подтвердите пароль</label>
+              <label htmlFor="confirmPassword">{t('confirm_password')}</label>
               <input
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                placeholder={t('enter_confirm_password')}
                 required
               />
             </div>
@@ -168,10 +176,10 @@ const AuthContainer: React.FC = () => {
 
           <div className="form-actions">
             <button type="submit" disabled={isLoading} className="btn-primary">
-              {isLoading ? (isLogin ? 'Вход...' : 'Регистрация...') : (isLogin ? 'Войти' : 'Зарегистрироваться')}
+              {isLoading ? (isLogin ? t('login_loading') : t('register_loading')) : (isLogin ? t('login') : t('register'))}
             </button>
             <button type="button" onClick={handleCancel} className="btn-secondary">
-              Отмена
+              {t('cancel')}
             </button>
           </div>
         </form>

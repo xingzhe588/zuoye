@@ -5,9 +5,11 @@ import './index.css';
 import { getConfigValue } from '@brojs/cli';
 import { AuthPrompt } from '../../shared/ui/AuthPrompt/AuthPrompt';
 import { RootState } from '../../store';
+import { useTranslation } from 'react-i18next';
 
 const CreateNFT = (): React.ReactElement => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const [outputText, setOutputText] = useState('');
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -65,17 +67,17 @@ const CreateNFT = (): React.ReactElement => {
       const imageUrl = URL.createObjectURL(response.data);
       setImageSrc(imageUrl);
     } catch (error) {
-      console.error('Ошибка при получении изображения:', error);
+      console.error(t('image_fetch_error'), error);
     } finally {
       setLoading(false);
     }
   };
 
   const getButtonText = () => {
-    if (loading) return 'Создание...';
-    if (!isAuthenticated && guestAttempts >= 2) return 'Войти для продолжения';
-    if (!isAuthenticated && guestAttempts > 0) return `Создать (осталось ${2 - guestAttempts} бесплатных попыток)`;
-    return 'Создать';
+    if (loading) return t('creating');
+    if (!isAuthenticated && guestAttempts >= 2) return t('login_to_continue');
+    if (!isAuthenticated && guestAttempts > 0) return t('create_free_attempts_left', { count: 2 - guestAttempts });
+    return t('create');
   };
 
   const getGuestNotice = () => {
@@ -83,14 +85,14 @@ const CreateNFT = (): React.ReactElement => {
     if (guestAttempts === 0) {
       return (
         <div className="guest-notice guest-notice-welcome">
-          🎨 Добро пожаловать! Вы можете бесплатно создать 2 произведения искусства
+          {t('guest_welcome')}
         </div>
       );
     }
     if (guestAttempts === 1) {
       return (
         <div className="guest-notice guest-notice-warning">
-          ⚡ У вас осталась 1 бесплатная попытка, войдите для неограниченного создания
+          {t('guest_last_attempt')}
         </div>
       );
     }
@@ -101,8 +103,8 @@ const CreateNFT = (): React.ReactElement => {
     <div className="create-nft-page-first">
       {showAuthPrompt && (
         <AuthPrompt
-          message="Вы исчерпали бесплатные попытки"
-          action="продолжить создание искусства"
+          message={t('no_more_attempts')}
+          action={t('continue_creating')}
           onClose={() => setShowAuthPrompt(false)}
         />
       )}
@@ -110,12 +112,12 @@ const CreateNFT = (): React.ReactElement => {
       <header className="create-nft-header">
         <div className="create-nft-box create-nft-left-panel">
           <div className="create-nft-tips">
-            <h2>О платформе ArtCollab AI</h2>
-            <p>ArtCollab AI — это инновационный сервис для генерации уникальных арт-объектов с помощью искусственного интеллекта GigaChat.</p>
+            <h2>{t('about_artcollab_ai')}</h2>
+            <p>{t('artcollab_ai_desc')}</p>
             <ul>
-              <li>Попробуйте использовать яркие прилагательные и конкретные описания.</li>
-              <li>Например: <b>«Динамичный пейзаж в стиле киберпанк»</b></li>
-              <li>Чем подробнее описание — тем интереснее результат!</li>
+              <li>{t('tip_use_adjectives')}</li>
+              <li>{t('tip_example')}</li>
+              <li>{t('tip_more_detail')}</li>
             </ul>
           </div>
           {getGuestNotice()}
@@ -124,7 +126,7 @@ const CreateNFT = (): React.ReactElement => {
               type="text"
               value={inputValue}
               onChange={handleChange}
-              placeholder="Введите описание для создания произведения искусства (генерируется GigaChat AI)"
+              placeholder={t('input_placeholder')}
             />
             <button
               onClick={handleSubmit}
@@ -141,11 +143,11 @@ const CreateNFT = (): React.ReactElement => {
           <div className="create-nft-rectangle">
             <div className="content">
               {loading ? (
-                <p>Изображение генерируется... Пожалуйста, подождите.</p>
+                <p>{t('image_generating')}</p>
               ) : imageSrc ? (
-                <img src={imageSrc} alt="Сгенерированное изображение" className="img" />
+                <img src={imageSrc} alt={t('generated_image')} className="img" />
               ) : (
-                <p>Ваше спортивное произведение будет отображаться здесь</p>
+                <p>{t('image_placeholder')}</p>
               )}
             </div>
           </div>

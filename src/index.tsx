@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './app';
+import './i18n'; // 导入国际化配置
 
 import './app-env.d.ts';
 

@@ -6,12 +6,14 @@ import { logoutUser } from '../../features/auth/model/authStore';
 import { userApi } from '../../features/user-center/api/userApi';
 import { RootState } from '../../store';
 import FSDArchitectureDemo from '../../shared/ui/FSDArchitectureDemo/FSDArchitectureDemo';
+import { useTranslation } from 'react-i18next';
 import './index.css';
 
 const UserCenterContainer: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { t } = useTranslation();
   
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +46,7 @@ const UserCenterContainer: React.FC = () => {
         website: response.data.website || '',
       });
     } catch (error) {
-      setError('Ошибка загрузки профиля пользователя');
+      setError(t('profile_load_error'));
     } finally {
       setIsLoading(false);
     }
@@ -64,9 +66,9 @@ const UserCenterContainer: React.FC = () => {
       await userApi.updateProfile(profile);
       setIsEditing(false);
       setError(null);
-      alert('Профиль успешно обновлен!');
+      alert(t('profile_updated'));
     } catch (error) {
-      setError('Ошибка обновления профиля');
+      setError(t('profile_update_error'));
     } finally {
       setIsLoading(false);
     }
@@ -89,13 +91,13 @@ const UserCenterContainer: React.FC = () => {
     <div className="user-center-container">
       <div className="user-center-wrapper">
         <div className="user-center-header">
-          <h1>Личный кабинет</h1>
+          <h1>{t('user_center')}</h1>
           <div className="header-actions">
             <button onClick={handleBackToMain} className="btn-secondary">
-              На главную
+              {t('to_main')}
             </button>
             <button onClick={handleLogout} className="btn-danger">
-              Выйти
+              {t('logout')}
             </button>
           </div>
         </div>
@@ -120,7 +122,7 @@ const UserCenterContainer: React.FC = () => {
             <form onSubmit={handleSubmit} className="profile-form">
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="firstName">Имя</label>
+                  <label htmlFor="firstName">{t('first_name')}</label>
                   <input
                     type="text"
                     id="firstName"
@@ -130,7 +132,7 @@ const UserCenterContainer: React.FC = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="lastName">Фамилия</label>
+                  <label htmlFor="lastName">{t('last_name')}</label>
                   <input
                     type="text"
                     id="lastName"
@@ -142,67 +144,70 @@ const UserCenterContainer: React.FC = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="bio">О себе</label>
+                <label htmlFor="bio">{t('about')}</label>
                 <textarea
                   id="bio"
                   name="bio"
                   value={profile.bio}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Расскажите о себе..."
+                  placeholder={t('about_placeholder')}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="location">Местоположение</label>
+                <label htmlFor="location">{t('location')}</label>
                 <input
                   type="text"
                   id="location"
                   name="location"
                   value={profile.location}
                   onChange={handleChange}
-                  placeholder="Например: Москва"
+                  placeholder={t('location_placeholder')}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="website">Веб-сайт</label>
+                <label htmlFor="website">{t('website')}</label>
                 <input
                   type="url"
                   id="website"
                   name="website"
                   value={profile.website}
                   onChange={handleChange}
-                  placeholder="https://example.com"
+                  placeholder={t('website_placeholder')}
                 />
               </div>
 
               <div className="form-actions">
                 <button type="submit" disabled={isLoading} className="btn-primary">
-                  {isLoading ? 'Сохранение...' : 'Сохранить'}
+                  {isLoading ? t('saving') : t('save')}
                 </button>
                 <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary">
-                  Отмена
+                  {t('cancel')}
                 </button>
               </div>
             </form>
           ) : (
             <div className="profile-display">
               <div className="profile-field">
-                <label>О себе:</label>
-                <p>{profile.bio || 'Не указано'}</p>
+                <label>{t('about')}:</label>
+                <p>{profile.bio || t('not_specified')}</p>
               </div>
               <div className="profile-field">
-                <label>Местоположение:</label>
-                <p>{profile.location || 'Не указано'}</p>
+                <label>{t('location')}:</label>
+                <p>{profile.location || t('not_specified')}</p>
               </div>
               <div className="profile-field">
-                <label>Веб-сайт:</label>
-                <p>{profile.website || 'Не указано'}</p>
+                <label>{t('website')}:</label>
+                <p>{profile.website || t('not_specified')}</p>
               </div>
-              <button onClick={() => setIsEditing(true)} className="btn-primary">
-                Редактировать профиль
-              </button>
+              
+              <div className="profile-actions">
+                <button onClick={() => setIsEditing(true)} className="btn-primary">
+                  {t('edit')}
+                </button>
+              </div>
             </div>
           )}
         </div>

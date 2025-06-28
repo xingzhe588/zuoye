@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 
 interface ProtectedRouteProps {
@@ -18,6 +19,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 }) => {
   const { isAuthenticated, isLoading } = useSelector((state: RootState) => state.auth);
   const location = useLocation();
+  const { t } = useTranslation();
 
   // Show loading while checking authentication
   if (isLoading) {
@@ -30,7 +32,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
         fontSize: '16px',
         color: '#666'
       }}>
-        Проверка аутентификации...
+        {t('checking_authentication')}
       </div>
     );
   }

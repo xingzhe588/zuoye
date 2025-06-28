@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
 
 import './index.css';
+import { useTranslation } from 'react-i18next';
 
 import PixelMen from '/src/assets/images/PixelMan.png';
 import HarmonyJapan from '/src/assets/images/HarmonyJapan.png';
 import NatureCity from '/src/assets/images/NatureCity.png';
 
-const collections = [
-  {
-    id: '001',
-    name: 'Пиксельный человек',
-    author: 'Александр',
-    price: '12 000 ₽',
-    category: 'Пиксель-арт',
-    img: PixelMen
-  },
-  {
-    id: '002',
-    name: 'Гармония Японии',
-    author: 'Мария',
-    price: '18 500 ₽',
-    category: 'Японский стиль',
-    img: HarmonyJapan
-  },
-  {
-    id: '003',
-    name: 'Город природы',
-    author: 'Дмитрий',
-    price: '15 000 ₽',
-    category: 'Город и природа',
-    img: NatureCity
-  }
-];
-
-const categories = ['Все', 'Пиксель-арт', 'Японский стиль', 'Город и природа'];
-
 const Collection = (): React.ReactElement => {
-  const [selectedCategory, setSelectedCategory] = useState('Все');
-  const filtered = selectedCategory === 'Все' ? collections : collections.filter(item => item.category === selectedCategory);
+  const { t } = useTranslation();
+  
+  const collections = [
+    {
+      id: '001',
+      name: t('pixel_man'),
+      author: 'Александр',
+      price: '12 000 ₽',
+      category: t('pixel_art'),
+      img: PixelMen
+    },
+    {
+      id: '002',
+      name: t('harmony_japan'),
+      author: 'Мария',
+      price: '18 500 ₽',
+      category: t('japanese_style'),
+      img: HarmonyJapan
+    },
+    {
+      id: '003',
+      name: t('nature_city'),
+      author: 'Дмитрий',
+      price: '15 000 ₽',
+      category: t('city_and_nature'),
+      img: NatureCity
+    }
+  ];
+
+  const categories = [t('all'), t('pixel_art'), t('japanese_style'), t('city_and_nature')];
+  
+  const [selectedCategory, setSelectedCategory] = useState(t('all'));
+  const filtered = selectedCategory === t('all') ? collections : collections.filter(item => item.category === selectedCategory);
 
   return(
     <div className='collection-page-first'>
@@ -61,9 +64,9 @@ const Collection = (): React.ReactElement => {
                 <div className="collection-info">
                   <div className="collection-name">{item.name}</div>
                   <div className="collection-meta">
-                    <span>Автор: {item.author}</span>
-                    <span>№ {item.id}</span>
-                    <span>Цена: {item.price}</span>
+                    <span>{t('author')} {item.author}</span>
+                    <span>{t('number')} {item.id}</span>
+                    <span>{t('price')} {item.price}</span>
                   </div>
                 </div>
               </div>

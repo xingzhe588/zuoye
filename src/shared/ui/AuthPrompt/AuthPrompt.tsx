@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getNavigationValue } from '@brojs/cli';
+import { useTranslation } from 'react-i18next';
 import './AuthPrompt.css';
 
 interface AuthPromptProps {
@@ -11,12 +12,13 @@ interface AuthPromptProps {
 }
 
 export const AuthPrompt: React.FC<AuthPromptProps> = ({
-  message = "Войдите для использования этой функции",
-  action = "создание произведений искусства",
+  message,
+  action,
   onClose,
   showModal = true
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLogin = () => {
     navigate(getNavigationValue('project-monday.auth'));
@@ -33,7 +35,7 @@ export const AuthPrompt: React.FC<AuthPromptProps> = ({
     <div className="auth-prompt-overlay">
       <div className="auth-prompt-modal">
         <div className="auth-prompt-header">
-          <h3>Требуется вход</h3>
+          <h3>{t('login_required')}</h3>
           <button className="auth-prompt-close" onClick={handleClose}>
             ×
           </button>
@@ -44,16 +46,16 @@ export const AuthPrompt: React.FC<AuthPromptProps> = ({
             🎨
           </div>
           <p className="auth-prompt-message">
-            {message}
+            {message || t('login_required_message')}
           </p>
           <p className="auth-prompt-description">
-            После входа вы сможете:
+            {t('after_login_you_can')}
           </p>
           <ul className="auth-prompt-benefits">
-            <li>🎨 Создавать ИИ-произведения искусства</li>
-            <li>💾 Сохранять ваши работы</li>
-            <li>👥 Сотрудничать с другими художниками</li>
-            <li>📱 Управлять личной коллекцией</li>
+            <li>🎨 {t('create_ai_artworks')}</li>
+            <li>💾 {t('save_your_works')}</li>
+            <li>👥 {t('collaborate_with_artists')}</li>
+            <li>📱 {t('manage_personal_collection')}</li>
           </ul>
         </div>
 
@@ -62,13 +64,13 @@ export const AuthPrompt: React.FC<AuthPromptProps> = ({
             className="auth-prompt-login-btn"
             onClick={handleLogin}
           >
-            Войти/Зарегистрироваться
+            {t('login_register')}
           </button>
           <button
             className="auth-prompt-cancel-btn"
             onClick={handleClose}
           >
-            Позже
+            {t('later')}
           </button>
         </div>
       </div>
