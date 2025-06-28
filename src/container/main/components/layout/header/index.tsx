@@ -5,6 +5,7 @@ import { getNavigationValue } from '@brojs/cli';
 import { RootState } from '../../../../../store';
 import Logo from '../logo/logo';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../../../../../shared/ui/LanguageSwitcher';
 
 import './index.css';
 
@@ -84,32 +85,7 @@ const Header = (): React.ReactElement => {
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '0 0 auto', zIndex: 20 }}>
-        <button 
-          onClick={() => handleChangeLanguage('ru')} 
-          style={{ 
-            padding: '4px 8px', 
-            cursor: 'pointer', 
-            border: '1px solid #ccc', 
-            borderRadius: '4px',
-            backgroundColor: i18n.language === 'ru' ? '#007bff' : 'transparent',
-            color: i18n.language === 'ru' ? 'white' : 'black'
-          }}
-        >
-          RU
-        </button>
-        <button 
-          onClick={() => handleChangeLanguage('en')} 
-          style={{ 
-            padding: '4px 8px', 
-            cursor: 'pointer', 
-            border: '1px solid #ccc', 
-            borderRadius: '4px',
-            backgroundColor: i18n.language === 'en' ? '#007bff' : 'transparent',
-            color: i18n.language === 'en' ? 'white' : 'black'
-          }}
-        >
-          EN
-        </button>
+        <LanguageSwitcher />
         <button className="header-menu-toggle" onClick={toggleMenu} style={{ cursor: 'pointer' }}>
           ☰
         </button>

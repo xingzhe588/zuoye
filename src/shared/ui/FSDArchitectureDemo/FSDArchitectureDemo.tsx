@@ -185,13 +185,13 @@ const FSDArchitectureDemo: React.FC = () => {
           <div className="principle-card">
             <h4>📦 Модульность</h4>
             <p>Каждый feature - независимый модуль с собственным API, UI и логикой</p>
-            <code>features/auth/{api,model,ui}</code>
+            <code>features/auth/&#123;api,model,ui&#125;</code>
           </div>
           
           <div className="principle-card">
             <h4>🔧 Переиспользование</h4>
             <p>Общие компоненты и утилиты в слое shared</p>
-            <code>shared/{ui,api,config,lib}</code>
+            <code>shared/&#123;ui,api,config,lib&#125;</code>
           </div>
           
           <div className="principle-card">
