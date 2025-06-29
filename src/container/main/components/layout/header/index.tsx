@@ -61,7 +61,7 @@ const Header = (): React.ReactElement => {
               </li>
             ) : null
           ))}
-          {isAuthenticated ? (
+          {isAuthenticated && user ? (
             <>
               <li className="header-nav__item">
                 <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
@@ -70,7 +70,7 @@ const Header = (): React.ReactElement => {
               </li>
               <li className="header-nav__item">
                 <span className="header-user-info">
-                  {t('welcome')}, {user?.username}
+                  {t('welcome')}, {user.username || user.email}
                 </span>
               </li>
             </>

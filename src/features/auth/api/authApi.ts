@@ -57,6 +57,6 @@ export const authApi = {
   },
 
   async getCurrentUser(): Promise<HATEOASResponse<User>> {
-    return apiClient.get<User>('/api/auth/me/');
+    return apiClient.get<User>('/api/auth/profile/');
   },
 };

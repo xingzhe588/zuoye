@@ -36,7 +36,7 @@ export class APIClient {
     const url = `${this.baseURL}${endpoint}`;
 
     // Get auth token from localStorage
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       ...options.headers as Record<string, string>,
@@ -44,7 +44,7 @@ export class APIClient {
 
     // Add authorization header if token exists
     if (token) {
-      headers['Authorization'] = `Token ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
     const response = await fetch(url, {

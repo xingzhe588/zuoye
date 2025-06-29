@@ -8,15 +8,17 @@ import './app-env.d.ts';
 
 export default () => <App/>;
 
-let rootElement: ReactDOM.Root
+let rootElement: ReactDOM.Root | null = null;
 
 export const mount = (Component, element = document.getElementById('app')) => {
-  rootElement = ReactDOM.createRoot(element as HTMLElement);
-  rootElement.render(<Component/>);
+  if (!rootElement) {
+    rootElement = ReactDOM.createRoot(element as HTMLElement);
+  }
+  rootElement!.render(<Component/>);
 
   if(module.hot) {
       module.hot.accept('./app', ()=> {
-        rootElement.render(<Component/>);
+        rootElement && rootElement.render(<Component/>);
       })
   }
 };

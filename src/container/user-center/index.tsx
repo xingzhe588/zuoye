@@ -76,7 +76,7 @@ const UserCenterContainer: React.FC = () => {
 
   const handleLogout = async () => {
     await dispatch(logoutUser() as any);
-    navigate(getNavigationValue('project-monday.main'));
+    navigate(getNavigationValue('project-monday.auth'));
   };
 
   const handleBackToMain = () => {

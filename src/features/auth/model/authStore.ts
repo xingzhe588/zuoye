@@ -12,7 +12,7 @@ export interface AuthState {
 
 const initialState: AuthState = {
   user: null,
-  token: localStorage.getItem('authToken'),
+  token: localStorage.getItem('token'),
   isAuthenticated: false,
   isLoading: false,
   error: null,
@@ -26,7 +26,7 @@ export const loginUser = createAsyncThunk(
       console.log('Attempting login with credentials:', { username: credentials.username });
       const response = await authApi.login(credentials);
       console.log('Login response:', response);
-      localStorage.setItem('authToken', response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
       console.error('Login error:', error);
@@ -43,7 +43,7 @@ export const registerUser = createAsyncThunk(
       console.log('Attempting registration with data:', userData);
       const response = await authApi.register(userData);
       console.log('Registration response:', response);
-      localStorage.setItem('authToken', response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
       console.error('Registration error:', error);
@@ -58,7 +58,7 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await authApi.logout();
-      localStorage.removeItem('authToken');
+      localStorage.removeItem('token');
       return null;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Logout failed');
