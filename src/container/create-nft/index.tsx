@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { fetchAIGeneratedImage } from '../../service/imageApi';
 import './index.css';
 import { getConfigValue } from '@brojs/cli';
 import { AuthPrompt } from '../../shared/ui/AuthPrompt/AuthPrompt';
@@ -57,14 +57,8 @@ const CreateNFT = (): React.ReactElement => {
   const fetchImage = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        getConfigValue('project-monday.api') + '/gigachat/prompt?prompt=' + encodeURIComponent(inputValue),
-        {
-          responseType: 'blob',
-        }
-      );
-
-      const imageUrl = URL.createObjectURL(response.data);
+      const imageBlob = await fetchAIGeneratedImage(inputValue);
+      const imageUrl = URL.createObjectURL(imageBlob);
       setImageSrc(imageUrl);
     } catch (error) {
       console.error(t('image_fetch_error'), error);

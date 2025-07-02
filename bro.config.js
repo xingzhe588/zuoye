@@ -27,6 +27,6 @@ module.exports = {
     },
   },
   config: {
-    "project-monday.api": "https://dev.bro-js.ru/ms/back-new/api",
+         "project-monday.api": "https://dev.bro-js.ru/ms/back-new"
   },
 };
