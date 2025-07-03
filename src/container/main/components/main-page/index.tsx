@@ -16,6 +16,9 @@ const MainPage = (): React.ReactElement => {
             <div className='main-nft-market'>
               <span>{t('ai_art')}</span>
             </div>
+            <div className='main-with-discounts'>
+              <span>{t('revolution')}</span>
+            </div>
             <div className="main-labubu-mobile">
               <img src={Image_Cat} alt="Cat" className="main-cat-logo-mobile" />
             </div>
@@ -37,9 +40,6 @@ const MainPage = (): React.ReactElement => {
             </div>
             <div className='main-text-about-nft'>
               <span>{t('main_page_description')}</span>
-            </div>
-            <div className='main-with-discounts'>
-              <span>{t('revolution')}</span>
             </div>
           </div>
           <div className="main-logo">
