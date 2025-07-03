@@ -111,6 +111,24 @@ const UserCenterContainer: React.FC = () => {
           <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>
             {isLoading ? t('saving') || '保存中...' : t('save_changes') || '保存修改'}
           </button>
+          <button
+            type="button"
+            onClick={handleLogout}
+            style={{
+              marginTop: 18,
+              background: '#e53e3e',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 6,
+              padding: '12px 0',
+              fontWeight: 600,
+              fontSize: 16,
+              letterSpacing: 1,
+              width: '100%',
+            }}
+          >
+            {t('logout') || '退出登录'}
+          </button>
         </form>
       </div>
     </div>
