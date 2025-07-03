@@ -215,10 +215,22 @@
 
 .guest-attempts-tip {
   color: #007bff;
-  font-size: 0.98rem;
-  font-weight: 600;
-  margin: 6px 0 10px 0;
-  text-align: right;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 10px 0 14px 0;
+  text-align: center;
+  letter-spacing: 0.2px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 2px 8px #1ef1f122;
+  width: 100%;
+  max-width: 98vw;
+  display: block;
+}
+.guest-attempts-tip.danger {
+  color: #e53e3e;
+  background: rgba(255, 235, 230, 0.95);
 }
 
 @media (max-width: 600px) {
@@ -275,5 +287,11 @@
     font-size: 0.9rem;
     min-width: 70px;
     padding: 0 4px;
+  }
+  .guest-attempts-tip {
+    font-size: 1rem;
+    margin: 8px 0 12px 0;
+    padding: 7px 0;
+    max-width: 96vw;
   }
 }

@@ -136,11 +136,10 @@ const CreateNFT = (): React.ReactElement => {
             </div>
           )}
           {!isAuthenticated && guestAttempts >= 2 && (
-            <div className="guest-attempts-tip" style={{ color: '#e53e3e', fontWeight: 700 }}>
+            <div className="guest-attempts-tip danger">
               {t('login_to_continue')}
             </div>
           )}
-          <p>{outputText}</p>
         </div>
 
         <div className="create-nft-box">
