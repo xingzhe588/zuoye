@@ -174,7 +174,7 @@
 .create-nft-rectangle .img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     display: block;
     margin: 0 auto;
     border-radius: 12px;
@@ -365,7 +365,7 @@
   .create-nft-rectangle .img {
     width: 100%;
     height: auto;
-    max-height: 50vw;
+    max-height: none;
     object-fit: contain;
     display: block;
     margin: 0 auto;
@@ -386,7 +386,9 @@
     align-items: center;
   }
   .create-nft-box > .tips-mobile {
-    margin-top: 0 !important;
+    margin-top: -2px !important;
+    margin-bottom: 0 !important;
+    padding: 0;
   }
 }
 
@@ -425,5 +427,12 @@
   }
   .create-nft-input-field {
     margin-bottom: 0;
+  }
+  .create-nft-tips.tips-desktop {
+    line-height: 2.1;
+    margin-bottom: 38px;
+  }
+  .create-nft-left-panel {
+    padding-top: 32px;
   }
 }
