@@ -1,6 +1,7 @@
 // User Center API
 import { apiClient, HATEOASResponse } from '../../../shared/api/base';
 import { User } from '../../auth/api/authApi';
+import axios from 'axios';
 
 export interface UserProfile extends User {
   bio?: string;
@@ -34,7 +35,7 @@ export const userApi = {
   },
 
   async updateProfile(data: UpdateProfileRequest): Promise<HATEOASResponse<UserProfile>> {
-    return apiClient.put<UserProfile>('/auth/profile/', data);
+    return apiClient.put<UserProfile>('/api/auth/profile', data);
   },
 
   async uploadAvatar(file: File): Promise<HATEOASResponse<{ avatar: string }>> {
@@ -59,4 +60,15 @@ export const userApi = {
   async deleteAccount(): Promise<HATEOASResponse<void>> {
     return apiClient.delete<void>('/user/account/');
   },
+};
+
+export const updateUserProfile = async (profile: UserProfile) => {
+  return axios.put('/api/auth/profile', {
+    id: profile.id,
+    firstName: profile.firstName,
+    lastName: profile.lastName,
+    bio: profile.bio,
+    location: profile.location,
+    website: profile.website
+  });
 };
