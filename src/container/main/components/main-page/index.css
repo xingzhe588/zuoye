@@ -350,3 +350,28 @@
         min-height: 40px;
     }
 }
+
+.main-labubu-mobile {
+    display: none;
+}
+@media (max-width: 600px) {
+    .main-labubu-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0 8px 0;
+    }
+    .main-cat-logo-mobile {
+        width: 68px;
+        height: 68px;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px #FFD70033;
+        object-fit: cover;
+    }
+    .main-logo {
+        display: none;
+    }
+    .main-with-discounts {
+        display: none;
+    }
+}
