@@ -210,8 +210,16 @@
     }
   }
   /* 隐藏桌面端原有nav */
-  @media (min-width: 601px) {
+  @media (max-width: 600px) {
     .header-nav {
       display: none !important;
+    }
+  }
+  @media (min-width: 601px) {
+    .header-nav {
+      display: flex !important;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
     }
   }

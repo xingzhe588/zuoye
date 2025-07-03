@@ -25,6 +25,14 @@ const UserCenterContainer: React.FC = () => {
     website: '',
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [editProfile, setEditProfile] = useState({
+    id: String(profile.id || ''),
+    firstName: profile.firstName || '',
+    lastName: profile.lastName || '',
+    bio: profile.bio || '',
+    location: profile.location || '',
+    website: profile.website || '',
+  });
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -33,6 +41,20 @@ const UserCenterContainer: React.FC = () => {
     }
     loadProfile();
   }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (isEditing) {
+      setEditProfile({
+        id: String(profile.id || ''),
+        firstName: profile.firstName || '',
+        lastName: profile.lastName || '',
+        bio: profile.bio || '',
+        location: profile.location || '',
+        website: profile.website || '',
+      });
+    }
+    // eslint-disable-next-line
+  }, [isEditing]);
 
   const loadProfile = async () => {
     try {
@@ -67,13 +89,50 @@ const UserCenterContainer: React.FC = () => {
     setProfile(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setEditProfile(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setIsLoading(true);
       await userApi.updateProfile(profile);
-      loadProfile();
+      const updated = await userApi.getProfile();
+      setProfile({
+        id: updated.data.id,
+        firstName: updated.data.firstName,
+        lastName: updated.data.lastName,
+        bio: updated.data.bio,
+        location: updated.data.location,
+        website: updated.data.website,
+      });
       setIsEditing(false);
+      setError(null);
+    } catch (error) {
+      setError(String(t('profile_update_error')));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      await userApi.updateProfile(editProfile);
+      const updated = await userApi.getProfile();
+      setProfile({
+        id: updated.data.id,
+        firstName: updated.data.firstName,
+        lastName: updated.data.lastName,
+        bio: updated.data.bio,
+        location: updated.data.location,
+        website: updated.data.website,
+      });
+      setIsEditing(false);
+      setError(null);
     } catch (error) {
       setError(String(t('profile_update_error')));
     } finally {
@@ -138,7 +197,7 @@ const UserCenterContainer: React.FC = () => {
         {/* 编辑弹窗 */}
         <Modal open={isEditing} onClose={() => setIsEditing(false)}>
           <h2 style={{ marginTop: 0 }}>{t('edit_profile') || '编辑资料'}</h2>
-          <form onSubmit={handleSubmit} className="profile-form">
+          <form onSubmit={handleEditSubmit} className="profile-form">
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">{t('first_name')}</label>
@@ -146,8 +205,8 @@ const UserCenterContainer: React.FC = () => {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={profile.firstName}
-                  onChange={handleChange}
+                  value={editProfile.firstName}
+                  onChange={handleEditChange}
                   required
                 />
               </div>
@@ -157,8 +216,8 @@ const UserCenterContainer: React.FC = () => {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={profile.lastName}
-                  onChange={handleChange}
+                  value={editProfile.lastName}
+                  onChange={handleEditChange}
                   required
                 />
               </div>
@@ -168,8 +227,8 @@ const UserCenterContainer: React.FC = () => {
               <textarea
                 id="bio"
                 name="bio"
-                value={profile.bio}
-                onChange={handleChange}
+                value={editProfile.bio}
+                onChange={handleEditChange}
                 rows={3}
                 placeholder={t('about_placeholder')}
               />
@@ -180,8 +239,8 @@ const UserCenterContainer: React.FC = () => {
                 type="text"
                 id="location"
                 name="location"
-                value={profile.location}
-                onChange={handleChange}
+                value={editProfile.location}
+                onChange={handleEditChange}
                 placeholder={t('location_placeholder')}
               />
             </div>
@@ -191,8 +250,8 @@ const UserCenterContainer: React.FC = () => {
                 type="url"
                 id="website"
                 name="website"
-                value={profile.website}
-                onChange={handleChange}
+                value={editProfile.website}
+                onChange={handleEditChange}
                 placeholder={t('website_placeholder')}
               />
             </div>
