@@ -16,6 +16,7 @@ export interface UserProfile extends User {
 }
 
 export interface UpdateProfileRequest {
+  id?: string | number;
   email?: string;
   username?: string;
   password?: string;

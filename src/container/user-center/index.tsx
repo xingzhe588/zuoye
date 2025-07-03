@@ -59,6 +59,7 @@ const UserCenterContainer: React.FC = () => {
     try {
       setIsLoading(true);
       await userApi.updateProfile({
+        id: profile.id,
         email: profile.email,
         username: profile.username,
         password: profile.password,
