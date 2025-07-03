@@ -147,8 +147,8 @@ const CreateNFT = (): React.ReactElement => {
               )}
             </div>
           </div>
-          {/* 蓝字提示放在图片生成框下方 */}
-          <div style={{ margin: '10px 0 0 0', textAlign: 'center' }}>
+          {/* 蓝字提示仅移动端显示 */}
+          <div className="tips-mobile">
             <div style={{ color: '#00bfff', fontWeight: 700, fontSize: '1.08rem', marginBottom: 2, textAlign: 'center' }}>
               {t('tip_example')}
             </div>
