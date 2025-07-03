@@ -5,7 +5,6 @@ import { getNavigationValue } from '@brojs/cli';
 import { logoutUser } from '../../features/auth/model/authStore';
 import { userApi } from '../../features/user-center/api/userApi';
 import { RootState } from '../../store';
-import FSDArchitectureDemo from '../../shared/ui/FSDArchitectureDemo/FSDArchitectureDemo';
 import { useTranslation } from 'react-i18next';
 import './index.css';
 
@@ -211,41 +210,6 @@ const UserCenterContainer: React.FC = () => {
             </div>
           )}
         </div>
-
-        {/* FSD архитектура */}
-        <div className="features-section">
-          <h3>FSD Архитектура - Feature-Sliced Design</h3>
-          <div className="features-grid">
-            <div className="feature-card">
-              <h4>🔐 Слой аутентификации</h4>
-              <span className="status enabled">✅ Включен</span>
-              <p>Вход, регистрация, управление токенами</p>
-            </div>
-            <div className="feature-card">
-              <h4>👤 Слой пользователя</h4>
-              <span className="status enabled">✅ Включен</span>
-              <p>Профиль, настройки пользователя</p>
-            </div>
-            <div className="feature-card">
-              <h4>🎨 Слой генерации искусства</h4>
-              <span className="status enabled">✅ Включен</span>
-              <p>Функции создания ИИ-искусства</p>
-            </div>
-            <div className="feature-card">
-              <h4>🖼️ Слой коллекции</h4>
-              <span className="status enabled">✅ Включен</span>
-              <p>Просмотр и управление работами</p>
-            </div>
-          </div>
-          <div className="architecture-note">
-            <p><strong>Особенности FSD:</strong> Каждый функциональный слой полностью независим, содержит API, UI, модели и тестовый код, поддерживает динамическое включение/отключение.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* FSD架构展示 */}
-      <div className="fsd-architecture-section">
-        <FSDArchitectureDemo />
       </div>
     </div>
   );
