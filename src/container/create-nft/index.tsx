@@ -105,15 +105,6 @@ const CreateNFT = (): React.ReactElement => {
 
       <header className="create-nft-header">
         <div className="create-nft-box create-nft-left-panel">
-          <div className="create-nft-tips">
-            <h2>{t('about_artcollab_ai')}</h2>
-            <p>{t('artcollab_ai_desc')}</p>
-            <ul>
-              <li>{t('tip_use_adjectives')}</li>
-              <li>{t('tip_example')}</li>
-              <li>{t('tip_more_detail')}</li>
-            </ul>
-          </div>
           {getGuestNotice()}
           <div className="create-nft-input-field">
             <input
@@ -146,6 +137,15 @@ const CreateNFT = (): React.ReactElement => {
           </div>
         </div>
       </header>
+      <div className="create-nft-tips">
+        <h2>{t('about_artcollab_ai')}</h2>
+        <p>{t('artcollab_ai_desc')}</p>
+        <ul>
+          <li>{t('tip_use_adjectives')}</li>
+          <li>{t('tip_example')}</li>
+          <li>{t('tip_more_detail')}</li>
+        </ul>
+      </div>
     </div>
   );
 };
