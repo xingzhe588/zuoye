@@ -130,16 +130,6 @@ const CreateNFT = (): React.ReactElement => {
               {t('create')}
             </button>
           </div>
-          {!isAuthenticated && guestAttempts === 1 && (
-            <div className="guest-attempts-tip">
-              {t('create_free_attempts_left', { count: 2 - guestAttempts })}
-            </div>
-          )}
-          {!isAuthenticated && guestAttempts >= 2 && (
-            <div className="guest-attempts-tip danger">
-              {t('login_to_continue')}
-            </div>
-          )}
         </div>
 
         <div className="create-nft-box">
