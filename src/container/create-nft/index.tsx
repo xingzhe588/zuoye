@@ -145,16 +145,24 @@ const CreateNFT = (): React.ReactElement => {
               )}
             </div>
           </div>
+          {/* 蓝字提示放在图片生成框下方 */}
+          <div style={{ margin: '10px 0 0 0', textAlign: 'center' }}>
+            <div style={{ color: '#1EF1F1', fontWeight: 600, fontSize: '1.02rem', marginBottom: 2 }}>
+              {t('tip_example')}
+            </div>
+            <div style={{ color: '#1EF1F1', fontWeight: 600, fontSize: '1.02rem' }}>
+              {t('tip_more_detail')}
+            </div>
+          </div>
         </div>
       </header>
       {/* 移动端介绍内容 */}
       <div className="create-nft-tips tips-mobile">
-        <h2>{t('about_artcollab_ai')}</h2>
-        <p>{t('artcollab_ai_desc')}</p>
-        <ul>
-          <li>{t('tip_use_adjectives')}</li>
-          <li>{t('tip_example')}</li>
-          <li>{t('tip_more_detail')}</li>
+        <h2 style={{ color: '#FFD700', fontSize: '1.25rem', marginBottom: 8 }}>ArtCollab AI</h2>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+          <li style={{ color: '#1EF1F1', fontSize: '1.08rem', fontWeight: 600, textAlign: 'center', margin: 0 }}>
+            {t('tip_use_adjectives')}
+          </li>
         </ul>
       </div>
     </div>
