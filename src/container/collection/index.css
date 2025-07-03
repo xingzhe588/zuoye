@@ -146,62 +146,6 @@
 }
 
 @media (max-width: 600px) {
-  /* 通用容器 */
-  .container, .user-center-container, .collection-page-first, .create-nft-page-first, .contact-page-first {
-    padding: 0 2vw;
-    box-sizing: border-box;
-    width: 100vw;
-    min-height: 100vh;
-  }
-  /* 标题 */
-  h1, h2, .collection-name, .contact-name {
-    font-size: 1.18rem !important;
-    font-weight: 800 !important;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  /* 按钮 */
-  button, .btn-primary, .collection-category-btn, .create-nft-input-field button {
-    font-size: 1rem !important;
-    min-height: 40px;
-    border-radius: 14px !important;
-    padding: 0 12px !important;
-    font-weight: 700;
-    box-shadow: 0 2px 8px #007bff11;
-  }
-  /* 输入框 */
-  input, .user-center-form input, .create-nft-input-field input {
-    font-size: 1rem !important;
-    border-radius: 12px !important;
-    padding: 10px 12px !important;
-    width: 96vw !important;
-    max-width: 98vw !important;
-    margin-bottom: 10px;
-  }
-  /* 卡片 */
-  .collection-icon, .contact-border, .user-center-avatar, .create-nft-left-panel {
-    width: 96vw !important;
-    max-width: 98vw !important;
-    min-width: unset !important;
-    margin: 0 auto 18px auto !important;
-    border-radius: 16px !important;
-    box-shadow: 0 2px 12px #1ef1f122 !important;
-  }
-  /* 信息区 */
-  .collection-info, .contact-border, .user-center-form {
-    padding: 0 4vw !important;
-  }
-  /* 提示 */
-  .guest-attempts-tip, .guest-notice, .error-message {
-    font-size: 1rem !important;
-    border-radius: 10px !important;
-    padding: 8px 0 !important;
-    margin: 10px 0 14px 0 !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 98vw !important;
-    display: block !important;
-  }
   .collection-icons {
     flex-direction: column;
     align-items: center;
