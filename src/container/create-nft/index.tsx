@@ -127,9 +127,19 @@ const CreateNFT = (): React.ReactElement => {
               disabled={loading}
               className={!isAuthenticated && guestAttempts >= 2 ? 'auth-required' : ''}
             >
-              {getButtonText()}
+              {t('create')}
             </button>
           </div>
+          {!isAuthenticated && guestAttempts === 1 && (
+            <div className="guest-attempts-tip">
+              {t('create_free_attempts_left', { count: 2 - guestAttempts })}
+            </div>
+          )}
+          {!isAuthenticated && guestAttempts >= 2 && (
+            <div className="guest-attempts-tip" style={{ color: '#e53e3e', fontWeight: 700 }}>
+              {t('login_to_continue')}
+            </div>
+          )}
           <p>{outputText}</p>
         </div>
 

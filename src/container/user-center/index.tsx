@@ -95,13 +95,16 @@ const UserCenterContainer: React.FC = () => {
 
   return (
     <div className="user-center-container">
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
-        <LanguageSwitcher />
-      </div>
       <div className="user-center-wrapper">
         {/* 左侧头像 */}
         <div className="user-center-avatar">
-          <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 24, background: '#f5f5f5' }} />
+          <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 12, background: '#f5f5f5' }} />
+          <div style={{ textAlign: 'center', fontWeight: 700, fontSize: 20, marginBottom: 8 }}>
+            {profile.username}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
+            <LanguageSwitcher />
+          </div>
         </div>
         {/* 右侧表单 */}
         <form onSubmit={handleSubmit} className="user-center-form">
