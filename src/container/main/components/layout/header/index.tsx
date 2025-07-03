@@ -17,6 +17,7 @@ interface NavigationItem {
 const Header = (): React.ReactElement => {
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { t, i18n } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleChangeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -44,12 +45,20 @@ const Header = (): React.ReactElement => {
           <span>ArtCollab</span>
         </Link>
       </div>
-      <nav className="header-nav">
+      <button
+        className="header-menu-toggle"
+        onClick={() => setMenuOpen(open => !open)}
+        aria-label="Open menu"
+        style={{ marginLeft: 'auto', marginRight: 8 }}
+      >
+        ☰
+      </button>
+      <nav className={`header-nav${menuOpen ? ' header-nav--open' : ''}`}>
         <ul className="header-nav__list">
           {navigationItems.map((item) => (
             item.href ? (
               <li key={item.name} className="header-nav__item">
-                <Link to={item.href} className="header-nav__link">
+                <Link to={item.href} className="header-nav__link" onClick={() => setMenuOpen(false)}>
                   {item.name}
                 </Link>
               </li>
@@ -57,19 +66,47 @@ const Header = (): React.ReactElement => {
           ))}
           {isAuthenticated && user ? (
             <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
+              <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link" onClick={() => setMenuOpen(false)}>
                 {t('user_center')}
               </Link>
             </li>
           ) : (
             <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
+              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth" onClick={() => setMenuOpen(false)}>
                 {t('login_register')}
               </Link>
             </li>
           )}
         </ul>
       </nav>
+      {menuOpen && (
+        <div className="header-mobile-menu">
+          <ul className="header-mobile-menu__list">
+            {navigationItems.map((item) => (
+              item.href ? (
+                <li key={item.name} className="header-mobile-menu__item">
+                  <Link to={item.href} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+                    {item.name}
+                  </Link>
+                </li>
+              ) : null
+            ))}
+            {isAuthenticated && user ? (
+              <li className="header-mobile-menu__item">
+                <Link to={getNavigationValue('project-monday.user-center')} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+                  {t('user_center')}
+                </Link>
+              </li>
+            ) : (
+              <li className="header-mobile-menu__item">
+                <Link to={getNavigationValue('project-monday.auth')} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+                  {t('login_register')}
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
       <div className="header-actions">
         <LanguageSwitcher />
         {isAuthenticated && user && (

@@ -141,9 +141,7 @@ const Navigation: React.FC = () => {
         </div>
         <div className="mobile-navbar-center">
           {/* 语言切换组件，假设为LanguageSwitcher */}
-          <div className="language-switcher-mobile">
-            {/* 这里请替换为你的实际语言切换组件 */}
-          </div>
+          {/* 已移除 */}
         </div>
         <div className="mobile-navbar-right">
           <button
