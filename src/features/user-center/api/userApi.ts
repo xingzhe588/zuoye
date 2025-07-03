@@ -35,7 +35,7 @@ export const userApi = {
   },
 
   async updateProfile(data: UpdateProfileRequest): Promise<HATEOASResponse<UserProfile>> {
-    return apiClient.put<UserProfile>('/api/auth/profile', data);
+    return apiClient.put<UserProfile>('/auth/profile/', data);
   },
 
   async uploadAvatar(file: File): Promise<HATEOASResponse<{ avatar: string }>> {

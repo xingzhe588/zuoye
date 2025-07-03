@@ -50,46 +50,48 @@ const Header = (): React.ReactElement => {
         </Link>
       </div>
 
-      <nav className={`header-nav ${isMenuOpen ? 'header-nav--open' : ''}`} style={{ flex: '1 1 auto', display: 'flex', justifyContent: 'center' }}>
-        <ul className="header-nav__list" style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: 0 }}>
-          {navigationItems.map((item) => (
-            item.href ? (
-              <li key={item.name} className="header-nav__item">
-                <Link to={item.href} className="header-nav__link">
-                  {item.name}
-                </Link>
-              </li>
-            ) : null
-          ))}
-          {isAuthenticated && user ? (
-            <>
-              <li className="header-nav__item">
-                <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
-                  {t('user_center')}
-                </Link>
-              </li>
-              <li className="header-nav__item">
-                <span className="header-user-info">
-                  {t('welcome')}, {user.username || user.email}
-                </span>
-              </li>
-            </>
-          ) : (
-            <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
-                {t('login_register')}
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '0 0 auto', zIndex: 20 }}>
         <LanguageSwitcher />
         <button className="header-menu-toggle" onClick={toggleMenu}>
           ☰
         </button>
       </div>
+
+      {isMenuOpen && (
+        <div className="header-mobile-menu">
+          <ul className="header-mobile-menu__list">
+            {navigationItems.map((item) => (
+              item.href ? (
+                <li key={item.name} className="header-mobile-menu__item">
+                  <Link to={item.href} className="header-mobile-menu__link" onClick={() => setIsMenuOpen(false)}>
+                    {item.name}
+                  </Link>
+                </li>
+              ) : null
+            ))}
+            {isAuthenticated && user ? (
+              <>
+                <li className="header-mobile-menu__item">
+                  <Link to={getNavigationValue('project-monday.user-center')} className="header-mobile-menu__link" onClick={() => setIsMenuOpen(false)}>
+                    {t('user_center')}
+                  </Link>
+                </li>
+                <li className="header-mobile-menu__item">
+                  <span className="header-user-info">
+                    {t('welcome')}, {user.username || user.email}
+                  </span>
+                </li>
+              </>
+            ) : (
+              <li className="header-mobile-menu__item">
+                <Link to={getNavigationValue('project-monday.auth')} className="header-mobile-menu__link header-mobile-menu__link--auth" onClick={() => setIsMenuOpen(false)}>
+                  {t('login_register')}
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
