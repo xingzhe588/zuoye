@@ -107,14 +107,6 @@ const Header = (): React.ReactElement => {
           </ul>
         </div>
       )}
-      <div className="header-actions">
-        <LanguageSwitcher />
-        {isAuthenticated && user && (
-          <span className="header-user-info">
-            {t('welcome')}, {user.username || user.email}
-          </span>
-        )}
-      </div>
     </header>
   );
 };
