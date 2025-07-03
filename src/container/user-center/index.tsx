@@ -7,6 +7,7 @@ import { userApi } from '../../features/user-center/api/userApi';
 import { RootState } from '../../store';
 import { useTranslation } from 'react-i18next';
 import './index.css';
+import LanguageSwitcher from '../../shared/ui/LanguageSwitcher/LanguageSwitcher';
 
 const UserCenterContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -94,6 +95,9 @@ const UserCenterContainer: React.FC = () => {
 
   return (
     <div className="user-center-container">
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+        <LanguageSwitcher />
+      </div>
       <div className="user-center-wrapper">
         {/* 左侧头像 */}
         <div className="user-center-avatar">
@@ -110,7 +114,7 @@ const UserCenterContainer: React.FC = () => {
           {error && <div className="error-message" style={{ color: 'red', margin: '8px 0' }}>{error}</div>}
           <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>
             {isLoading ? t('saving') || '保存中...' : t('save_changes') || '保存修改'}
-                </button>
+          </button>
           <button
             type="button"
             onClick={handleLogout}
@@ -128,8 +132,8 @@ const UserCenterContainer: React.FC = () => {
             }}
           >
             {t('logout') || '退出登录'}
-                </button>
-            </form>
+          </button>
+        </form>
       </div>
     </div>
   );

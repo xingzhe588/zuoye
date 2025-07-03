@@ -146,8 +146,12 @@ const Navigation: React.FC = () => {
           </div>
         </div>
         <div className="mobile-navbar-right">
-          <button className="mobile-menu-btn" onClick={() => setMenuOpen(open => !open)}>
-            ☰
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Open menu"
+          >
+            <span style={{ fontSize: 32, lineHeight: 1 }}>☰</span>
           </button>
         </div>
       </nav>
