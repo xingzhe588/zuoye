@@ -92,6 +92,40 @@ const Header = (): React.ReactElement => {
           </ul>
         </div>
       )}
+
+      <nav className="header-nav">
+        <ul className="header-nav__list">
+          {navigationItems.map((item) => (
+            item.href ? (
+              <li key={item.name} className="header-nav__item">
+                <Link to={item.href} className="header-nav__link">
+                  {item.name}
+                </Link>
+              </li>
+            ) : null
+          ))}
+          {isAuthenticated && user ? (
+            <>
+              <li className="header-nav__item">
+                <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
+                  {t('user_center')}
+                </Link>
+              </li>
+              <li className="header-nav__item">
+                <span className="header-user-info">
+                  {t('welcome')}, {user.username || user.email}
+                </span>
+              </li>
+            </>
+          ) : (
+            <li className="header-nav__item">
+              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
+                {t('login_register')}
+              </Link>
+            </li>
+          )}
+        </ul>
+      </nav>
     </header>
   );
 };
