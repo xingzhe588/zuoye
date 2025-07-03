@@ -112,11 +112,16 @@
 }
   
 .create-nft-input-field button {
+    white-space: normal;
+    word-break: break-all;
+    font-size: 0.95rem;
+    padding: 0 8px;
+    min-width: 90px;
+    max-width: 100%;
+    box-sizing: border-box;
     width: 28%;
-    min-width: 120px;
     height: 44px;
     font-weight: 900;
-    font-size: 0.98rem;
     color: #005fa3;
     border-radius: 18px;
     border: none;
@@ -242,5 +247,10 @@
     margin-right: 0;
     margin-bottom: 18px;
     padding: 18px 8px 12px 8px;
+  }
+  .create-nft-input-field button {
+    font-size: 0.9rem;
+    min-width: 70px;
+    padding: 0 4px;
   }
 }

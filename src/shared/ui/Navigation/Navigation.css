@@ -1,8 +1,25 @@
 .mobile-menu-btn {
-  color: #007bff;
+  color: #007bff !important;
+  background: none;
+  border: none;
 }
 .mobile-menu-btn:hover {
-  color: #0056b3;
+  color: #0056b3 !important;
+}
+
+.mobile-nav {
+  display: none;
+}
+.mobile-nav.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #fff;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -11,9 +28,6 @@
   }
   .mobile-menu-btn {
     display: block !important;
-  }
-  .mobile-nav {
-    display: flex !important;
   }
 }
 @media (min-width: 769px) {

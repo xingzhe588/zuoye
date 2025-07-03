@@ -137,6 +137,7 @@ const Navigation: React.FC = () => {
       </Link>
       {/* 移动端菜单按钮 */}
       <button
+        className="mobile-menu-btn"
         style={{
           display: 'none',
           background: 'none',
@@ -146,7 +147,6 @@ const Navigation: React.FC = () => {
           marginLeft: '10px',
           color: '#007bff',
         }}
-        className="mobile-menu-btn"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Открыть меню"
       >
@@ -157,7 +157,7 @@ const Navigation: React.FC = () => {
         {renderNavLinks()}
       </div>
       {/* 移动端导航 */}
-      <div className="nav-links mobile-nav" style={navLinksResponsiveStyle}>
+      <div className={`nav-links mobile-nav${menuOpen ? ' open' : ''}`}>
         {renderNavLinks()}
       </div>
     </nav>
