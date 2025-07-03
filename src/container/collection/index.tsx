@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './index.css';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import HarmonyJapan from '/src/assets/images/HarmonyJapan.png';
 import NatureCity from '/src/assets/images/NatureCity.png';
 
 const Collection = (): React.ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   const collections = [
     {
@@ -40,6 +40,12 @@ const Collection = (): React.ReactElement => {
   const categories = [t('all'), t('pixel_art'), t('japanese_style'), t('city_and_nature')];
   
   const [selectedCategory, setSelectedCategory] = useState(t('all'));
+
+  // 监听语言变化，自动刷新分类和选中分类
+  useEffect(() => {
+    setSelectedCategory(t('all'));
+  }, [i18n.language]);
+
   const filtered = selectedCategory === t('all') ? collections : collections.filter(item => item.category === selectedCategory);
 
   return(

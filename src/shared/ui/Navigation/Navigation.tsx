@@ -131,19 +131,37 @@ const Navigation: React.FC = () => {
   </>;
 
   return (
-    <nav style={navStyle}>
-      <Link to="/" style={logoStyle} onClick={() => setMenuOpen(false)}>
-        ArtCollab
-      </Link>
+    <>
+      {/* 移动端导航栏 */}
+      <nav className="mobile-navbar">
+        <div className="mobile-navbar-left">
+          <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
+            ArtCollab
+          </Link>
+        </div>
+        <div className="mobile-navbar-center">
+          {/* 语言切换组件，假设为LanguageSwitcher */}
+          <div className="language-switcher-mobile">
+            {/* 这里请替换为你的实际语言切换组件 */}
+          </div>
+        </div>
+        <div className="mobile-navbar-right">
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(open => !open)}>
+            ☰
+          </button>
+        </div>
+      </nav>
       {/* 桌面端导航 */}
-      <div className="nav-links desktop-nav" style={navLinksStyle}>
-        {renderNavLinks()}
-      </div>
-      {/* 移动端导航 */}
-      <div className={`nav-links mobile-nav${menuOpen ? ' open' : ''}`}>
-        {renderNavLinks()}
-      </div>
-    </nav>
+      <nav style={navStyle} className="desktop-navbar">
+        <Link to="/" style={logoStyle} onClick={() => setMenuOpen(false)}>
+          ArtCollab
+        </Link>
+        <div className="nav-links desktop-nav" style={navLinksStyle}>
+          {renderNavLinks()}
+        </div>
+        <div className={`nav-links mobile-nav${menuOpen ? ' open' : ''}`}>{renderNavLinks()}</div>
+      </nav>
+    </>
   );
 };
 

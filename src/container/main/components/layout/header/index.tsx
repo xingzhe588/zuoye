@@ -15,13 +15,8 @@ interface NavigationItem {
 }
 
 const Header = (): React.ReactElement => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { t, i18n } = useTranslation();
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleChangeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -43,56 +38,12 @@ const Header = (): React.ReactElement => {
   ];
 
   return (
-    <header className="header-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 10 }}>
-      <div className="header-logo" style={{ flex: '0 0 auto' }}>
+    <header className="header-header">
+      <div className="header-logo">
         <Link to={getNavigationValue('project-monday.main')}>
           <span>ArtCollab</span>
         </Link>
       </div>
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '0 0 auto', zIndex: 20 }}>
-        <LanguageSwitcher />
-        <button className="header-menu-toggle" onClick={toggleMenu}>
-          ☰
-        </button>
-      </div>
-
-      {isMenuOpen && (
-        <div className="header-mobile-menu">
-          <ul className="header-mobile-menu__list">
-            {navigationItems.map((item) => (
-              item.href ? (
-                <li key={item.name} className="header-mobile-menu__item">
-                  <Link to={item.href} className="header-mobile-menu__link" onClick={() => setIsMenuOpen(false)}>
-                    {item.name}
-                  </Link>
-                </li>
-              ) : null
-            ))}
-            {isAuthenticated && user ? (
-              <>
-                <li className="header-mobile-menu__item">
-                  <Link to={getNavigationValue('project-monday.user-center')} className="header-mobile-menu__link" onClick={() => setIsMenuOpen(false)}>
-                    {t('user_center')}
-                  </Link>
-                </li>
-                <li className="header-mobile-menu__item">
-                  <span className="header-user-info">
-                    {t('welcome')}, {user.username || user.email}
-                  </span>
-                </li>
-              </>
-            ) : (
-              <li className="header-mobile-menu__item">
-                <Link to={getNavigationValue('project-monday.auth')} className="header-mobile-menu__link header-mobile-menu__link--auth" onClick={() => setIsMenuOpen(false)}>
-                  {t('login_register')}
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
-
       <nav className="header-nav">
         <ul className="header-nav__list">
           {navigationItems.map((item) => (
@@ -105,18 +56,11 @@ const Header = (): React.ReactElement => {
             ) : null
           ))}
           {isAuthenticated && user ? (
-            <>
-              <li className="header-nav__item">
-                <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
-                  {t('user_center')}
-                </Link>
-              </li>
-              <li className="header-nav__item">
-                <span className="header-user-info">
-                  {t('welcome')}, {user.username || user.email}
-                </span>
-              </li>
-            </>
+            <li className="header-nav__item">
+              <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
+                {t('user_center')}
+              </Link>
+            </li>
           ) : (
             <li className="header-nav__item">
               <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
@@ -126,6 +70,14 @@ const Header = (): React.ReactElement => {
           )}
         </ul>
       </nav>
+      <div className="header-actions">
+        <LanguageSwitcher />
+        {isAuthenticated && user && (
+          <span className="header-user-info">
+            {t('welcome')}, {user.username || user.email}
+          </span>
+        )}
+      </div>
     </header>
   );
 };

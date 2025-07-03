@@ -121,7 +121,8 @@ i18n.use(initReactI18next).init({
         "later": "Later",
         "checking_authentication": "Checking authentication...",
         "image_fetch_error": "Error fetching image:",
-        "generated_image": "Generated image"
+        "generated_image": "Generated image",
+        "save_changes": "Save Changes"
       }
     },
     ru: {
@@ -242,7 +243,8 @@ i18n.use(initReactI18next).init({
         "later": "Позже",
         "checking_authentication": "Проверка аутентификации...",
         "image_fetch_error": "Ошибка при получении изображения:",
-        "generated_image": "Сгенерированное изображение"
+        "generated_image": "Сгенерированное изображение",
+        "save_changes": "Сохранить изменения"
       }
     }
   },

@@ -40,7 +40,7 @@ const UserCenterContainer: React.FC = () => {
         id: response.data.id || user?.id || '',
         email: response.data.email || '',
         username: response.data.username || '',
-        password: '',
+        password: profile.password,
       });
     } catch (error) {
       setError(String(t('profile_load_error')));
@@ -69,7 +69,7 @@ const UserCenterContainer: React.FC = () => {
         id: updated.data.id,
         email: updated.data.email,
         username: updated.data.username,
-        password: '',
+        password: profile.password,
       });
       setError(null);
     } catch (error) {
@@ -110,7 +110,7 @@ const UserCenterContainer: React.FC = () => {
           {error && <div className="error-message" style={{ color: 'red', margin: '8px 0' }}>{error}</div>}
           <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>
             {isLoading ? t('saving') || '保存中...' : t('save_changes') || '保存修改'}
-          </button>
+                </button>
           <button
             type="button"
             onClick={handleLogout}
@@ -128,8 +128,8 @@ const UserCenterContainer: React.FC = () => {
             }}
           >
             {t('logout') || '退出登录'}
-          </button>
-        </form>
+                </button>
+            </form>
       </div>
     </div>
   );
