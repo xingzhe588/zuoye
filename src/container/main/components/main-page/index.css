@@ -355,23 +355,72 @@
     display: none;
 }
 @media (max-width: 600px) {
+    .main-title-block {
+        padding: 0 0 18px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-nft-market {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 18px;
+        margin-bottom: 8px;
+        color: #007bff;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 8px #1ef1f122;
+    }
     .main-labubu-mobile {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 10px 0 8px 0;
+        margin: 8px 0 8px 0;
     }
     .main-cat-logo-mobile {
-        width: 68px;
-        height: 68px;
-        border-radius: 16px;
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
         box-shadow: 0 2px 8px #FFD70033;
         object-fit: cover;
+        border: 2px solid #1EF1F1;
+        background: #fff;
     }
-    .main-logo {
-        display: none;
+    .main-two-buttoms {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 18px 0 10px 0;
+        align-items: center;
     }
-    .main-with-discounts {
+    .main-button-buy-nft, .main-button-galery {
+        width: 92vw;
+        max-width: 340px;
+        font-size: 1.13rem;
+        padding: 14px 0;
+        border-radius: 16px;
+        margin: 0 auto;
+        background: linear-gradient(90deg, #FFD700 10%, #1EF1F1 90%);
+        color: #005fa3;
+        font-weight: 700;
+        box-shadow: 0 2px 8px #FFD70033;
+        border: none;
+        letter-spacing: 1px;
+        transition: background 0.18s, color 0.18s;
+    }
+    .main-button-buy-nft:hover, .main-button-galery:hover {
+        background: linear-gradient(90deg, #1EF1F1 10%, #FFD700 90%);
+        color: #007bff;
+    }
+    .main-text-about-nft {
+        font-size: 1rem;
+        color: #333;
+        margin: 28px 0 0 0;
+        padding: 0 6vw;
+        text-align: center;
+        line-height: 1.6;
+    }
+    .main-logo, .main-with-discounts {
         display: none;
     }
 }
