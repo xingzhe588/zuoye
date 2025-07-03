@@ -112,6 +112,9 @@
 }
   
 .create-nft-input-field button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     white-space: normal;
     word-break: break-all;
     font-size: 0.95rem;
@@ -132,8 +135,6 @@
     margin-left: 12px;
     overflow-wrap: break-word;
     text-align: center;
-    display: flex;
-    align-items: center;
 }
 .create-nft-input-field button:hover:not(:disabled) {
     transform: scale(1.06);

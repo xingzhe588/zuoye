@@ -79,8 +79,9 @@ const Header = (): React.ReactElement => {
           )}
         </ul>
       </nav>
+      {/* 移动端弹出菜单 */}
       {menuOpen && (
-        <div className="header-mobile-menu">
+        <div className={`header-mobile-menu${!menuOpen ? ' menu-exit' : ''}`}>
           <ul className="header-mobile-menu__list">
             {navigationItems.map((item) => (
               item.href ? (
