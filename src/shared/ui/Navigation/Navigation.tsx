@@ -135,23 +135,6 @@ const Navigation: React.FC = () => {
       <Link to="/" style={logoStyle} onClick={() => setMenuOpen(false)}>
         ArtCollab
       </Link>
-      {/* 移动端菜单按钮 */}
-      <button
-        className="mobile-menu-btn"
-        style={{
-          display: 'none',
-          background: 'none',
-          border: 'none',
-          fontSize: '28px',
-          cursor: 'pointer',
-          marginLeft: '10px',
-          color: '#007bff',
-        }}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Открыть меню"
-      >
-        ☰
-      </button>
       {/* 桌面端导航 */}
       <div className="nav-links desktop-nav" style={navLinksStyle}>
         {renderNavLinks()}

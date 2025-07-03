@@ -1,12 +1,3 @@
-.mobile-menu-btn {
-  color: #007bff !important;
-  background: none;
-  border: none;
-}
-.mobile-menu-btn:hover {
-  color: #0056b3 !important;
-}
-
 .mobile-nav {
   display: none;
 }
@@ -26,12 +17,8 @@
   .desktop-nav {
     display: none !important;
   }
-  .mobile-menu-btn {
-    display: block !important;
-  }
 }
 @media (min-width: 769px) {
-  .mobile-menu-btn,
   .mobile-nav {
     display: none !important;
   }
