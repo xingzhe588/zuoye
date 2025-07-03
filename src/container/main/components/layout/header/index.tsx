@@ -86,7 +86,7 @@ const Header = (): React.ReactElement => {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '0 0 auto', zIndex: 20 }}>
         <LanguageSwitcher />
-        <button className="header-menu-toggle" onClick={toggleMenu} style={{ cursor: 'pointer' }}>
+        <button className="header-menu-toggle" onClick={toggleMenu}>
           ☰
         </button>
       </div>
