@@ -18,21 +18,11 @@ const UserCenterContainer: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [profile, setProfile] = useState({
     id: user?.id || '',
-    firstName: user?.firstName || '',
-    lastName: user?.lastName || '',
-    bio: '',
-    location: '',
-    website: '',
+    email: user?.email || '',
+    username: user?.username || '',
+    password: '',
   });
   const [isEditing, setIsEditing] = useState(false);
-  const [editProfile, setEditProfile] = useState({
-    id: String(profile.id || ''),
-    firstName: profile.firstName || '',
-    lastName: profile.lastName || '',
-    bio: profile.bio || '',
-    location: profile.location || '',
-    website: profile.website || '',
-  });
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -42,34 +32,43 @@ const UserCenterContainer: React.FC = () => {
     loadProfile();
   }, [isAuthenticated, navigate]);
 
-  useEffect(() => {
-    if (isEditing) {
-      setEditProfile({
-        id: String(profile.id || ''),
-        firstName: profile.firstName || '',
-        lastName: profile.lastName || '',
-        bio: profile.bio || '',
-        location: profile.location || '',
-        website: profile.website || '',
-      });
-    }
-    // eslint-disable-next-line
-  }, [isEditing]);
-
   const loadProfile = async () => {
     try {
       setIsLoading(true);
       const response = await userApi.getProfile();
       setProfile({
         id: response.data.id || user?.id || '',
-        firstName: response.data.firstName || '',
-        lastName: response.data.lastName || '',
-        bio: response.data.bio || '',
-        location: response.data.location || '',
-        website: response.data.website || '',
+        email: response.data.email || '',
+        username: response.data.username || '',
+        password: '',
       });
     } catch (error) {
       setError(String(t('profile_load_error')));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setProfile(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      await userApi.updateProfile(profile);
+      const updated = await userApi.getProfile();
+      setProfile({
+        id: updated.data.id,
+        email: updated.data.email,
+        username: updated.data.username,
+        password: '',
+      });
+      setError(null);
+    } catch (error) {
+      setError(String(t('profile_update_error')));
     } finally {
       setIsLoading(false);
     }
@@ -84,188 +83,30 @@ const UserCenterContainer: React.FC = () => {
     navigate(getNavigationValue('project-monday.main'));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setProfile(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setEditProfile(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      setIsLoading(true);
-      await userApi.updateProfile(profile);
-      const updated = await userApi.getProfile();
-      setProfile({
-        id: updated.data.id,
-        firstName: updated.data.firstName,
-        lastName: updated.data.lastName,
-        bio: updated.data.bio,
-        location: updated.data.location,
-        website: updated.data.website,
-      });
-      setIsEditing(false);
-      setError(null);
-    } catch (error) {
-      setError(String(t('profile_update_error')));
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleEditSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      setIsLoading(true);
-      await userApi.updateProfile(editProfile);
-      const updated = await userApi.getProfile();
-      setProfile({
-        id: updated.data.id,
-        firstName: updated.data.firstName,
-        lastName: updated.data.lastName,
-        bio: updated.data.bio,
-        location: updated.data.location,
-        website: updated.data.website,
-      });
-      setIsEditing(false);
-      setError(null);
-    } catch (error) {
-      setError(String(t('profile_update_error')));
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // 新增简单Modal组件
-  const Modal: React.FC<{ open: boolean; onClose: () => void; children: React.ReactNode }> = ({ open, onClose, children }) => {
-    if (!open) return null;
-    return (
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.25)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ background: '#fff', borderRadius: 10, minWidth: 320, maxWidth: 400, width: '90vw', padding: 24, position: 'relative', boxShadow: '0 4px 24px rgba(0,0,0,0.18)' }}>
-          <button onClick={onClose} style={{ position: 'absolute', top: 12, right: 16, background: 'none', border: 'none', fontSize: 22, cursor: 'pointer', color: '#888' }}>&times;</button>
-          {children}
-        </div>
-      </div>
-    );
-  };
-
   if (!isAuthenticated) {
     return null;
   }
 
   return (
-    <div className="user-center-container">
-      <div className="user-center-wrapper">
-        <div className="user-center-header">
-          <h1>{t('user_center')}</h1>
-          <div className="header-actions">
-            <button onClick={handleBackToMain} className="btn-secondary">
-              {t('to_main')}
-            </button>
-            <button onClick={handleLogout} className="btn-danger">
-              {t('logout')}
-            </button>
-          </div>
+    <div className="user-center-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', minHeight: '60vh', padding: '32px 0' }}>
+      <div style={{ display: 'flex', background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', padding: 32, minWidth: 700 }}>
+        {/* 左侧头像 */}
+        <div style={{ flex: '0 0 260px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginRight: 48 }}>
+          <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 24, background: '#f5f5f5' }} />
         </div>
-        {error && <div className="error-message">{error}</div>}
-        <div className="profile-section">
-          <div className="profile-card" style={{ position: 'relative', background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', padding: 24, marginBottom: 24 }}>
-            <button onClick={() => setIsEditing(true)} style={{ position: 'absolute', top: 18, right: 18, background: '#007bff', color: '#fff', border: 'none', borderRadius: '50%', width: 36, height: 36, fontSize: 18, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title={t('edit')}>
-              ✎
-            </button>
-            <div className="avatar-section">
-              <div className="avatar">
-                {user?.firstName?.[0] || user?.username?.[0] || 'U'}
-              </div>
-              <div className="user-info">
-                <h2>{user?.firstName} {user?.lastName}</h2>
-                <p>@{user?.username}</p>
-                <p>{user?.email}</p>
-              </div>
-            </div>
-            <div className="profile-fields" style={{ marginTop: 18 }}>
-              <div><strong>{t('about')}:</strong> {profile.bio || t('not_specified')}</div>
-              <div><strong>{t('location')}:</strong> {profile.location || t('not_specified')}</div>
-              <div><strong>{t('website')}:</strong> {profile.website || t('not_specified')}</div>
-            </div>
-          </div>
-        </div>
-        {/* 编辑弹窗 */}
-        <Modal open={isEditing} onClose={() => setIsEditing(false)}>
-          <h2 style={{ marginTop: 0 }}>{t('edit_profile') || '编辑资料'}</h2>
-          <form onSubmit={handleEditSubmit} className="profile-form">
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="firstName">{t('first_name')}</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={editProfile.firstName}
-                  onChange={handleEditChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastName">{t('last_name')}</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={editProfile.lastName}
-                  onChange={handleEditChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="bio">{t('about')}</label>
-              <textarea
-                id="bio"
-                name="bio"
-                value={editProfile.bio}
-                onChange={handleEditChange}
-                rows={3}
-                placeholder={t('about_placeholder')}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="location">{t('location')}</label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                value={editProfile.location}
-                onChange={handleEditChange}
-                placeholder={t('location_placeholder')}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="website">{t('website')}</label>
-              <input
-                type="url"
-                id="website"
-                name="website"
-                value={editProfile.website}
-                onChange={handleEditChange}
-                placeholder={t('website_placeholder')}
-              />
-            </div>
-            {error && <div className="error-message" style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
-            <div className="form-actions" style={{ display: 'flex', gap: 12, marginTop: 12 }}>
-              <button type="submit" disabled={isLoading} className="btn-primary">
-                {isLoading ? t('saving') : t('save')}
-              </button>
-              <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary">
-                {t('cancel')}
-              </button>
-            </div>
-          </form>
-        </Modal>
+        {/* 右侧表单 */}
+        <form onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 350 }}>
+          <label style={{ fontWeight: 500 }}>{t('email') || '电子邮箱'}</label>
+          <input type="email" name="email" value={profile.email} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+          <label style={{ fontWeight: 500 }}>{t('username') || '昵称'}</label>
+          <input type="text" name="username" value={profile.username} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+          <label style={{ fontWeight: 500 }}>{t('password') || '密码'}</label>
+          <input type="password" name="password" value={profile.password} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+          {error && <div className="error-message" style={{ color: 'red', margin: '8px 0' }}>{error}</div>}
+          <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>
+            {isLoading ? t('saving') || '保存中...' : t('save_changes') || '保存修改'}
+          </button>
+        </form>
       </div>
     </div>
   );
