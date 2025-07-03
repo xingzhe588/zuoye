@@ -98,7 +98,7 @@ const UserCenterContainer: React.FC = () => {
       <div className="user-center-wrapper">
         {/* 左侧头像 */}
         <div className="user-center-avatar">
-          <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 12, background: '#f5f5f5' }} />
+          <img src={require('../../assets/images/yh.jpg')} alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 12, background: '#f5f5f5' }} />
           <div style={{ textAlign: 'center', fontWeight: 700, fontSize: 20, marginBottom: 8 }}>
             {profile.username}
           </div>
