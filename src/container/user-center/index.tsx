@@ -58,7 +58,11 @@ const UserCenterContainer: React.FC = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await userApi.updateProfile(profile);
+      await userApi.updateProfile({
+        email: profile.email,
+        username: profile.username,
+        password: profile.password,
+      });
       const updated = await userApi.getProfile();
       setProfile({
         id: updated.data.id,
@@ -88,14 +92,14 @@ const UserCenterContainer: React.FC = () => {
   }
 
   return (
-    <div className="user-center-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', minHeight: '60vh', padding: '32px 0' }}>
-      <div style={{ display: 'flex', background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', padding: 32, minWidth: 700 }}>
+    <div className="user-center-container">
+      <div className="user-center-wrapper">
         {/* 左侧头像 */}
-        <div style={{ flex: '0 0 260px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginRight: 48 }}>
+        <div className="user-center-avatar">
           <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="avatar" style={{ width: 180, height: 180, borderRadius: '50%', marginBottom: 24, background: '#f5f5f5' }} />
         </div>
         {/* 右侧表单 */}
-        <form onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 350 }}>
+        <form onSubmit={handleSubmit} className="user-center-form">
           <label style={{ fontWeight: 500 }}>{t('email') || '电子邮箱'}</label>
           <input type="email" name="email" value={profile.email} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
           <label style={{ fontWeight: 500 }}>{t('username') || '昵称'}</label>
