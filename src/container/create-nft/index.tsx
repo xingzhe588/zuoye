@@ -95,16 +95,18 @@ const CreateNFT = (): React.ReactElement => {
 
   return (
     <div className="create-nft-page-first">
-      {showAuthPrompt && (
-        <AuthPrompt
-          message={t('no_more_attempts')}
-          action={t('continue_creating')}
-          onClose={() => setShowAuthPrompt(false)}
-        />
-      )}
-
-      <header className="create-nft-header">
-        <div className="create-nft-box create-nft-left-panel">
+      {/* 移动端AI标题和蓝字放最上方 */}
+      <div className="create-nft-tips tips-mobile" style={{ marginTop: 0, marginBottom: 10 }}>
+        <h2 style={{ color: '#FFD700', fontSize: '1.25rem', marginBottom: 8 }}>ArtCollab AI</h2>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+          <li style={{ color: '#1EF1F1', fontSize: '1.08rem', fontWeight: 600, textAlign: 'center', margin: 0 }}>
+            {t('tip_use_adjectives')}
+          </li>
+        </ul>
+      </div>
+      {/* 不再显示welcome提示 */}
+      <header className="create-nft-header" style={{ marginTop: 0 }}>
+        <div className="create-nft-left-panel" style={{ background: 'none', boxShadow: 'none', padding: 0, margin: 0 }}>
           {/* 桌面端介绍内容 */}
           <div className="create-nft-tips tips-desktop">
             <h2>{t('about_artcollab_ai')}</h2>
@@ -115,6 +117,7 @@ const CreateNFT = (): React.ReactElement => {
               <li>{t('tip_more_detail')}</li>
             </ul>
           </div>
+          {/* 恢复guest notice提示 */}
           {getGuestNotice()}
           <div className="create-nft-input-field">
             <input
@@ -132,7 +135,6 @@ const CreateNFT = (): React.ReactElement => {
             </button>
           </div>
         </div>
-
         <div className="create-nft-box">
           <div className="create-nft-rectangle">
             <div className="content">
@@ -147,7 +149,7 @@ const CreateNFT = (): React.ReactElement => {
           </div>
           {/* 蓝字提示放在图片生成框下方 */}
           <div style={{ margin: '10px 0 0 0', textAlign: 'center' }}>
-            <div style={{ color: '#1EF1F1', fontWeight: 600, fontSize: '1.02rem', marginBottom: 2 }}>
+            <div style={{ color: '#00bfff', fontWeight: 700, fontSize: '1.08rem', marginBottom: 2, textAlign: 'center' }}>
               {t('tip_example')}
             </div>
             <div style={{ color: '#1EF1F1', fontWeight: 600, fontSize: '1.02rem' }}>
@@ -156,15 +158,13 @@ const CreateNFT = (): React.ReactElement => {
           </div>
         </div>
       </header>
-      {/* 移动端介绍内容 */}
-      <div className="create-nft-tips tips-mobile">
-        <h2 style={{ color: '#FFD700', fontSize: '1.25rem', marginBottom: 8 }}>ArtCollab AI</h2>
-        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-          <li style={{ color: '#1EF1F1', fontSize: '1.08rem', fontWeight: 600, textAlign: 'center', margin: 0 }}>
-            {t('tip_use_adjectives')}
-          </li>
-        </ul>
-      </div>
+      {showAuthPrompt && (
+        <AuthPrompt
+          message={t('no_more_attempts')}
+          action={t('continue_creating')}
+          onClose={() => setShowAuthPrompt(false)}
+        />
+      )}
     </div>
   );
 };
