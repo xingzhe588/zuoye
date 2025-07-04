@@ -122,7 +122,13 @@ i18n.use(initReactI18next).init({
         "checking_authentication": "Checking authentication...",
         "image_fetch_error": "Error fetching image:",
         "generated_image": "Generated image",
-        "save_changes": "Save Changes"
+        "save_changes": "Save Changes",
+        "feature_ai": "AI Driven",
+        "feature_ai_desc": "Intelligent algorithms generate unique art pieces",
+        "feature_efficiency": "Efficient Creation",
+        "feature_efficiency_desc": "One-click generation, quickly experience the fun of creation",
+        "feature_multi_device": "Multi-device Adaptation",
+        "feature_multi_device_desc": "Supports mobile, tablet and PC, create anytime, anywhere"
       }
     },
     ru: {
@@ -244,7 +250,13 @@ i18n.use(initReactI18next).init({
         "checking_authentication": "Проверка аутентификации...",
         "image_fetch_error": "Ошибка при получении изображения:",
         "generated_image": "Сгенерированное изображение",
-        "save_changes": "Сохранить изменения"
+        "save_changes": "Сохранить изменения",
+        "feature_ai": "ИИ-движок",
+        "feature_ai_desc": "Интеллектуальные алгоритмы создают уникальные произведения искусства",
+        "feature_efficiency": "Эффективное творчество",
+        "feature_efficiency_desc": "Одно нажатие — и вы быстро погружаетесь в процесс создания",
+        "feature_multi_device": "Мультиустройство",
+        "feature_multi_device_desc": "Поддержка смартфонов, планшетов и ПК — творите где угодно"
       }
     }
   },
