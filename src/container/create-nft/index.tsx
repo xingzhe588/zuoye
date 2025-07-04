@@ -41,8 +41,13 @@ const CreateNFT = (): React.ReactElement => {
       return;
     }
 
-    setOutputText(inputValue);
-    sessionStorage.setItem('outputText', inputValue);
+    // 最保险：提交时自动补全"图片"前缀
+    let prompt = inputValue.trim();
+    if (!prompt.startsWith('图片')) {
+      prompt = '图片 ' + prompt;
+    }
+    setOutputText(prompt);
+    sessionStorage.setItem('outputText', prompt);
 
     // Increment guest attempts if not authenticated
     if (!isAuthenticated) {
@@ -51,13 +56,13 @@ const CreateNFT = (): React.ReactElement => {
       localStorage.setItem('guestAttempts', newAttempts.toString());
     }
 
-    fetchImage();
+    fetchImage(prompt);
   };
 
-  const fetchImage = async () => {
+  const fetchImage = async (promptText = inputValue) => {
     setLoading(true);
     try {
-      const imageBlob = await fetchAIGeneratedImage(inputValue);
+      const imageBlob = await fetchAIGeneratedImage(promptText);
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageSrc(imageUrl);
     } catch (error) {
