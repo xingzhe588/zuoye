@@ -24,6 +24,7 @@ const UserCenterContainer: React.FC = () => {
     password: '',
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [theme, setTheme] = useState(() => document.body.classList.contains('dark-theme') ? 'dark' : 'light');
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -31,6 +32,12 @@ const UserCenterContainer: React.FC = () => {
       return;
     }
     loadProfile();
+    // 监听body主题变化，保证滑块同步
+    const observer = new MutationObserver(() => {
+      setTheme(document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
   }, [isAuthenticated, navigate]);
 
   const loadProfile = async () => {
@@ -102,10 +109,37 @@ const UserCenterContainer: React.FC = () => {
           <div style={{ textAlign: 'center', fontWeight: 700, fontSize: 20, marginBottom: 8 }}>
             {profile.username}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
             <LanguageSwitcher />
+            {/* 主题切换按钮 */}
+            <div className="usercenter-theme-toggle">
+              <button
+                className={`usercenter-switch-btn theme-switch-btn theme-toggle-btn ${theme}`}
+                aria-label="切换主题"
+                onClick={e => {
+                  e.currentTarget.classList.add('clicked');
+                  setTimeout(() => e.currentTarget.classList.remove('clicked'), 300);
+                  const body = document.body;
+                  if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    setTheme('light');
+                  } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    setTheme('dark');
+                  }
+                }}
+              >
+                <span className="theme-toggle-track">
+                  <span className="theme-toggle-icon sun">🌞</span>
+                  <span className="theme-toggle-icon moon">🌜</span>
+                  <span className="theme-toggle-thumb"></span>
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
+                </div>
         {/* 右侧表单 */}
         <form onSubmit={handleSubmit} className="user-center-form">
           <label style={{ fontWeight: 500 }}>{t('email') || '电子邮箱'}</label>
@@ -117,7 +151,7 @@ const UserCenterContainer: React.FC = () => {
           {error && <div className="error-message" style={{ color: 'red', margin: '8px 0' }}>{error}</div>}
           <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>
             {isLoading ? t('saving') || '保存中...' : t('save_changes') || '保存修改'}
-          </button>
+                </button>
           <button
             type="button"
             onClick={handleLogout}
@@ -135,8 +169,8 @@ const UserCenterContainer: React.FC = () => {
             }}
           >
             {t('logout') || '退出登录'}
-          </button>
-        </form>
+                </button>
+            </form>
       </div>
     </div>
   );

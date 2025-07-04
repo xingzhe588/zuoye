@@ -161,6 +161,34 @@ const Navigation: React.FC = () => {
         <div className="nav-links desktop-nav" style={navLinksStyle}>
           {renderNavLinks()}
         </div>
+        {/* 主题切换按钮 */}
+        <button
+          style={{
+            marginLeft: 24,
+            padding: '8px 16px',
+            borderRadius: 8,
+            border: 'none',
+            background: 'var(--button-bg)',
+            color: 'var(--button-text)',
+            fontWeight: 700,
+            fontSize: 16,
+            cursor: 'pointer',
+            boxShadow: '0 2px 8px #1ef1f188',
+            transition: 'background 0.2s, color 0.2s',
+          }}
+          onClick={() => {
+            const body = document.body;
+            if (body.classList.contains('dark-theme')) {
+              body.classList.remove('dark-theme');
+              body.classList.add('light-theme');
+            } else {
+              body.classList.remove('light-theme');
+              body.classList.add('dark-theme');
+            }
+          }}
+        >
+          🌓 主题切换
+        </button>
         <div className={`nav-links mobile-nav${menuOpen ? ' open' : ''}`}>{renderNavLinks()}</div>
       </nav>
     </>

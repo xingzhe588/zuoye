@@ -183,6 +183,39 @@ const AuthContainer: React.FC = () => {
             </button>
           </div>
         </form>
+        {/* 游客模式按钮 */}
+        <div style={{ marginTop: 16, textAlign: 'center' }}>
+          <button
+            type="button"
+            style={{
+              background: 'var(--button-bg)',
+              color: 'var(--button-text)',
+              border: 'none',
+              borderRadius: 8,
+              padding: '8px 20px',
+              fontWeight: 700,
+              fontSize: 16,
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px #1ef1f188',
+              transition: 'background 0.2s, color 0.2s',
+            }}
+            onClick={() => {
+              const guestUser = {
+                id: 0,
+                username: '游客',
+                email: '',
+              };
+              window.localStorage.setItem('token', 'guest-token');
+              dispatch({
+                type: 'auth/login/fulfilled',
+                payload: { user: guestUser, token: 'guest-token' }
+              });
+              navigate(getNavigationValue('project-monday.user-center'));
+            }}
+          >
+            🧑‍🚀 游客模式直接体验
+          </button>
+        </div>
       </div>
     </div>
   );

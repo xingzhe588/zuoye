@@ -1,17 +1,19 @@
+body, .auth-container, .auth-wrapper {
+  background: var(--main-bg) !important;
+}
+
 .auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
 }
 
 .auth-wrapper {
-  background: white;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px #1ef1f122, 0 2px 16px #7f53ac22;
   width: 100%;
   max-width: 400px;
 }
@@ -22,13 +24,13 @@
 }
 
 .auth-header h1 {
-  color: #333;
+  color: var(--main-text) !important;
   margin: 0 0 8px 0;
   font-size: 28px;
 }
 
 .auth-header p {
-  color: #666;
+  color: var(--main-text) !important;
   margin: 0;
   font-size: 14px;
 }
@@ -46,18 +48,18 @@
   background: none;
   cursor: pointer;
   font-size: 16px;
-  color: #666;
+  color: var(--main-text) !important;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
 }
 
 .auth-tab.active {
-  color: #007bff;
-  border-bottom-color: #007bff;
+  color: #1ef1f1 !important;
+  border-bottom-color: #1ef1f1;
 }
 
 .auth-tab:hover {
-  color: #007bff;
+  color: #1ef1f1 !important;
 }
 
 .auth-form {

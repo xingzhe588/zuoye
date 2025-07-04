@@ -50,6 +50,17 @@ const Collection = (): React.ReactElement => {
 
   return(
     <div className='collection-page-first'>
+      {/* 背景装饰元素 */}
+      <div className="collection-bg-decor">
+        <div className="collection-bg-blur collection-bg-blur1"></div>
+        <div className="collection-bg-blur collection-bg-blur2"></div>
+        <div className="collection-bg-blur collection-bg-blur3"></div>
+        <div className="collection-bg-particle p1"></div>
+        <div className="collection-bg-particle p2"></div>
+        <div className="collection-bg-particle p3"></div>
+        <div className="collection-bg-particle p4"></div>
+        <div className="collection-bg-particle p5"></div>
+      </div>
       <div className="collection-category-bar">
         {categories.map(cat => (
           <button

@@ -1,0 +1,35 @@
+:root,
+body.light-theme {
+  --main-bg: #f5f7fa;
+  --main-text: #232946;
+  --card-bg: #fff;
+  --card-shadow: 0 4px 32px #e0e6ed44, 0 1.5px 8px #e0e6ed22;
+  --button-bg: linear-gradient(90deg, #f2f3f7 0%, #e0e3ea 100%);
+  --button-text: #232946;
+  --button-border: 1.5px solid #d1d5db;
+  --button-shadow: 0 2px 12px #d1d5db88;
+  --button-bg-hover: linear-gradient(90deg, #e0e3ea 0%, #f2f3f7 100%);
+  --title-glow: 0 2px 16px #b3e5fc88;
+  --main-accent-blue: #0077b6;
+  --main-accent-gold: #bfa100;
+}
+
+body.dark-theme {
+  --main-bg: #181c24;
+  --main-text: #f5f7fa;
+  --card-bg: rgba(35, 35, 40, 0.92);
+  --card-shadow: 0 4px 32px #000a, 0 1.5px 8px #0004;
+  --button-bg: linear-gradient(90deg, #333 0%, #222 100%);
+  --button-text: #fff;
+  --button-border: 1.5px solid #444a;
+  --button-shadow: 0 2px 12px #000a;
+  --button-bg-hover: linear-gradient(90deg, #444 0%, #333 100%);
+  --title-glow: 0 2px 24px #1ef1f1cc;
+  --main-accent-blue: #1EF1F1;
+  --main-accent-gold: #FFD700;
+}
+
+body {
+  background: var(--main-bg);
+  color: var(--main-text);
+} 

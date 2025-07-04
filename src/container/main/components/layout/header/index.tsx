@@ -65,11 +65,11 @@ const Header = (): React.ReactElement => {
             ) : null
           ))}
           {isAuthenticated && user ? (
-            <li className="header-nav__item">
+              <li className="header-nav__item">
               <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link" onClick={() => setMenuOpen(false)}>
-                {t('user_center')}
-              </Link>
-            </li>
+                  {t('user_center')}
+                </Link>
+              </li>
           ) : (
             <li className="header-nav__item">
               <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth" onClick={() => setMenuOpen(false)}>
@@ -106,7 +106,7 @@ const Header = (): React.ReactElement => {
               </li>
             )}
           </ul>
-        </div>
+      </div>
       )}
     </header>
   );

@@ -6,6 +6,8 @@ import { getConfigValue } from '@brojs/cli';
 import { AuthPrompt } from '../../shared/ui/AuthPrompt/AuthPrompt';
 import { RootState } from '../../store';
 import { useTranslation } from 'react-i18next';
+import ParticleDecor from '../main/components/main-page/ParticleDecor';
+import { FaRobot } from 'react-icons/fa';
 
 const CreateNFT = (): React.ReactElement => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
@@ -100,31 +102,29 @@ const CreateNFT = (): React.ReactElement => {
 
   return (
     <div className="create-nft-page-first">
-      {/* 移动端AI标题和蓝字放最上方 */}
-      <div className="create-nft-tips tips-mobile" style={{ marginTop: 0, marginBottom: 10 }}>
-        <h2 style={{ color: '#FFD700', fontSize: '1.25rem', marginBottom: 8 }}>ArtCollab AI</h2>
-        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-          <li style={{ color: '#1EF1F1', fontSize: '1.08rem', fontWeight: 600, textAlign: 'center', margin: 0 }}>
-            {t('tip_use_adjectives')}
-          </li>
-        </ul>
-      </div>
-      {/* 不再显示welcome提示 */}
-      <header className="create-nft-header" style={{ marginTop: 0 }}>
-        <div className="create-nft-left-panel" style={{ background: 'none', boxShadow: 'none', padding: 0, margin: 0 }}>
-          {/* 桌面端介绍内容 */}
-          <div className="create-nft-tips tips-desktop">
-            <h2>{t('about_artcollab_ai')}</h2>
-            <p>{t('artcollab_ai_desc')}</p>
-            <ul>
-              <li>{t('tip_use_adjectives')}</li>
-              <li>{t('tip_example')}</li>
-              <li>{t('tip_more_detail')}</li>
+      {/* 粒子装饰（只在四周，数量减少） */}
+      <ParticleDecor />
+      {/* 顶部渐变分割线 */}
+      <div className="main-gradient-divider"></div>
+      <div className="create-nft-main-content create-nft-cool-layout">
+        <div className="create-nft-left-panel">
+          {/* AI icon和渐变线 */}
+          <div className="create-nft-ai-icon"><FaRobot size={38} color="#1ef1f1" /></div>
+          <div className="create-nft-title">ArtCollab AI</div>
+          <div className="create-nft-title-divider"></div>
+          {/* AI Tips区块，移动到标题分割线下方 */}
+          <div className="create-nft-ai-tips-card">
+            <div className="ai-tips-divider"></div>
+            <div className="ai-tips-title"><FaRobot size={22} color="#1ef1f1" style={{marginRight:8}}/>AI Tips</div>
+            <ul className="ai-tips-list">
+              <li>✨ {t('tip_use_adjectives')}</li>
+              <li>💡 {t('tip_example')}</li>
+              <li>🧠 {t('tip_more_detail')}</li>
             </ul>
           </div>
-          {/* 恢复guest notice提示 */}
           {getGuestNotice()}
-          <div className="create-nft-input-field">
+          {/* 移动端保留输入框 */}
+          <div className="create-nft-input-field cool-input-field create-nft-input-bottom mobile-input-field">
             <input
               type="text"
               value={inputValue}
@@ -136,39 +136,56 @@ const CreateNFT = (): React.ReactElement => {
               disabled={loading}
               className={!isAuthenticated && guestAttempts >= 2 ? 'auth-required' : ''}
             >
-              {t('create')}
+              {getButtonText()}
             </button>
           </div>
         </div>
-        <div className="create-nft-box">
-          <div className="create-nft-rectangle">
+        <div className="create-nft-right-panel">
+          <div className="create-nft-image-card cool-image-card cool-image-glow">
             <div className="content">
               {loading ? (
                 <p>{t('image_generating')}</p>
               ) : imageSrc ? (
                 <img src={imageSrc} alt={t('generated_image')} className="img" />
               ) : (
-                <p>{t('image_placeholder')}</p>
+                <div className="cool-image-placeholder">
+                  <FaRobot size={64} color="#1ef1f1" style={{ filter: 'drop-shadow(0 0 16px #1ef1f1cc)' }} />
+                  <p style={{ color: '#1ef1f1', fontWeight: 700, marginTop: 12 }}>{t('image_placeholder')}</p>
+                </div>
               )}
             </div>
           </div>
-          {/* 蓝字提示仅移动端显示 */}
-          <div className="tips-mobile">
-            <div style={{ color: '#00bfff', fontWeight: 700, fontSize: '1.08rem', marginBottom: 2, textAlign: 'center' }}>
-              {t('tip_example')}
-            </div>
-            <div style={{ color: '#1EF1F1', fontWeight: 600, fontSize: '1.02rem' }}>
-              {t('tip_more_detail')}
-            </div>
+          {/* 桌面端显示输入框和按钮 */}
+          <div className="create-nft-input-field cool-input-field create-nft-input-bottom desktop-input-field">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleChange}
+              placeholder={t('input_placeholder')}
+            />
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className={!isAuthenticated && guestAttempts >= 2 ? 'auth-required' : ''}
+            >
+              {getButtonText()}
+            </button>
           </div>
         </div>
-      </header>
+      </div>
       {showAuthPrompt && (
         <AuthPrompt
           message={t('no_more_attempts')}
           action={t('continue_creating')}
           onClose={() => setShowAuthPrompt(false)}
         />
+      )}
+      {/* 礼花筒装饰，仅在图片生成成功后显示 */}
+      {imageSrc && !loading && (
+        <>
+          <div className="confetti-cannon confetti-cannon-left">🎉</div>
+          <div className="confetti-cannon confetti-cannon-right">🎉</div>
+        </>
       )}
     </div>
   );

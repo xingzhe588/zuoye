@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    background: transparent !important;
 }
 
 .contact-first-borders {
@@ -12,6 +12,8 @@
     gap: 40px;
     justify-content: center;
     align-items: stretch;
+    position: relative;
+    z-index: 2;
 }
 
 .contact-rectangle {
@@ -39,21 +41,6 @@
     background: #fff url('../../assets/images/qdy.jpg') center/cover no-repeat;
 }
 
-.contact-border {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(30,241,241,0.10);
-    padding: 24px 32px 18px 32px;
-    margin-top: -20px;
-    min-width: 260px;
-    max-width: 320px;
-    min-height: 210px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .contact-name {
     font-size: 1.35rem;
     font-weight: 800;
@@ -77,6 +64,24 @@
     text-align: center;
 }
 
+.contact-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px #1ef1f122, 0 2px 16px #FFD70033;
+    padding: 32px 32px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    max-width: 380px;
+    margin: 0 8px;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.contact-card:hover {
+    box-shadow: 0 8px 32px #1ef1f144, 0 2px 16px #FFD70044;
+    transform: translateY(-4px) scale(1.03);
+}
+
 @media (max-width: 900px) {
     .contact-first-borders {
         flex-direction: column;
@@ -88,4 +93,77 @@
         max-width: 98vw;
         padding: 18px 10vw 14px 10vw;
     }
+    .contact-card {
+        min-width: 220px;
+        max-width: 98vw;
+        padding: 18px 10vw 14px 10vw;
+        margin: 0 auto 18px auto;
+    }
+}
+
+/* 烟花粒子效果 */
+.contact-page-first .main-particles-decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-page-first .main-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: firework-sparkle 3s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+/* 随机分布粒子，错开卡片区域 */
+.contact-page-first .main-particle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+.contact-page-first .main-particle:nth-child(2) { top: 25%; right: 12%; animation-delay: 0.8s; }
+.contact-page-first .main-particle:nth-child(3) { top: 35%; left: 15%; animation-delay: 1.6s; }
+.contact-page-first .main-particle:nth-child(4) { top: 45%; right: 8%; animation-delay: 2.4s; }
+.contact-page-first .main-particle:nth-child(5) { top: 55%; left: 12%; animation-delay: 3.2s; }
+.contact-page-first .main-particle:nth-child(6) { top: 65%; right: 15%; animation-delay: 4s; }
+.contact-page-first .main-particle:nth-child(7) { top: 75%; left: 10%; animation-delay: 4.8s; }
+.contact-page-first .main-particle:nth-child(8) { top: 85%; right: 10%; animation-delay: 5.6s; }
+
+.contact-page-first .main-particle:nth-child(9) { top: 20%; left: 85%; animation-delay: 0.4s; }
+.contact-page-first .main-particle:nth-child(10) { top: 30%; right: 85%; animation-delay: 1.2s; }
+.contact-page-first .main-particle:nth-child(11) { top: 40%; left: 88%; animation-delay: 2s; }
+.contact-page-first .main-particle:nth-child(12) { top: 50%; right: 88%; animation-delay: 2.8s; }
+.contact-page-first .main-particle:nth-child(13) { top: 60%; left: 82%; animation-delay: 3.6s; }
+.contact-page-first .main-particle:nth-child(14) { top: 70%; right: 82%; animation-delay: 4.4s; }
+.contact-page-first .main-particle:nth-child(15) { top: 80%; left: 85%; animation-delay: 5.2s; }
+.contact-page-first .main-particle:nth-child(16) { top: 90%; right: 85%; animation-delay: 6s; }
+
+/* 中间区域（卡片位置）不放置粒子 */
+.contact-page-first .main-particle:nth-child(n+17) { display: none; }
+
+@keyframes firework-sparkle {
+  0% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  20% { 
+    opacity: 1; 
+    transform: scale(1) rotate(180deg); 
+  }
+  40% { 
+    opacity: 0.8; 
+    transform: scale(1.2) rotate(360deg); 
+  }
+  60% { 
+    opacity: 1; 
+    transform: scale(0.8) rotate(540deg); 
+  }
+  80% { 
+    opacity: 0.6; 
+    transform: scale(1.1) rotate(720deg); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(900deg); 
+  }
 }

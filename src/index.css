@@ -1,0 +1,37 @@
+body, #root, .app, .container, .wrapper, .main-page, .collection-page, .user-center-container, .contact-page, .not-found-page, .detail-page {
+    background: linear-gradient(120deg, #232946 0%, #3a3f5a 60%, #1ef1f1 90%, #7f53ac 100%) !important;
+    min-height: 100vh;
+}
+/* 只让主容器透明，避免影响图片显示 */
+.main-page,
+.collection-page,
+.user-center-container,
+.contact-page,
+.not-found-page,
+.detail-page {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+/* 移除或注释掉 body * { background: transparent !important; } 相关规则 */
+
+.main-page,
+.collection-page,
+.user-center-container,
+.contact-page {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.main-title-block,
+.collection-page-first,
+.user-center-main,
+.contact-border,
+.contact-main,
+.contact-container {
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+} 
