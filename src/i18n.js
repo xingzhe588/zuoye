@@ -131,7 +131,8 @@ i18n.use(initReactI18next).init({
         "feature_multi_device": "Multi-device Adaptation",
         "feature_multi_device_desc": "Supports mobile, tablet and PC, create anytime, anywhere",
         "guest_mode": "Guest Mode",
-        "guest": "Guest"
+        "guest": "Guest",
+        "create_left_one": "Create (1 left)"
       }
     },
     ru: {
@@ -262,7 +263,8 @@ i18n.use(initReactI18next).init({
         "feature_multi_device": "Мультиустройство",
         "feature_multi_device_desc": "Поддержка смартфонов, планшетов и ПК — творите где угодно",
         "guest_mode": "Гостевой режим",
-        "guest": "Гость"
+        "guest": "Гость",
+        "create_left_one": "Создать (1 осталась)"
       }
     }
   },

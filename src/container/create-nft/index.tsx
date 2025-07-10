@@ -10,7 +10,8 @@ import ParticleDecor from '../main/components/main-page/ParticleDecor';
 import { FaRobot } from 'react-icons/fa';
 
 const CreateNFT = (): React.ReactElement => {
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const isGuest = localStorage.getItem('isGuest') === '1' || user?.username === '游客';
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const [outputText, setOutputText] = useState('');
@@ -38,7 +39,7 @@ const CreateNFT = (): React.ReactElement => {
 
   const handleSubmit = () => {
     // Allow guests to try 2 times, then prompt for login
-    if (!isAuthenticated && guestAttempts >= 2) {
+    if ((!isAuthenticated || isGuest) && guestAttempts >= 2) {
       setShowAuthPrompt(true);
       return;
     }
@@ -51,8 +52,8 @@ const CreateNFT = (): React.ReactElement => {
     setOutputText(prompt);
     sessionStorage.setItem('outputText', prompt);
 
-    // Increment guest attempts if not authenticated
-    if (!isAuthenticated) {
+    // Increment guest attempts if not authenticated or isGuest
+    if (!isAuthenticated || isGuest) {
       const newAttempts = guestAttempts + 1;
       setGuestAttempts(newAttempts);
       localStorage.setItem('guestAttempts', newAttempts.toString());
@@ -76,13 +77,14 @@ const CreateNFT = (): React.ReactElement => {
 
   const getButtonText = () => {
     if (loading) return t('creating');
-    if (!isAuthenticated && guestAttempts >= 2) return t('login_to_continue');
-    if (!isAuthenticated && guestAttempts > 0) return t('create_free_attempts_left', { count: 2 - guestAttempts });
+    if ((!isAuthenticated || isGuest) && guestAttempts >= 2) return t('login_to_continue');
+    if ((!isAuthenticated || isGuest) && guestAttempts === 1) return t('create_left_one');
+    if ((!isAuthenticated || isGuest) && guestAttempts === 0) return t('create');
     return t('create');
   };
 
   const getGuestNotice = () => {
-    if (isAuthenticated) return null;
+    if (isAuthenticated && !isGuest) return null;
     if (guestAttempts === 0) {
       return (
         <div className="guest-notice guest-notice-welcome">

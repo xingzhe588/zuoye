@@ -42,6 +42,10 @@ const UserCenterContainer: React.FC = () => {
   }, [isAuthenticated, navigate]);
 
   const loadProfile = async () => {
+    // 如果是guest用户，直接返回，不加载profile，也不设置error
+    if (!user?.id || user?.username === 'guest') {
+      return;
+    }
     try {
       setIsLoading(true);
       const response = await userApi.getProfile();

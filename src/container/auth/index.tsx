@@ -35,6 +35,8 @@ const AuthContainer: React.FC = () => {
     e.preventDefault();
     
     try {
+      // 正式登录/注册时清除isGuest
+      window.localStorage.removeItem('isGuest');
       if (isLogin) {
         await dispatch(loginUser({
           username: formData.username,
@@ -63,6 +65,8 @@ const AuthContainer: React.FC = () => {
   };
 
   const handleCancel = () => {
+    // 退出时清除isGuest
+    window.localStorage.removeItem('isGuest');
     navigate(getNavigationValue('project-monday.main'));
   };
 
@@ -82,6 +86,7 @@ const AuthContainer: React.FC = () => {
               email: '',
             };
             window.localStorage.setItem('token', 'guest-token');
+            window.localStorage.setItem('isGuest', '1');
             dispatch({
               type: 'auth/login/fulfilled',
               payload: { user: guestUser, token: 'guest-token' }

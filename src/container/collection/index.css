@@ -148,16 +148,23 @@ body, .collection-page {
     border: none;
     border-radius: 22px;
     padding: 10px 34px;
-    font-size: 1.12rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: filter 0.18s, box-shadow 0.18s, border 0.18s, color 0.18s, background 0.18s;
     box-shadow: 0 2px 8px #1ef1f122;
     min-width: 80px;
+    max-width: 180px;
     display: inline-block;
     box-sizing: border-box;
     border: 2px solid transparent;
     letter-spacing: 1px;
     text-shadow: none;
+    /* 允许自动换行和缩小字体，不省略 */
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
 }
 .collection-category-btn.active, .collection-category-btn:hover {
     background: linear-gradient(90deg, #0fd6e6 0%, #3a3ad6 100%);
@@ -189,6 +196,12 @@ body, .collection-page {
         margin: 8px auto !important;
         padding: 12px 4vw !important;
         border-radius: 12px !important; */
+    }
+    .collection-category-btn {
+        font-size: 0.88rem;
+        padding: 8px 14px;
+        min-width: 60px;
+        max-width: 120px;
     }
 }
 
@@ -227,10 +240,10 @@ body, .collection-page {
     padding: 0 8px;
   }
   .collection-category-btn {
-    font-size: 1rem;
-    padding: 8px 18px;
-    min-width: 60px;
-    border-radius: 14px;
+    font-size: 0.8rem;
+    padding: 6px 8px;
+    min-width: 48px;
+    max-width: 90px;
   }
 }
 

@@ -159,11 +159,10 @@
   max-width: 180px;
   min-width: 100px;
   height: 48px;
-  font-size: 1.12rem;
+  font-size: 0.85rem;
   font-weight: 800;
   border-radius: 18px;
   box-sizing: border-box;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   background: linear-gradient(90deg, #1ef1f1 10%, #7f53ac 90%);
@@ -174,6 +173,8 @@
   transition: background 0.2s, box-shadow 0.2s, color 0.2s;
   text-shadow: 0 1px 2px #0008;
   margin-left: 12px;
+  padding: 0 8px;
+  text-align: center;
 }
 .create-nft-input-field button:hover, .cool-input-field button:hover {
   background: linear-gradient(90deg, #7f53ac 10%, #1ef1f1 90%);
@@ -350,9 +351,9 @@
     margin-right: 8px;
   }
   .create-nft-input-field button {
-    font-size: 0.95rem;
-    padding: 0 8px;
-    min-width: 90px;
+    font-size: 0.8rem;
+    padding: 0 4px;
+    min-width: 70px;
     max-width: 100%;
     box-sizing: border-box;
     width: 28%;
@@ -365,9 +366,8 @@
     cursor: pointer;
     box-shadow: 0 2px 8px #FFD70033;
     transition: all 0.18s;
-    white-space: normal;
-    word-break: break-all;
-    overflow-wrap: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
     text-align: center;
     display: flex;
     align-items: center;
@@ -744,12 +744,12 @@
     color: #fff !important;
     border-radius: 18px !important;
     box-shadow: 0 2px 12px #1ef1f1aa, 0 0 8px #7f53ac44 !important;
-    font-size: 1.12rem !important;
+    font-size: 0.8rem !important;
     font-weight: 800 !important;
     border: none !important;
     text-shadow: 0 1px 2px #0008 !important;
     margin-left: 12px !important;
-    padding: 0 18px !important;
+    padding: 0 6px !important;
     min-width: 100px !important;
     max-width: 180px !important;
     height: 48px !important;
