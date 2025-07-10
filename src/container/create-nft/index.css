@@ -487,6 +487,16 @@
     line-height: 1.2;
 }
 
+.image-generating-tip {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1ef1f1;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 24px 0 18px 0;
+  text-shadow: 0 2px 12px #1ef1f1cc, 0 1px 2px #fff8;
+}
+
 @media (max-width: 900px) {
     .create-nft-page-first {
         max-width: 98vw;

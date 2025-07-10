@@ -146,7 +146,7 @@ const CreateNFT = (): React.ReactElement => {
           <div className="create-nft-image-card cool-image-card cool-image-glow">
             <div className="content">
               {loading ? (
-                <p>{t('image_generating')}</p>
+                <p className="image-generating-tip">{t('image_generating')}</p>
               ) : imageSrc ? (
                 <img src={imageSrc} alt={t('generated_image')} className="img" />
               ) : (

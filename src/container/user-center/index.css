@@ -345,6 +345,27 @@
   .user-center-form {
     max-width: 100%;
   }
+  .user-center-avatar {
+    max-width: 95vw !important;
+    width: 100% !important;
+    margin: 0 auto 18px auto !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-center-wrapper {
+    max-width: 99vw !important;
+    width: 100% !important;
+    padding: 0 2vw !important;
+    margin: 0 auto !important;
+  }
+  .user-center-form {
+    max-width: 99vw !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 2vw !important;
+  }
 }
 
 .contact-main, .contact-container, .user-center-main {

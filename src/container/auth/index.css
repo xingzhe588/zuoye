@@ -197,3 +197,9 @@ body, .auth-container, .auth-wrapper {
   background: #e6f0ff;
   color: #0056b3;
 }
+
+body.dark-theme .auth-wrapper input,
+body.dark-theme .auth-wrapper textarea {
+  color: #232323 !important;
+  background: #fff !important;
+}
