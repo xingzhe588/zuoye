@@ -8,6 +8,7 @@ import { RootState } from '../../store';
 import { useTranslation } from 'react-i18next';
 import './index.css';
 import LanguageSwitcher from '../../shared/ui/LanguageSwitcher/LanguageSwitcher';
+import ParticleDecor from '../main/components/main-page/ParticleDecor';
 
 const UserCenterContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -102,6 +103,9 @@ const UserCenterContainer: React.FC = () => {
 
   return (
     <div className="user-center-container">
+      <div className="particle-decor-bg">
+        <ParticleDecor />
+      </div>
       <div className="user-center-wrapper">
         {/* 左侧头像 */}
         <div className="user-center-avatar">
@@ -109,44 +113,86 @@ const UserCenterContainer: React.FC = () => {
           <div style={{ textAlign: 'center', fontWeight: 700, fontSize: 20, marginBottom: 8 }}>
             {profile.username}
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-            <LanguageSwitcher />
-            {/* 主题切换按钮 */}
-            <div className="usercenter-theme-toggle">
-              <button
-                className={`usercenter-switch-btn theme-switch-btn theme-toggle-btn ${theme}`}
-                aria-label="切换主题"
-                onClick={e => {
-                  e.currentTarget.classList.add('clicked');
-                  setTimeout(() => e.currentTarget.classList.remove('clicked'), 300);
-                  const body = document.body;
-                  if (body.classList.contains('dark-theme')) {
-                    body.classList.remove('dark-theme');
-                    body.classList.add('light-theme');
-                    setTheme('light');
-                  } else {
-                    body.classList.remove('light-theme');
-                    body.classList.add('dark-theme');
-                    setTheme('dark');
-                  }
-                }}
-              >
-                <span className="theme-toggle-track">
-                  <span className="theme-toggle-icon sun">🌞</span>
-                  <span className="theme-toggle-icon moon">🌜</span>
-                  <span className="theme-toggle-thumb"></span>
-                </span>
-              </button>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'stretch',
+              gap: 14,
+              marginBottom: 24,
+              border: '1px solid #e0e7ef',
+              borderRadius: 10,
+              padding: '16px 18px',
+              background: 'rgba(245,246,250,0.7)',
+              width: '100%',
+              maxWidth: 350,
+              boxSizing: 'border-box'
+            }}
+          >
+            {/* 语言切换 */}
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+              <span style={{
+                fontSize: 15,
+                color: 'var(--main-text, #232946)',
+                opacity: 0.85,
+                letterSpacing: 0.5,
+                fontWeight: 500,
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center'
+              }}>{t('language') || 'Language'}</span>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                <LanguageSwitcher />
+              </div>
+            </div>
+            {/* 主题切换 */}
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+              <span style={{
+                fontSize: 15,
+                color: 'var(--main-text, #232946)',
+                opacity: 0.85,
+                letterSpacing: 0.5,
+                fontWeight: 500,
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center'
+              }}>{t('theme') || 'Theme'}</span>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                <button
+                  className={`usercenter-switch-btn theme-switch-btn theme-toggle-btn ${theme}`}
+                  aria-label={t('toggle_theme') || 'Toggle theme'}
+                  onClick={e => {
+                    e.currentTarget.classList.add('clicked');
+                    setTimeout(() => e.currentTarget.classList.remove('clicked'), 300);
+                    const body = document.body;
+                    if (body.classList.contains('dark-theme')) {
+                      body.classList.remove('dark-theme');
+                      body.classList.add('light-theme');
+                      setTheme('light');
+                    } else {
+                      body.classList.remove('light-theme');
+                      body.classList.add('dark-theme');
+                      setTheme('dark');
+                    }
+                  }}
+                >
+                  <span className="theme-toggle-track">
+                    <span className="theme-toggle-icon sun">🌞</span>
+                    <span className="theme-toggle-icon moon">🌜</span>
+                    <span className="theme-toggle-thumb"></span>
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
                 </div>
         {/* 右侧表单 */}
         <form onSubmit={handleSubmit} className="user-center-form">
-          <label style={{ fontWeight: 500 }}>{t('email') || '电子邮箱'}</label>
+          <label style={{ fontWeight: 500, fontSize: 14, color: 'var(--main-text, #232946)' }}>{t('email') || 'Email'}</label>
           <input type="email" name="email" value={profile.email} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
-          <label style={{ fontWeight: 500 }}>{t('username') || '昵称'}</label>
+          <label style={{ fontWeight: 500, fontSize: 14, color: 'var(--main-text, #232946)' }}>{t('username') || 'Username'}</label>
           <input type="text" name="username" value={profile.username} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
-          <label style={{ fontWeight: 500 }}>{t('password') || '密码'}</label>
+          <label style={{ fontWeight: 500, fontSize: 14, color: 'var(--main-text, #232946)' }}>{t('password') || 'Password'}</label>
           <input type="password" name="password" value={profile.password} onChange={handleChange} required style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
           {error && <div className="error-message" style={{ color: 'red', margin: '8px 0' }}>{error}</div>}
           <button type="submit" className="btn-primary" style={{ marginTop: 18, background: '#16a34a', color: '#fff', border: 'none', borderRadius: 6, padding: '12px 0', fontWeight: 600, fontSize: 16, letterSpacing: 1 }} disabled={isLoading}>

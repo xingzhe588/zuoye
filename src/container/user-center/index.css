@@ -5,14 +5,19 @@
   min-height: 60vh;
   padding: 32px 0;
   background: transparent !important;
+  position: relative;
 }
 
 .user-center-wrapper {
   display: flex;
   border-radius: 12px;
-  box-shadow: 0 8px 32px #1ef1f122, 0 2px 16px #7f53ac22;
+  /* box-shadow: 0 8px 32px #1ef1f122, 0 2px 16px #7f53ac22; */
+  box-shadow: none !important;
   padding: 32px;
   min-width: 700px;
+  background: #fff;
+  position: relative;
+  z-index: 2;
 }
 
 .user-center-avatar {
@@ -400,11 +405,12 @@
   100% { transform: scale(1); box-shadow: 0 2px 8px #1ef1f188; }
 }
 
-.usercenter-theme-toggle {
-  width: 90px;
-  margin: 0 auto 0 auto;
+/* 主题/语言切换按钮区域居中 */
+.usercenter-theme-toggle, .lang-toggle-root {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto 0 auto;
 }
 .theme-toggle-btn {
   width: 90px;
@@ -531,6 +537,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* 新增：彻底垂直居中 */
+  line-height: 1;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
 }
 .lang-toggle-icon.en {
   margin-left: 2px;
@@ -563,4 +574,121 @@
 }
 .lang-toggle-btn:active .lang-toggle-thumb {
   box-shadow: 0 2px 8px #0003;
+}
+
+/* 去除主题/语言切换按钮的悬浮阴影 */
+.usercenter-switch-btn:hover,
+.usercenter-switch-btn:focus,
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus,
+.lang-toggle-btn:hover,
+.lang-toggle-btn:focus {
+  box-shadow: none !important;
+  background: linear-gradient(90deg, #1ef1f1 0%, #7f53ac 100%) !important; /* 可选：保留渐变背景 */
+  color: #fff !important;
+  transform: none !important;
+}
+
+/* 彻底去除主题/语言切换按钮的渐变色背景，仅保留纯色或透明 */
+.usercenter-switch-btn,
+.theme-toggle-btn,
+.lang-toggle-btn {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.usercenter-switch-btn:hover,
+.usercenter-switch-btn:focus,
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus,
+.lang-toggle-btn:hover,
+.lang-toggle-btn:focus {
+  background: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  transform: none !important;
+}
+
+/* 默认浅色模式 */
+.user-center-wrapper {
+  background: #fff;
+  color: #232946;
+}
+
+/* 深色模式 */
+body.dark-theme .user-center-wrapper {
+  background: #232946 !important;
+  color: #f4f4f4 !important;
+}
+
+body.dark-theme .user-center-container {
+  background: #181a23 !important;
+}
+
+/* 输入框、表单等也适配深色 */
+body.dark-theme .user-center-form input,
+body.dark-theme .user-center-form label {
+  background: #232946 !important;
+  color: #f4f4f4 !important;
+  border: 1px solid #44485a !important;
+}
+body.dark-theme .user-center-form input::placeholder {
+  color: #bfc2d6 !important;
+}
+
+body.dark-theme .user-center-form label,
+.user-center-form label {
+  background: none !important;
+  border: none !important;
+  color: #f4f4f4 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.user-center-form label {
+  background: none !important;
+  border: none !important;
+  color: #232946 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.user-center-container {
+  background: var(--main-bg) !important;
+}
+body.dark-theme .user-center-container {
+  background: var(--main-bg) !important;
+}
+
+.lang-toggle-btn.ru .lang-toggle-track,
+.lang-toggle-btn.en .lang-toggle-track {
+  background: #bfc2d6 !important;
+}
+.theme-toggle-btn.light .theme-toggle-track,
+.theme-toggle-btn.dark .theme-toggle-track {
+  background: #bfc2d6 !important;
+}
+
+/* 语言切换按钮滑块始终为白色 */
+.lang-toggle-thumb {
+  background: #fff !important;
+}
+.lang-toggle-btn.ru .lang-toggle-thumb,
+.lang-toggle-btn.en .lang-toggle-thumb {
+  background: #fff !important;
+}
+
+.theme-toggle-thumb {
+  background: #fff !important;
+}
+.theme-toggle-btn.dark .theme-toggle-thumb,
+.theme-toggle-btn.light .theme-toggle-thumb {
+  background: #fff !important;
+}
+
+.particle-decor-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }

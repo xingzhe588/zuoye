@@ -340,15 +340,22 @@ body, .main-page {
         justify-content: center;
         align-items: center;
         margin: 10px 0 18px 0;
+        width: 100%;
+        text-align: center;
     }
     .main-cat-logo-mobile {
-        width: 68px;
-        height: 68px;
-        border-radius: 50%;
-        box-shadow: 0 4px 16px #FFD70033;
-        object-fit: cover;
-        border: 4px solid #fff;
+        max-width: 160px;
+        width: 60vw;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px #1ef1f144, 0 1.5px 8px #1ef1f122;
+        border: none !important;
         background: #fff;
+        padding: 6px;
+        margin: 0 auto 8px auto;
+        display: block;
+        object-fit: contain;
+        transition: box-shadow 0.2s, border 0.2s;
     }
     .main-two-buttoms {
         width: 100%;

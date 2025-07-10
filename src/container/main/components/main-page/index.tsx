@@ -46,37 +46,6 @@ const MainPage = (): React.ReactElement => {
       </div>
       {/* 顶部渐变分割线 */}
       <div className="main-gradient-divider"></div>
-      {/* 主题切换按钮，右上角浮动 */}
-      <button
-        style={{
-          position: 'absolute',
-          top: 24,
-          right: 32,
-          zIndex: 10,
-          background: 'var(--button-bg)',
-          color: 'var(--button-text)',
-          border: 'none',
-          borderRadius: 8,
-          padding: '8px 16px',
-          fontWeight: 700,
-          fontSize: 16,
-          cursor: 'pointer',
-          boxShadow: '0 2px 8px #1ef1f188',
-          transition: 'background 0.2s, color 0.2s',
-        }}
-        onClick={() => {
-          const body = document.body;
-          if (body.classList.contains('dark-theme')) {
-            body.classList.remove('dark-theme');
-            body.classList.add('light-theme');
-          } else {
-            body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
-          }
-        }}
-      >
-        🌓 主题切换
-      </button>
       {/* 页面角落发光点 */}
       <div className="main-corner-glow main-corner-glow-tl"></div>
       <div className="main-corner-glow main-corner-glow-br"></div>
@@ -115,24 +84,6 @@ const MainPage = (): React.ReactElement => {
           <div className="main-logo">
             <img src={Image_Cat} alt="Cat" className="main-cat-logo" />
           </div>
-        </div>
-      </div>
-      {/* 平台亮点区块 */}
-      <div className="main-features-block">
-        <div className="main-feature-item">
-          <span className="main-feature-icon" role="img" aria-label="AI">🤖</span>
-          <div className="main-feature-title">AI驱动</div>
-          <div className="main-feature-desc">智能算法生成独特艺术作品</div>
-        </div>
-        <div className="main-feature-item">
-          <span className="main-feature-icon" role="img" aria-label="Speed">⚡</span>
-          <div className="main-feature-title">高效创作</div>
-          <div className="main-feature-desc">一键生成，快速体验创作乐趣</div>
-        </div>
-        <div className="main-feature-item">
-          <span className="main-feature-icon" role="img" aria-label="Device">📱</span>
-          <div className="main-feature-title">多端适配</div>
-          <div className="main-feature-desc">支持手机、平板和PC，随时随地创作</div>
         </div>
       </div>
     </div>

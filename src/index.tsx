@@ -6,6 +6,7 @@ import './i18n'; // 导入国际化配置
 
 import './app-env.d.ts';
 import './shared/ui/styles/theme.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default () => <App/>;
 

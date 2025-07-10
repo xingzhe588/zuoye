@@ -3,6 +3,7 @@ body, .auth-container, .auth-wrapper {
 }
 
 .auth-container {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,11 +12,20 @@ body, .auth-container, .auth-wrapper {
 }
 
 .auth-wrapper {
+  position: relative;
+  z-index: 2;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 8px 32px #1ef1f122, 0 2px 16px #7f53ac22;
   width: 100%;
   max-width: 400px;
+}
+
+.particle-decor-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .auth-header {
@@ -144,4 +154,46 @@ body, .auth-container, .auth-wrapper {
 
 .btn-secondary:hover {
   background: #545b62;
+}
+
+.guest-mode-btn-inline {
+  background: #f5f6fa;
+  color: #007bff;
+  border: 1px solid #e0e7ef;
+  border-radius: 18px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #1ef1f122;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  outline: none;
+  margin-left: auto;
+}
+.guest-mode-btn-inline:hover {
+  background: #e6f0ff;
+  color: #0056b3;
+  border-color: #bfc2d6;
+}
+
+.guest-mode-btn-topright {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #f5f6fa;
+  color: #007bff;
+  border: none;
+  border-radius: 18px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #1ef1f122;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  outline: none;
+  z-index: 3;
+}
+.guest-mode-btn-topright:hover {
+  background: #e6f0ff;
+  color: #0056b3;
 }

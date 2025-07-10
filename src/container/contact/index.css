@@ -101,6 +101,47 @@
     }
 }
 
+@media (max-width: 600px) {
+  .contact-page-first {
+    padding-top: 68px !important; /* 顶部留白，避免与导航栏接触 */
+    align-items: flex-start !important;
+  }
+  .contact-first-borders {
+    gap: 12px !important;         /* 卡片间距更紧凑 */
+    margin: 0 auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    align-items: flex-start !important;
+  }
+  .contact-card {
+    min-width: 0 !important;
+    width: 92vw !important;
+    max-width: 98vw !important;
+    padding: 12px 3vw 10px 3vw !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    border-radius: 18px !important;
+    font-size: 0.98rem !important;
+  }
+  .contact-rectangle {
+    width: 80px !important;
+    height: 80px !important;
+    margin-bottom: 10px !important;
+  }
+  .contact-img-1, .contact-img-2 {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .contact-name {
+    font-size: 1.08rem !important;
+    margin-bottom: 4px !important;
+  }
+  .contact-pos-right, .contact-pos-left {
+    font-size: 0.92rem !important;
+    margin-bottom: 2px !important;
+  }
+}
+
 /* 烟花粒子效果 */
 .contact-page-first .main-particles-decor {
   position: absolute;

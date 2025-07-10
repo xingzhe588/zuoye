@@ -6,6 +6,7 @@ import { loginUser, registerUser } from '../../features/auth/model/authStore';
 import { RootState } from '../../store';
 import { useTranslation } from 'react-i18next';
 import './index.css';
+import ParticleDecor from '../main/components/main-page/ParticleDecor';
 
 const AuthContainer: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -66,8 +67,30 @@ const AuthContainer: React.FC = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container" style={{ position: 'relative' }}>
+      <div className="particle-decor-bg">
+        <ParticleDecor />
+      </div>
       <div className="auth-wrapper">
+        <button
+          type="button"
+          className="guest-mode-btn-topright"
+          onClick={() => {
+            const guestUser = {
+              id: 0,
+              username: '游客',
+              email: '',
+            };
+            window.localStorage.setItem('token', 'guest-token');
+            dispatch({
+              type: 'auth/login/fulfilled',
+              payload: { user: guestUser, token: 'guest-token' }
+            });
+            navigate(getNavigationValue('project-monday.user-center'));
+          }}
+        >
+          🧑‍🚀 {t('guest')}
+        </button>
         <div className="auth-header">
           <h1>{t('artcollab')}</h1>
           <p>{t('ai_art_platform')}</p>
@@ -183,39 +206,6 @@ const AuthContainer: React.FC = () => {
             </button>
           </div>
         </form>
-        {/* 游客模式按钮 */}
-        <div style={{ marginTop: 16, textAlign: 'center' }}>
-          <button
-            type="button"
-            style={{
-              background: 'var(--button-bg)',
-              color: 'var(--button-text)',
-              border: 'none',
-              borderRadius: 8,
-              padding: '8px 20px',
-              fontWeight: 700,
-              fontSize: 16,
-              cursor: 'pointer',
-              boxShadow: '0 2px 8px #1ef1f188',
-              transition: 'background 0.2s, color 0.2s',
-            }}
-            onClick={() => {
-              const guestUser = {
-                id: 0,
-                username: '游客',
-                email: '',
-              };
-              window.localStorage.setItem('token', 'guest-token');
-              dispatch({
-                type: 'auth/login/fulfilled',
-                payload: { user: guestUser, token: 'guest-token' }
-              });
-              navigate(getNavigationValue('project-monday.user-center'));
-            }}
-          >
-            🧑‍🚀 游客模式直接体验
-          </button>
-        </div>
       </div>
     </div>
   );

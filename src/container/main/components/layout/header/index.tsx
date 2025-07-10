@@ -12,6 +12,7 @@ import './index.css';
 interface NavigationItem {
   name: string;
   href: string;
+  icon?: React.ReactNode; // Added icon property
 }
 
 const Header = (): React.ReactElement => {
@@ -26,89 +27,85 @@ const Header = (): React.ReactElement => {
   const navigationItems: NavigationItem[] = [
     {
       name: t('collection'),
-      href: getNavigationValue('project-monday.collection')
+      href: getNavigationValue('project-monday.collection'),
+      icon: <i className="fa-solid fa-layer-group" title={t('collection')}></i>
     },
     {
       name: t('create'),
-      href: getNavigationValue('project-monday.create-nft')
+      href: getNavigationValue('project-monday.create-nft'),
+      icon: <i className="fa-solid fa-wand-magic-sparkles" title={t('create')}></i>
     },
     {
       name: t('contact'),
-      href: getNavigationValue('project-monday.contact')
+      href: getNavigationValue('project-monday.contact'),
+      icon: <i className="fa-solid fa-address-card" title={t('contact')}></i>
     },
   ];
 
   return (
-    <header className="header-header">
-      <div className="header-logo">
-        <Link to={getNavigationValue('project-monday.main')}>
-          <span>ArtCollab</span>
-        </Link>
-      </div>
-      <button
-        className="header-menu-toggle"
-        onClick={() => setMenuOpen(open => !open)}
-        aria-label="Open menu"
-        style={{ marginLeft: 'auto', marginRight: 8 }}
-      >
-        ☰
-      </button>
-      <nav className={`header-nav${menuOpen ? ' header-nav--open' : ''}`}>
-        <ul className="header-nav__list">
-          {navigationItems.map((item) => (
-            item.href ? (
-              <li key={item.name} className="header-nav__item">
-                <Link to={item.href} className="header-nav__link" onClick={() => setMenuOpen(false)}>
-                  {item.name}
-                </Link>
-              </li>
-            ) : null
-          ))}
-          {isAuthenticated && user ? (
-              <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link" onClick={() => setMenuOpen(false)}>
-                  {t('user_center')}
-                </Link>
-              </li>
-          ) : (
-            <li className="header-nav__item">
-              <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth" onClick={() => setMenuOpen(false)}>
-                {t('login_register')}
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-      {/* 移动端弹出菜单 */}
-      {menuOpen && (
-        <div className={`header-mobile-menu${!menuOpen ? ' menu-exit' : ''}`}>
-          <ul className="header-mobile-menu__list">
+    <>
+      <header className="header-header">
+        <div className="header-logo">
+          <Link to={getNavigationValue('project-monday.main')}>
+            <span>ArtCollab</span>
+          </Link>
+        </div>
+        {/* 仅PC端显示顶部导航 */}
+        <nav className="header-nav">
+          <ul className="header-nav__list">
             {navigationItems.map((item) => (
               item.href ? (
-                <li key={item.name} className="header-mobile-menu__item">
-                  <Link to={item.href} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+                <li key={item.name} className="header-nav__item">
+                  <Link to={item.href} className="header-nav__link">
                     {item.name}
                   </Link>
                 </li>
               ) : null
             ))}
             {isAuthenticated && user ? (
-              <li className="header-mobile-menu__item">
-                <Link to={getNavigationValue('project-monday.user-center')} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+              <li className="header-nav__item">
+                <Link to={getNavigationValue('project-monday.user-center')} className="header-nav__link">
                   {t('user_center')}
                 </Link>
               </li>
             ) : (
-              <li className="header-mobile-menu__item">
-                <Link to={getNavigationValue('project-monday.auth')} className="header-mobile-menu__link" onClick={() => setMenuOpen(false)}>
+              <li className="header-nav__item">
+                <Link to={getNavigationValue('project-monday.auth')} className="header-nav__link header-nav__link--auth">
                   {t('login_register')}
                 </Link>
               </li>
             )}
           </ul>
-      </div>
-      )}
-    </header>
+        </nav>
+      </header>
+      {/* 移动端底部导航栏 */}
+      <nav className="mobile-bottom-nav">
+        <ul className="mobile-bottom-nav__list">
+          {navigationItems.map((item) => (
+            item.href ? (
+              <li key={item.name} className="mobile-bottom-nav__item">
+                <Link to={item.href} className="mobile-bottom-nav__link">
+                  {item.icon}
+                </Link>
+              </li>
+            ) : null
+          ))}
+          {isAuthenticated && user ? (
+            <li className="mobile-bottom-nav__item">
+              <Link to={getNavigationValue('project-monday.user-center')} className="mobile-bottom-nav__link">
+                <i className="fa-solid fa-user" title={t('user_center')}></i>
+              </Link>
+            </li>
+          ) : (
+            <li className="mobile-bottom-nav__item">
+              <Link to={getNavigationValue('project-monday.auth')} className="mobile-bottom-nav__link">
+                <i className="fa-solid fa-right-to-bracket" title={t('login_register')}></i>
+              </Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </>
   );
 };
 

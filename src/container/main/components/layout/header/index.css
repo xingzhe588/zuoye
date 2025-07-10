@@ -120,6 +120,12 @@
   .header-actions {
     display: none;
   }
+  main,
+  .main-content,
+  .container,
+  .page-content {
+    padding-bottom: 60px !important;
+  }
 }
 @media (max-width: 480px) {
   .header-header {
@@ -165,76 +171,90 @@
   font-size: 0.98rem;
 }
 
-/* 汉堡菜单弹出层样式 */
+/* 删除汉堡菜单按钮和弹出菜单相关样式 */
+.header-menu-toggle,
 .header-mobile-menu {
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-  z-index: 1001;
-  min-width: 180px;
-  padding: 12px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  transition: opacity 0.28s cubic-bezier(.4,2,.6,1), transform 0.28s cubic-bezier(.4,2,.6,1);
-  opacity: 1;
-  transform: translateY(0);
+  display: none !important;
 }
-.header-mobile-menu.menu-exit {
-  opacity: 0;
-  transform: translateY(-30px);
-  pointer-events: none;
+
+/* 新增移动端底部导航栏样式 */
+.mobile-bottom-nav {
+  display: none;
 }
-.header-mobile-menu__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.header-mobile-menu__item {
-  margin: 0;
-  padding: 0;
-}
-.header-mobile-menu__link {
-  display: block;
-  width: 100%;
-  padding: 12px 24px;
-  color: #007bff;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border: none;
-  background: none;
-  text-align: left;
-  transition: background 0.2s, color 0.2s;
-}
-.header-mobile-menu__link:hover {
-  background: #e6f0ff;
-  color: #0056b3;
-}
-.header-user-info {
-  display: block;
-  padding: 10px 24px;
-  color: #666;
-  font-size: 0.98rem;
-}
-@media (max-width: 600px) {
-  .header-mobile-menu {
-    min-width: 120px;
-    right: 2vw;
-    top: 48px;
-    padding: 6px 0;
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 60px;
+    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    box-shadow: 0 -2px 12px #007bff11;
+    z-index: 1200;
+    border-top: 1px solid #eee;
+    align-items: center;
+    justify-content: center;
   }
-  .header-mobile-menu__link {
-    font-size: 0.98rem;
-    padding: 10px 14px;
+  .mobile-bottom-nav__list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  .header-user-info {
-    font-size: 0.92rem;
-    padding: 8px 14px;
+  .mobile-bottom-nav__item {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .mobile-bottom-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #007bff;
+    font-size: 1.18rem;
+    text-decoration: none;
+    transition: color 0.18s;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  .mobile-bottom-nav__link:active,
+  .mobile-bottom-nav__link:hover {
+    color: #19e3e3;
+    background: #e6f0ff;
+  }
+  .mobile-bottom-nav__label {
+    font-size: 0.82rem;
+    margin-top: 2px;
+    color: #222;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .mobile-bottom-nav__link i {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+    display: block;
   }
 }
+@media (min-width: 769px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}
+
 /* 隐藏桌面端原有nav */
 @media (max-width: 600px) {
   .header-nav {
@@ -249,3 +269,30 @@
     gap: 16px;
   }
   }
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    background: var(--main-bg) !important;
+    color: var(--main-text) !important;
+    box-shadow: 0 -2px 12px #007bff11;
+    border-top: 1px solid #eee;
+  }
+  .mobile-bottom-nav__link {
+    color: var(--main-text) !important;
+    transition: color 0.18s;
+  }
+  .mobile-bottom-nav__link:active,
+  .mobile-bottom-nav__link:hover {
+    color: #19e3e3 !important;
+    background: #e6f0ff;
+  }
+  .mobile-bottom-nav__link i {
+    color: var(--main-text) !important;
+    font-size: 1.5rem;
+    transition: color 0.18s;
+  }
+  .mobile-bottom-nav__link:active i,
+  .mobile-bottom-nav__link:hover i {
+    color: #19e3e3 !important;
+  }
+}

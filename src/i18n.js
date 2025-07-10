@@ -20,6 +20,7 @@ i18n.use(initReactI18next).init({
         "submit": "Submit",
         "cancel": "Cancel",
         "language": "Language",
+        "theme": "Theme",
         "nft": "NFT",
         "create_nft": "Create NFT",
         "user_center": "User Center",
@@ -128,7 +129,9 @@ i18n.use(initReactI18next).init({
         "feature_efficiency": "Efficient Creation",
         "feature_efficiency_desc": "One-click generation, quickly experience the fun of creation",
         "feature_multi_device": "Multi-device Adaptation",
-        "feature_multi_device_desc": "Supports mobile, tablet and PC, create anytime, anywhere"
+        "feature_multi_device_desc": "Supports mobile, tablet and PC, create anytime, anywhere",
+        "guest_mode": "Guest Mode",
+        "guest": "Guest"
       }
     },
     ru: {
@@ -148,6 +151,7 @@ i18n.use(initReactI18next).init({
         "submit": "Отправить",
         "cancel": "Отмена",
         "language": "Язык",
+        "theme": "Тема",
         "nft": "NFT",
         "create_nft": "Создать NFT",
         "user_center": "Личный кабинет",
@@ -256,7 +260,9 @@ i18n.use(initReactI18next).init({
         "feature_efficiency": "Эффективное творчество",
         "feature_efficiency_desc": "Одно нажатие — и вы быстро погружаетесь в процесс создания",
         "feature_multi_device": "Мультиустройство",
-        "feature_multi_device_desc": "Поддержка смартфонов, планшетов и ПК — творите где угодно"
+        "feature_multi_device_desc": "Поддержка смартфонов, планшетов и ПК — творите где угодно",
+        "guest_mode": "Гостевой режим",
+        "guest": "Гость"
       }
     }
   },

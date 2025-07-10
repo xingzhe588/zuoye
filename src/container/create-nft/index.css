@@ -686,3 +686,79 @@
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .create-nft-page-first {
+    padding-bottom: 60px !important;
+  }
+  .create-nft-main-content.create-nft-cool-layout {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .create-nft-rectangle,
+  .create-nft-rectangle .content {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .create-nft-page-first {
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  .create-nft-rectangle .content {
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* 1. 让图片生成卡片和右侧面板居中且宽度合适 */
+  .create-nft-right-panel {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cool-image-card {
+    width: 90vw !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. 统一按钮样式 */
+  .create-nft-input-field button,
+  .cool-input-field button {
+    background: linear-gradient(90deg, #1ef1f1 10%, #7f53ac 90%) !important;
+    color: #fff !important;
+    border-radius: 18px !important;
+    box-shadow: 0 2px 12px #1ef1f1aa, 0 0 8px #7f53ac44 !important;
+    font-size: 1.12rem !important;
+    font-weight: 800 !important;
+    border: none !important;
+    text-shadow: 0 1px 2px #0008 !important;
+    margin-left: 12px !important;
+    padding: 0 18px !important;
+    min-width: 100px !important;
+    max-width: 180px !important;
+    height: 48px !important;
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s !important;
+  }
+  .create-nft-input-field button:hover,
+  .cool-input-field button:hover {
+    background: linear-gradient(90deg, #7f53ac 10%, #1ef1f1 90%) !important;
+    color: #232946 !important;
+    box-shadow: 0 4px 24px #7f53ac88, 0 0 16px #1ef1f1cc !important;
+  }
+}
