@@ -741,6 +741,22 @@ body.dark-theme .usercenter-switchers-mobile {
   }
 }
 
+.usercenter-switchers-desktop .theme-toggle-btn,
+.usercenter-switchers-desktop .lang-toggle-btn {
+  background: #e0e7ef !important;
+  color: #232946 !important;
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+}
+.usercenter-switchers-desktop .theme-toggle-btn:hover,
+.usercenter-switchers-desktop .lang-toggle-btn:hover {
+  background: #d0d7e6 !important;
+  color: #007bff !important;
+}
+
 .theme-toggle-btn,
 .lang-toggle-btn {
   background: transparent !important;
