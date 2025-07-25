@@ -852,3 +852,40 @@ body.light-theme .guest-notice-welcome {
     top: 48px;
   }
 }
+html, body, #app, .create-nft-page-first, .create-nft-main-content, .create-nft-right-panel, .cool-image-card {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.create-nft-main-content,
+.create-nft-right-panel,
+.cool-image-card {
+  padding-bottom: 70px !important;
+}
+.mobile-bottom-nav {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.confetti-cannon.confetti-cannon-left {
+  position: fixed !important;
+  left: 0;
+  top: 60px;
+  z-index: 3000;
+  font-size: 2.8rem !important;
+}
+.confetti-cannon.confetti-cannon-right {
+  position: fixed !important;
+  right: 0;
+  top: 60px;
+  z-index: 3000;
+  font-size: 2.8rem !important;
+}
+@media (max-width: 600px) {
+  .confetti-cannon.confetti-cannon-left,
+  .confetti-cannon.confetti-cannon-right {
+    font-size: 2.8rem !important;
+    top: 48px;
+  }
+}
