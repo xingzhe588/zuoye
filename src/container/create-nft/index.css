@@ -852,11 +852,14 @@ body.light-theme .guest-notice-welcome {
     top: 48px;
   }
 }
-html, body, #app, .create-nft-page-first, .create-nft-main-content, .create-nft-right-panel, .cool-image-card {
-  max-width: 100% !important;
+html, body, #app, .create-nft-page-first, .create-nft-main-content, .create-nft-right-panel, .cool-image-card, .mobile-bottom-nav {
+  max-width: 100vw !important;
   width: 100% !important;
   overflow-x: hidden !important;
   box-sizing: border-box !important;
+}
+.create-nft-main-content {
+  padding-bottom: 120px !important;
 }
 .create-nft-main-content,
 .create-nft-right-panel,

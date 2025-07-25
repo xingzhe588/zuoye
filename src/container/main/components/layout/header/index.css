@@ -304,6 +304,9 @@ html, body {
     color: var(--main-text) !important;
     box-shadow: 0 -2px 12px #007bff11;
     border-top: none !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
   }
   .mobile-bottom-nav__link {
     color: var(--main-text) !important;
