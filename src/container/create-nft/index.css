@@ -708,6 +708,9 @@
     padding: 0 !important;
     box-sizing: border-box !important;
   }
+  .create-nft-main-content {
+    padding-bottom: 60px !important;
+  }
   .create-nft-rectangle,
   .create-nft-rectangle .content {
     width: 100vw !important;

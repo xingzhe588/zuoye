@@ -149,6 +149,12 @@ body:not(.dark-theme) .contact-name {
   }
 }
 
+@media (max-width: 768px) {
+  .contact-main-content {
+    padding-bottom: 60px !important;
+  }
+}
+
 /* 烟花粒子效果 */
 .contact-page-first .main-particles-decor {
   position: absolute;

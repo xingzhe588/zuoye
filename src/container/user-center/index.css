@@ -324,6 +324,9 @@
     padding: 15px;
     border-radius: 15px;
   }
+  .user-center-main-content {
+    padding-bottom: 60px !important;
+  }
 }
 
 /* 移动端适配 */

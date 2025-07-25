@@ -153,11 +153,51 @@
 
 @media (max-width: 480px) {
   .auth-prompt-modal {
-    margin: 20px;
-    width: calc(100% - 40px);
+    margin: 12px;
+    width: calc(100% - 24px);
+    max-width: 100vw;
+    border-radius: 10px;
+    padding: 0;
   }
-  
+  .auth-prompt-header {
+    padding: 16px 12px 0 12px;
+    margin-bottom: 16px;
+  }
+  .auth-prompt-header h3 {
+    font-size: 17px;
+  }
+  .auth-prompt-content {
+    padding: 0 12px;
+  }
+  .auth-prompt-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .auth-prompt-message {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .auth-prompt-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .auth-prompt-benefits li {
+    font-size: 12px;
+    padding: 6px 0;
+    gap: 6px;
+  }
   .auth-prompt-actions {
-    padding: 20px;
+    padding: 12px;
+    gap: 8px;
+  }
+  .auth-prompt-login-btn {
+    padding: 10px 0;
+    font-size: 15px;
+    border-radius: 6px;
+  }
+  .auth-prompt-cancel-btn {
+    padding: 8px 0;
+    font-size: 13px;
+    border-radius: 6px;
   }
 }
