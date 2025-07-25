@@ -303,7 +303,7 @@ html, body {
     background: var(--main-bg) !important;
     color: var(--main-text) !important;
     box-shadow: 0 -2px 12px #007bff11;
-    border-top: 1px solid #eee;
+    border-top: none !important;
   }
   .mobile-bottom-nav__link {
     color: var(--main-text) !important;

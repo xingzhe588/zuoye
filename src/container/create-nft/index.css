@@ -824,3 +824,31 @@ body.dark-theme .cool-image-placeholder p {
 body.light-theme .guest-notice-welcome {
   color: #0077b6 !important;
 }
+
+@media (max-width: 600px) {
+  .confetti-cannon {
+    max-width: 90vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    font-size: 2rem !important;
+    overflow-x: hidden !important;
+  }
+  .confetti-cannon.confetti-cannon-left {
+    position: fixed !important;
+    left: 0;
+    top: 60px;
+    z-index: 2000;
+  }
+  .confetti-cannon.confetti-cannon-right {
+    position: fixed !important;
+    right: 0;
+    top: 60px;
+    z-index: 2000;
+  }
+  .confetti-cannon {
+    font-size: 1.5rem !important;
+    top: 48px;
+  }
+}
