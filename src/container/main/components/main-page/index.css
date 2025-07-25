@@ -55,17 +55,26 @@ body, .main-page {
 .main-nft-market {
     font-size: 2.8rem;
     font-weight: 900;
-    color: var(--main-text) !important;
-    text-shadow: var(--title-glow);
+    color: #fff !important;
+    text-shadow: 0 0 12px #1ef1f1cc, 0 2px 8px #23294688;
     letter-spacing: 2px;
     margin-bottom: 8px;
+}
+body.light-theme .main-nft-market {
+    color: #232946 !important;
+    text-shadow: 0 0 8px #1ef1f1cc, 0 2px 8px #fff8;
 }
 
 .main-with-discounts {
     font-size: 1.5rem;
-    color: var(--main-text) !important;
+    color: #bfc2d6 !important;
     margin-bottom: 18px;
-    opacity: 0.85;
+    opacity: 1;
+    text-shadow: 0 1px 4px #1ef1f144;
+}
+body.light-theme .main-with-discounts {
+    color: #232946 !important;
+    text-shadow: 0 1px 4px #1ef1f122;
 }
 
 .main-two-buttoms {
@@ -78,9 +87,9 @@ body, .main-page {
 
 .main-button-buy-nft,
 .main-button-galery {
-    background: var(--button-bg) !important;
-    color: var(--button-text) !important;
-    border: var(--button-border) !important;
+    background: linear-gradient(90deg, #0077b6 0%, #3a2376 100%) !important;
+    color: #fff !important;
+    border: none !important;
     box-shadow: var(--button-shadow) !important;
     border-radius: 14px;
     font-size: 1.12rem;
@@ -92,14 +101,21 @@ body, .main-page {
     justify-content: center;
     transition: background 0.3s, color 0.3s, border 0.3s, box-shadow 0.3s;
     font-weight: 800;
-    text-shadow: 0 1px 2px #fff8;
+    text-shadow: 0 1px 2px #23294644;
 }
-
-.main-button-buy-nft:hover,
-.main-button-galery:hover {
-    background: var(--button-bg-hover) !important;
-    color: var(--button-text) !important;
-    box-shadow: 0 4px 24px #1ef1f144;
+.main-button-buy-nft:hover, .main-button-galery:hover {
+    background: linear-gradient(90deg, #3a2376 0%, #0077b6 100%) !important;
+    color: #fff !important;
+}
+body.light-theme .main-button-buy-nft, body.light-theme .main-button-galery {
+    background: linear-gradient(90deg, #7ffcff 0%, #bba6e8 100%) !important;
+    color: #000 !important;
+    text-shadow: none;
+}
+body.light-theme .main-button-buy-nft:hover, body.light-theme .main-button-galery:hover {
+    background: linear-gradient(90deg, #bba6e8 0%, #7ffcff 100%) !important;
+    color: #000 !important;
+    text-shadow: none;
 }
 
 .main-button-buy-nft span,
@@ -137,7 +153,7 @@ body, .main-page {
 
 .main-text-about-nft {
     background: var(--card-bg) !important;
-    color: var(--main-text) !important;
+    color: #f4f4f4 !important;
     border-radius: 16px;
     box-shadow: var(--card-shadow) !important;
     padding: 20px 24px;
@@ -147,6 +163,11 @@ body, .main-page {
     font-weight: 600;
     text-align: left;
     max-width: 600px;
+    text-shadow: 0 1px 4px #23294644;
+}
+body.light-theme .main-text-about-nft {
+    color: #232946 !important;
+    text-shadow: 0 1px 4px #fff8;
 }
 
 @media (max-width: 1024px) {
@@ -411,6 +432,11 @@ body, .main-page {
     transition: background 0.3s, color 0.3s;
 }
 
+.main-button-buy-nft:focus, .main-button-galery:focus, .main-fix-link-buy:focus, .main-fix-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .main-features-block {
     display: flex;
     justify-content: center;
@@ -579,4 +605,28 @@ body, .main-page {
 }
 .main-tech-lines-bottom {
   bottom: 0;
+}
+
+.page-bg-blur {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
+.page-bg-blur.purple { background: #a084ee; width: 380px; height: 260px; }
+.page-bg-blur.pink   { background: #ffb6c1; width: 340px; height: 220px; }
+.page-bg-blur.green  { background: #7fffd4; width: 320px; height: 200px; }
+.page-bg-blur.yellow { background: #fff9a6; width: 400px; height: 240px; }
+
+main.main-page:focus {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 0 2px #b3e5fc;
+}
+.main-button-buy-nft:focus, .main-button-galery:focus {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 0 2px #b3e5fc;
 }

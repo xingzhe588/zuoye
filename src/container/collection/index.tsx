@@ -16,7 +16,7 @@ const Collection = (): React.ReactElement => {
       name: t('pixel_man'),
       author: 'Александр',
       price: '12 000 ₽',
-      category: t('pixel_art'),
+      category: 'pixel_art',
       img: PixelMen
     },
     {
@@ -24,7 +24,7 @@ const Collection = (): React.ReactElement => {
       name: t('harmony_japan'),
       author: 'Мария',
       price: '18 500 ₽',
-      category: t('japanese_style'),
+      category: 'japanese_style',
       img: HarmonyJapan
     },
     {
@@ -32,24 +32,27 @@ const Collection = (): React.ReactElement => {
       name: t('nature_city'),
       author: 'Дмитрий',
       price: '15 000 ₽',
-      category: t('city_and_nature'),
+      category: 'city_and_nature',
       img: NatureCity
     }
   ];
 
-  const categories = [t('all'), t('pixel_art'), t('japanese_style'), t('city_and_nature')];
-  
-  const [selectedCategory, setSelectedCategory] = useState(t('all'));
+  const categoryKeys = ['all', 'pixel_art', 'japanese_style', 'city_and_nature'];
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+  const filtered = selectedCategory === 'all'
+    ? collections
+    : collections.filter(item => item.category === selectedCategory);
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const paged = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  // 监听语言变化，自动刷新分类和选中分类
   useEffect(() => {
-    setSelectedCategory(t('all'));
-  }, [i18n.language]);
-
-  const filtered = selectedCategory === t('all') ? collections : collections.filter(item => item.category === selectedCategory);
-
+    const main = document.getElementById('main-content');
+    if (main) main.focus();
+  }, []);
   return(
-    <div className='collection-page-first'>
+    <main className='collection-page-first' tabIndex={-1} id="main-content">
       {/* 背景装饰元素 */}
       <div className="collection-bg-decor">
         <div className="collection-bg-blur collection-bg-blur1"></div>
@@ -61,28 +64,42 @@ const Collection = (): React.ReactElement => {
         <div className="collection-bg-particle p4"></div>
         <div className="collection-bg-particle p5"></div>
       </div>
-      <div className="collection-category-bar">
-        {categories.map(cat => (
+      <nav className="collection-category-bar" role="tablist" aria-label={t('category') || 'Category'}>
+        {categoryKeys.map(key => (
           <button
-            key={cat}
-            className={`collection-category-btn${selectedCategory === cat ? ' active' : ''}`}
-            onClick={() => setSelectedCategory(cat)}
+            key={key}
+            className={`collection-category-btn${selectedCategory === key ? ' active' : ''}`}
+            onClick={() => {
+              setSelectedCategory(key);
+              setCurrentPage(1);
+            }}
+            role="tab"
+            aria-selected={selectedCategory === key}
+            aria-label={`筛选：${t(key)}`}
+            tabIndex={0}
           >
-            {cat}
+            {t(key)}
           </button>
         ))}
-      </div>
+      </nav>
       <div className="collection-app">
         <header className="collection-app-header">
           <div className="collection-icons">
-            {filtered.map(item => (
-              <div className="collection-icon" key={item.id}>
-                <img src={item.img} alt={item.name} />
+            {paged.map(item => (
+              <div
+                className="collection-icon"
+                key={item.id}
+                tabIndex={0}
+                role="button"
+                aria-label={`查看作品：${item.name}`}
+                onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && e.currentTarget.click()}
+              >
+                <img src={item.img} alt={`像素艺术作品：${item.name}`} />
                 <div className="collection-info">
-                  <div className="collection-name">{item.name}</div>
+                  <h2 className="collection-name">{item.name}</h2>
                   <div className="collection-meta">
                     <span>{t('author')} {item.author}</span>
-                    <span>{t('number')} {item.id}</span>
+                    <span className="collection-id">{t('number')} {item.id}</span>
                     <span>{t('price')} {item.price}</span>
                   </div>
                 </div>
@@ -90,8 +107,31 @@ const Collection = (): React.ReactElement => {
             ))}
           </div>
         </header>
+        {/* 分页选项 */}
+        <div className="collection-pagination" style={{margin: '32px 0', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 12}}>
+          <button
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            aria-label={t('prev') || 'Previous page'}
+            style={{padding: '6px 16px', borderRadius: 8, border: 'none', background: '#e0e7ef', color: '#232946', fontWeight: 700, cursor: currentPage === 1 ? 'not-allowed' : 'pointer'}}
+          >{t('prev')}</button>
+          {Array.from({length: totalPages}).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i+1)}
+              aria-label={`第${i+1}页`}
+              style={{padding: '6px 12px', borderRadius: 8, border: 'none', background: currentPage === i+1 ? '#1ef1f1' : '#e0e7ef', color: currentPage === i+1 ? '#232946' : '#23294688', fontWeight: 800, margin: '0 2px', cursor: 'pointer'}}
+            >{i+1}</button>
+          ))}
+          <button
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            aria-label={t('next') || 'Next page'}
+            style={{padding: '6px 16px', borderRadius: 8, border: 'none', background: '#e0e7ef', color: '#232946', fontWeight: 700, cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'}}
+          >{t('next')}</button>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

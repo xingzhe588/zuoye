@@ -21,11 +21,14 @@ const CreateNFT = (): React.ReactElement => {
   const [guestAttempts, setGuestAttempts] = useState(0);
 
   useEffect(() => {
+    const savedImage = localStorage.getItem('lastImageSrc');
+    if (savedImage) {
+      setImageSrc(savedImage);
+    }
     const savedOutputText = sessionStorage.getItem('outputText');
     if (savedOutputText) {
       setOutputText(savedOutputText);
     }
-
     // Load guest attempts from localStorage
     const savedAttempts = localStorage.getItem('guestAttempts');
     if (savedAttempts) {
@@ -68,6 +71,7 @@ const CreateNFT = (): React.ReactElement => {
       const imageBlob = await fetchAIGeneratedImage(promptText);
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageSrc(imageUrl);
+      localStorage.setItem('lastImageSrc', imageUrl);
     } catch (error) {
       console.error(t('image_fetch_error'), error);
     } finally {
@@ -103,27 +107,33 @@ const CreateNFT = (): React.ReactElement => {
   };
 
   return (
-    <div className="create-nft-page-first">
-      {/* 粒子装饰（只在四周，数量减少） */}
+    <main aria-label="AI Art Creation Page" tabIndex={-1}>
+      {/* 粒子装饰 */}
       <ParticleDecor />
       {/* 顶部渐变分割线 */}
       <div className="main-gradient-divider"></div>
+      <div className="page-bg-blur blue" style={{top: '40px', left: '60px'}} />
+      <div className="page-bg-blur green" style={{top: '300px', right: '80px'}} />
+      <div className="page-bg-blur yellow" style={{bottom: '60px', left: '120px'}} />
       <div className="create-nft-main-content create-nft-cool-layout">
-        <div className="create-nft-left-panel">
-          {/* AI icon和渐变线 */}
-          <div className="create-nft-ai-icon"><FaRobot size={38} color="#1ef1f1" /></div>
-          <div className="create-nft-title">ArtCollab AI</div>
-          <div className="create-nft-title-divider"></div>
+        <section aria-labelledby="ai-title" className="create-nft-left-panel" role="region">
+          <h1 id="ai-title" style={{display:'flex',alignItems:'center',gap:8}}>
+            <FaRobot aria-hidden="true" style={{color:'#1ef1f1',fontSize:32}} />
+            ArtCollab AI
+          </h1>
+          <hr aria-hidden="true" />
           {/* AI Tips区块，移动到标题分割线下方 */}
-          <div className="create-nft-ai-tips-card">
-            <div className="ai-tips-divider"></div>
-            <div className="ai-tips-title"><FaRobot size={22} color="#1ef1f1" style={{marginRight:8}}/>AI Tips</div>
+          <section className="create-nft-ai-tips-card" role="region" aria-label="AI Tips">
+            <h2 style={{display:'flex',alignItems:'center',gap:8}}>
+              <FaRobot aria-hidden="true" style={{color:'#1ef1f1',fontSize:22}} />
+              AI Tips
+            </h2>
             <ul className="ai-tips-list">
               <li>✨ {t('tip_use_adjectives')}</li>
               <li>💡 {t('tip_example')}</li>
               <li>🧠 {t('tip_more_detail')}</li>
             </ul>
-          </div>
+          </section>
           {getGuestNotice()}
           {/* 移动端保留输入框 */}
           <div className="create-nft-input-field cool-input-field create-nft-input-bottom mobile-input-field">
@@ -141,8 +151,8 @@ const CreateNFT = (): React.ReactElement => {
               {getButtonText()}
             </button>
           </div>
-        </div>
-        <div className="create-nft-right-panel">
+        </section>
+        <section className="create-nft-right-panel" role="region" aria-label="AI Artwork Preview">
           <div className="create-nft-image-card cool-image-card cool-image-glow">
             <div className="content">
               {loading ? (
@@ -173,7 +183,7 @@ const CreateNFT = (): React.ReactElement => {
               {getButtonText()}
             </button>
           </div>
-        </div>
+        </section>
       </div>
       {showAuthPrompt && (
         <AuthPrompt
@@ -189,7 +199,7 @@ const CreateNFT = (): React.ReactElement => {
           <div className="confetti-cannon confetti-cannon-right">🎉</div>
         </>
       )}
-    </div>
+    </main>
   );
 };
 

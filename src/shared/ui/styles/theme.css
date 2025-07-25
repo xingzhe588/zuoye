@@ -33,3 +33,105 @@ body {
   background: var(--main-bg);
   color: var(--main-text);
 } 
+
+/* 统一滑块轨道样式 */
+.lang-toggle-track,
+.theme-toggle-track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 48px;
+  height: 24px;
+  background: #cfd2e3;
+  border-radius: 12px;
+  transition: background 0.2s;
+  box-sizing: border-box;
+  padding: 0 4px;
+}
+
+/* 统一滑块圆点样式 */
+.lang-toggle-thumb,
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.25s;
+  box-shadow: 0 2px 8px #0001;
+  z-index: 2;
+}
+
+/* 语言滑块位置 */
+.lang-toggle-track.en .lang-toggle-thumb { left: 2px; }
+.lang-toggle-track.ru .lang-toggle-thumb { left: 14px; }
+.lang-toggle-track.zh .lang-toggle-thumb { left: 26px; }
+
+/* 主题滑块位置 */
+.theme-toggle-btn.light .theme-toggle-thumb { left: 2px; }
+.theme-toggle-btn.dark .theme-toggle-thumb { left: 26px; }
+
+/* 图标居中 */
+.lang-toggle-icon {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #232946;
+  z-index: 3;
+  width: 24px;
+  text-align: center;
+  pointer-events: none;
+  top: 50%;
+  position: absolute;
+}
+
+/* 主题切换图标（太阳/月亮）分别居左/右 */
+.theme-toggle-icon.sun {
+  left: 6px;
+  color: #FFD700;
+  font-size: 16px;
+  z-index: 3;
+  pointer-events: none;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+.theme-toggle-icon.moon {
+  right: 6px;
+  color: #232946;
+  font-size: 16px;
+  z-index: 3;
+  pointer-events: none;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+/* 默认都半透明 */
+.theme-toggle-icon.sun,
+.theme-toggle-icon.moon {
+  opacity: 0.35;
+  transition: opacity 0.2s;
+}
+/* 浅色主题时只显示太阳 */
+.theme-toggle-btn.light .theme-toggle-icon.sun {
+  opacity: 1;
+}
+.theme-toggle-btn.light .theme-toggle-icon.moon {
+  opacity: 0;
+}
+/* 深色主题时只显示月亮 */
+.theme-toggle-btn.dark .theme-toggle-icon.sun {
+  opacity: 0;
+}
+.theme-toggle-btn.dark .theme-toggle-icon.moon {
+  opacity: 1;
+}
+
+/* 让两按钮垂直对齐 */
+.usercenter-switch-btn {
+  margin-bottom: 10px;
+} 

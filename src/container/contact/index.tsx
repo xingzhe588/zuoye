@@ -10,6 +10,8 @@ const Contacts = (): React.ReactElement => {
     return (
         <div className='contact-page-first'>
             <ParticleDecor />
+            <div className="page-bg-blur yellow" style={{top: '40px', left: '60px'}} />
+            <div className="page-bg-blur green" style={{bottom: '60px', right: '80px'}} />
             <div className='contact-first-borders'>
                 
                 <div className='contact-card'>

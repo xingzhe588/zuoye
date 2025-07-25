@@ -29,7 +29,7 @@
   text-shadow: 0 4px 16px #19e3e355;
 }
 .header-nav {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   display: flex;
   justify-content: center;
 }
@@ -259,7 +259,28 @@
 /* 隐藏桌面端原有nav */
 @media (max-width: 600px) {
   .header-nav {
-    display: none !important;
+    /* display: none !important; */
+    display: flex !important;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+  .header-nav__list {
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+  }
+  .header-nav__item {
+    padding: 0;
+    margin: 0;
+  }
+  .header-nav__link {
+    font-size: 0.98rem;
+    padding: 6px 8px;
   }
 }
 @media (min-width: 601px) {
@@ -295,5 +316,54 @@
   .mobile-bottom-nav__link:active i,
   .mobile-bottom-nav__link:hover i {
     color: #19e3e3 !important;
+  }
+  }
+
+.header-switchers-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .header-switchers-mobile {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    /* 移除绝对定位 */
+    /* position: absolute; */
+    /* right: 12px; */
+    /* top: 12px; */
+    /* z-index: 100; */
+  }
+  .header-switchers-desktop {
+    display: none !important;
+  }
+}
+
+.header-switchers-desktop button:focus,
+.header-switchers-desktop [tabindex]:focus,
+.header-switchers-mobile button:focus,
+.header-switchers-mobile [tabindex]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  }
+
+/* 新增：导航链接和切换按钮分组 */
+.header-nav__links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.header-nav__item--switchers {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  }
+
+.only-desktop {
+  display: block;
+}
+@media (max-width: 900px) {
+  .only-desktop {
+    display: none !important;
   }
   }

@@ -772,3 +772,49 @@
     box-shadow: 0 4px 24px #7f53ac88, 0 0 16px #1ef1f1cc !important;
   }
 }
+
+/* 可访问性优化：AI Tips区、图片卡片提示文字、按钮对比度 */
+.create-nft-ai-tips-card {
+  background: rgba(30, 241, 241, 0.08);
+  color: var(--main-text) !important;
+}
+body.dark-theme .create-nft-ai-tips-card {
+  background: #2a3340 !important;
+  color: #f4f4f4 !important;
+}
+
+.cool-image-placeholder p {
+  color: #0077b6;
+  font-weight: 700;
+}
+body.dark-theme .cool-image-placeholder p {
+  color: #1ef1f1;
+}
+
+.create-nft-input-field button,
+.cool-input-field button {
+  background: linear-gradient(90deg, #0077b6 0%, #764ba2 100%) !important;
+  color: #fff !important;
+}
+.create-nft-input-field button:hover,
+.cool-input-field button:hover {
+  background: linear-gradient(90deg, #764ba2 0%, #0077b6 100%) !important;
+  color: #fff !important;
+}
+
+.page-bg-blur {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
+.page-bg-blur.green  { background: #7fffd4; width: 320px; height: 200px; }
+.page-bg-blur.yellow { background: #fff9a6; width: 400px; height: 240px; }
+
+body.light-theme .guest-notice-welcome {
+  color: #0077b6 !important;
+}

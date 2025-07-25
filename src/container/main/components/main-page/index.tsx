@@ -4,12 +4,18 @@ import './index.css';
 import { Link } from 'react-router-dom';
 import { getNavigationValue } from '@brojs/cli';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 const MainPage = (): React.ReactElement => {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    const main = document.getElementById('main-content');
+    if (main) main.focus();
+  }, []);
+
   return (
-    <div className="main-page">
+    <main className="main-page" tabIndex={-1} id="main-content">
       {/* 粒子点阵装饰 */}
       <div className="main-particles-decor">
         {Array.from({ length: 40 }).map((_, i) => {
@@ -49,28 +55,43 @@ const MainPage = (): React.ReactElement => {
       {/* 页面角落发光点 */}
       <div className="main-corner-glow main-corner-glow-tl"></div>
       <div className="main-corner-glow main-corner-glow-br"></div>
+      <div className="page-bg-blur blue" style={{top: '40px', left: '60px'}} />
+      <div className="page-bg-blur purple" style={{top: '300px', right: '80px'}} />
+      <div className="page-bg-blur pink" style={{bottom: '60px', left: '120px'}} />
       <div className="main-page-container">
         <div className="main-title-block">
           <div className="main-title-part">
-            <div className='main-nft-market'>
-              <span>{t('ai_art')}</span>
-            </div>
+            <h1 className='main-nft-market'>{t('ai_art')}</h1>
             <div className='main-with-discounts'>
               <span>{t('revolution')}</span>
             </div>
             <div className="main-labubu-mobile">
-              <img src={Image_Cat} alt="Cat" className="main-cat-logo-mobile" />
+              <img src={Image_Cat} alt={t('main_page_cat_alt') || "AI吉祥物形象"} className="main-cat-logo-mobile" />
             </div>
             <div className='main-two-buttoms'>
               <div className="main-button-buy-nft-wrapper">
-                <Link className='main-fix-link-buy' to={getNavigationValue('project-monday.create-nft')}>
+                <Link
+                  className='main-fix-link-buy'
+                  to={getNavigationValue('project-monday.create-nft')}
+                  tabIndex={0}
+                  aria-label={t('generate_art') || 'Generate AI Art'}
+                  role="button"
+                  onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && e.currentTarget.click()}
+                >
                   <div className="main-button-buy-nft">
                     <span>{t('generate_art')}</span>
                   </div>
                 </Link>
               </div>
               <div className="main-button-galery-wrapper">
-                <Link className='main-fix-link' to={getNavigationValue('project-monday.collection')}>
+                <Link
+                  className='main-fix-link'
+                  to={getNavigationValue('project-monday.collection')}
+                  tabIndex={0}
+                  aria-label={t('explore')}
+                  role="button"
+                  onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && e.currentTarget.click()}
+                >
                   <div className="main-button-galery">
                     <span>{t('explore')}</span>
                   </div>
@@ -82,11 +103,11 @@ const MainPage = (): React.ReactElement => {
             </div>
           </div>
           <div className="main-logo">
-            <img src={Image_Cat} alt="Cat" className="main-cat-logo" />
+            <img src={Image_Cat} alt={t('main_page_cat_alt') || "AI吉祥物形象"} className="main-cat-logo" />
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

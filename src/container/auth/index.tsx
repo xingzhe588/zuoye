@@ -58,7 +58,7 @@ const AuthContainer: React.FC = () => {
       }
       
       // Успешно - переход в личный кабинет
-      navigate(getNavigationValue('project-monday.user-center'));
+      navigate(getNavigationValue('project-monday.main'));
     } catch (error) {
       console.error('Ошибка аутентификации:', error);
     }
@@ -72,6 +72,8 @@ const AuthContainer: React.FC = () => {
 
   return (
     <div className="auth-container" style={{ position: 'relative' }}>
+      <div className="page-bg-blur pink" style={{top: '40px', left: '60px'}} />
+      <div className="page-bg-blur blue" style={{bottom: '60px', right: '80px'}} />
       <div className="particle-decor-bg">
         <ParticleDecor />
       </div>
@@ -92,6 +94,7 @@ const AuthContainer: React.FC = () => {
               payload: { user: guestUser, token: 'guest-token' }
             });
             navigate(getNavigationValue('project-monday.user-center'));
+            navigate(getNavigationValue('project-monday.main'));
           }}
         >
           🧑‍🚀 {t('guest')}

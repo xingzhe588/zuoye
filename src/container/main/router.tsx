@@ -13,6 +13,7 @@ import Contacts from '../contact';
 import AuthContainer from '../auth';
 import UserCenterContainer from '../user-center';
 import NotFoundPage from '../404';
+import ProtectedRoute from '../../shared/ui/ProtectedRoute/ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: getNavigationValue('project-monday.main'),
-        element: <MainPage />
+        element: (
+          <ProtectedRoute requireAuth={true} redirectTo={getNavigationValue('project-monday.auth')}>
+            <MainPage />
+          </ProtectedRoute>
+        )
       },
       {
         path: getNavigationValue('project-monday.detail-kaban'),

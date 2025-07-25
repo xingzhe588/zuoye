@@ -38,7 +38,6 @@
 }
 
 .user-center-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: var(--main-text) !important;
   padding: 30px;
   display: flex;
@@ -366,6 +365,10 @@
     margin: 0 auto !important;
     padding: 0 2vw !important;
   }
+  .user-center-card {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
 }
 
 .contact-main, .contact-container, .user-center-main {
@@ -411,12 +414,6 @@
   outline: none;
   letter-spacing: 1px;
 }
-.usercenter-switch-btn:hover, .usercenter-switch-btn:focus {
-  background: linear-gradient(90deg, #1ef1f1 0%, #7f53ac 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px #1ef1f1cc;
-  transform: translateY(-2px) scale(1.04);
-}
 .theme-switch-btn.clicked {
   animation: theme-btn-click 0.3s;
 }
@@ -433,202 +430,8 @@
   align-items: center;
   margin: 0 auto 0 auto;
 }
-.theme-toggle-btn {
-  width: 90px;
-  height: 36px;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-}
-.theme-toggle-track {
-  width: 90px;
-  height: 36px;
-  background: #8884a3;
-  border-radius: 18px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px #0002, 0 1px 2px #fff2;
-  transition: background 0.2s;
-}
-.theme-toggle-btn.light .theme-toggle-track {
-  background: #bfc2d6;
-}
-.theme-toggle-btn.dark .theme-toggle-track {
-  background: #44455a;
-}
-.theme-toggle-icon {
-  font-size: 1.25rem;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-  transition: color 0.2s, filter 0.2s;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle-icon.sun {
-  margin-left: 2px;
-}
-.theme-toggle-icon.moon {
-  margin-right: 2px;
-}
-.theme-toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 36px;
-  height: 30px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 8px #0003;
-  transition: left 0.28s cubic-bezier(.4,1.6,.6,1), background 0.2s;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle-btn.dark .theme-toggle-thumb {
-  left: 51px;
-  background: #232946;
-}
-.theme-toggle-btn.light .theme-toggle-thumb {
-  left: 3px;
-  background: #fff;
-}
-.theme-toggle-btn:active .theme-toggle-thumb {
-  box-shadow: 0 2px 8px #0003;
-}
 
-.lang-toggle-root {
-  width: 90px;
-  margin: 0 auto 0 auto;
-  display: flex;
-  justify-content: center;
-}
-.lang-toggle-btn {
-  width: 90px;
-  height: 36px;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-}
-.lang-toggle-track {
-  width: 90px;
-  height: 36px;
-  background: #bfc2d6;
-  border-radius: 18px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px #0002, 0 1px 2px #fff2;
-  transition: background 0.2s;
-}
-.lang-toggle-btn.ru .lang-toggle-track {
-  background: #bfc2d6;
-}
-.lang-toggle-btn.en .lang-toggle-track {
-  background: #bfc2d6;
-}
-.lang-toggle-icon {
-  font-size: 1.25rem;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* 新增：彻底垂直居中 */
-  line-height: 1;
-  vertical-align: middle;
-  padding: 0;
-  margin: 0;
-}
-.lang-toggle-icon.en {
-  margin-left: 2px;
-}
-.lang-toggle-icon.ru {
-  margin-right: 2px;
-}
-.lang-toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 36px;
-  height: 30px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 8px #0003;
-  transition: left 0.28s cubic-bezier(.4,1.6,.6,1), background 0.2s;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.lang-toggle-btn.ru .lang-toggle-thumb {
-  left: 51px;
-  background: #232946;
-}
-.lang-toggle-btn.en .lang-toggle-thumb {
-  left: 3px;
-  background: #fff;
-}
-.lang-toggle-btn:active .lang-toggle-thumb {
-  box-shadow: 0 2px 8px #0003;
-}
-
-/* 去除主题/语言切换按钮的悬浮阴影 */
-.usercenter-switch-btn:hover,
-.usercenter-switch-btn:focus,
-.theme-toggle-btn:hover,
-.theme-toggle-btn:focus,
-.lang-toggle-btn:hover,
-.lang-toggle-btn:focus {
-  box-shadow: none !important;
-  background: linear-gradient(90deg, #1ef1f1 0%, #7f53ac 100%) !important; /* 可选：保留渐变背景 */
-  color: #fff !important;
-  transform: none !important;
-}
-
-/* 彻底去除主题/语言切换按钮的渐变色背景，仅保留纯色或透明 */
-.usercenter-switch-btn,
-.theme-toggle-btn,
-.lang-toggle-btn {
-  background: none !important;
-  box-shadow: none !important;
-}
-
-.usercenter-switch-btn:hover,
-.usercenter-switch-btn:focus,
-.theme-toggle-btn:hover,
-.theme-toggle-btn:focus,
-.lang-toggle-btn:hover,
-.lang-toggle-btn:focus {
-  background: none !important;
-  box-shadow: none !important;
-  color: #fff !important;
-  transform: none !important;
-}
+/* 删除主题切换和语言切换按钮相关的所有样式 */
 
 /* 默认浅色模式 */
 .user-center-wrapper {
@@ -681,35 +484,251 @@ body.dark-theme .user-center-container {
   background: var(--main-bg) !important;
 }
 
+/* 删除以下冲突的滑轨颜色CSS，保证主题切换和语言切换滑轨颜色一致 */
+/*
 .lang-toggle-btn.ru .lang-toggle-track,
 .lang-toggle-btn.en .lang-toggle-track {
   background: #bfc2d6 !important;
 }
-.theme-toggle-btn.light .theme-toggle-track,
-.theme-toggle-btn.dark .theme-toggle-track {
-  background: #bfc2d6 !important;
-}
-
-/* 语言切换按钮滑块始终为白色 */
-.lang-toggle-thumb {
-  background: #fff !important;
-}
-.lang-toggle-btn.ru .lang-toggle-thumb,
-.lang-toggle-btn.en .lang-toggle-thumb {
-  background: #fff !important;
-}
-
-.theme-toggle-thumb {
-  background: #fff !important;
-}
-.theme-toggle-btn.dark .theme-toggle-thumb,
-.theme-toggle-btn.light .theme-toggle-thumb {
-  background: #fff !important;
-}
+*/
 
 .particle-decor-bg {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+}
+
+.usercenter-switch-btn:hover,
+.usercenter-switch-btn:focus,
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus,
+.lang-toggle-btn:hover,
+.lang-toggle-btn:focus {
+  box-shadow: none !important;
+  background: inherit !important;
+  color: #fff !important;
+  transform: none !important;
+}
+
+/* 删除或注释掉所有会影响.theme-toggle-track背景色的其它覆盖 */
+.lang-toggle-root,
+.theme-toggle-root,
+.lang-toggle-btn,
+.theme-toggle-btn {
+  box-shadow: none !important;
+  border: none !important;
+  /* background: none !important; */
+}
+
+.theme-toggle-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 让主题切换按钮滑块和轨道颜色始终一致，不随主题切换变化 */
+.theme-toggle-btn {
+  width: 48px;
+  height: 24px;
+  background: #e0e7ef;
+  border: none;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+}
+.theme-toggle-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #e0e7ef;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.25s cubic-bezier(.4,1.6,.6,1), background 0.2s;
+  box-shadow: 0 1px 4px #0001;
+}
+/* 删除主题切换时颜色变化的覆盖 */
+/*
+.theme-toggle-btn.dark .theme-toggle-thumb { left: 26px; background: #232946; }
+.theme-toggle-btn.light .theme-toggle-thumb { left: 2px; background: #fff; }
+.theme-toggle-track.light .theme-toggle-thumb { left: 2px; background: #fff; }
+.theme-toggle-track.dark .theme-toggle-thumb { left: 26px; background: #232946; }
+*/
+
+.theme-toggle-icon {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.theme-toggle-track.light .theme-toggle-thumb {
+  left: 2px;
+}
+.theme-toggle-track.dark .theme-toggle-thumb {
+  left: 26px;
+}
+
+.lang-toggle-root {
+  display: flex;
+  align-items: center;
+  /* 去掉margin: 0 auto */
+}
+.lang-toggle-btn {
+  width: 48px;
+  height: 24px;
+  background: #e0e7ef;
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  box-shadow: none;
+}
+.lang-toggle-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #e0e7ef;
+  display: flex;
+  align-items: center;
+}
+.lang-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.25s cubic-bezier(.4,1.6,.6,1), background 0.2s;
+  box-shadow: 0 1px 4px #0001;
+}
+.lang-toggle-btn .lang-toggle-track.en .lang-toggle-thumb {
+  left: 2px !important;
+}
+.lang-toggle-btn .lang-toggle-track.ru .lang-toggle-thumb {
+  left: 26px !important;
+}
+
+/* 浅色模式下卡片区域 */
+.user-center-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e7ef;
+  border-radius: 10px;
+  padding: 16px 18px;
+  width: 100%;
+  max-width: 350px;
+  box-sizing: border-box;
+  background: #e0e7ef;
+  color: #232946;
+}
+body.dark-theme .user-center-card {
+  background: #44485a;
+  color: #f4f4f4;
+  border: 1px solid #5a6173;
+}
+
+button:focus, input:focus, [role="switch"]:focus {
+  outline: 2px solid #007bff !important;
+  box-shadow: 0 0 0 2px #b3e5fc !important;
+}
+
+button.lang-toggle-btn:focus, button.theme-toggle-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.page-bg-blur {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
+.page-bg-blur.purple { background: #a084ee; width: 380px; height: 260px; }
+
+.usercenter-switchers-mobile {
+  display: none;
+}
+.usercenter-switchers-desktop {
+  display: block;
+}
+@media (max-width: 600px) {
+  .usercenter-switchers-mobile {
+    display: block !important;
+    margin: 0 auto 0 auto;
+    padding: 8px 0 0 0;
+    width: 100%;
+    max-width: 350px;
+    background: #e0e7ef; /* 与 .user-center-card 一致 */
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+  .usercenter-switchers-desktop {
+    display: none !important;
+  }
+  .usercenter-switchers-mobile > div {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .usercenter-switchers-mobile span {
+    text-align: left;
+    flex: 1 1 auto;
+    font-weight: 700;
+    color: #232946;
+  }
+  .usercenter-switchers-mobile .lang-toggle-root,
+  .usercenter-switchers-mobile .theme-toggle-btn {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .usercenter-switchers-mobile .lang-toggle-root {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+body.dark-theme .usercenter-switchers-mobile {
+  background: #44485a !important; /* 与 .user-center-card 深色一致 */
+}
+@media (min-width: 601px) {
+  .usercenter-switchers-mobile {
+    display: none !important;
+  }
+  .usercenter-switchers-desktop {
+    display: block !important;
+  }
+}
+
+.theme-toggle-btn,
+.lang-toggle-btn {
+  background: transparent !important;
 }

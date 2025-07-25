@@ -34,3 +34,13 @@ const appElement = document.getElementById('app');
 if (appElement) {
   mount(App, appElement);
 }
+
+// 主题初始化：默认浅色
+const theme = localStorage.getItem('theme');
+if (!theme) {
+  document.body.classList.add('light-theme');
+  document.body.classList.remove('dark-theme');
+} else {
+  document.body.classList.toggle('dark-theme', theme === 'dark');
+  document.body.classList.toggle('light-theme', theme === 'light');
+}

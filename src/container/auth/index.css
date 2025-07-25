@@ -120,10 +120,9 @@ body, .auth-container, .auth-wrapper {
 }
 
 .btn-primary {
-  flex: 1;
   padding: 12px;
-  background: #007bff;
-  color: white;
+  background: #0050b3; /* 更深蓝色提升对比度 */
+  color: #fff;
   border: none;
   border-radius: 6px;
   font-size: 16px;
@@ -132,7 +131,7 @@ body, .auth-container, .auth-wrapper {
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #0056b3;
+  background: #003974;
 }
 
 .btn-primary:disabled {
@@ -156,46 +155,28 @@ body, .auth-container, .auth-wrapper {
   background: #545b62;
 }
 
-.guest-mode-btn-inline {
-  background: #f5f6fa;
-  color: #007bff;
-  border: 1px solid #e0e7ef;
-  border-radius: 18px;
-  padding: 6px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px #1ef1f122;
-  cursor: pointer;
-  transition: background 0.18s, color 0.18s, border 0.18s;
-  outline: none;
-  margin-left: auto;
-}
-.guest-mode-btn-inline:hover {
-  background: #e6f0ff;
-  color: #0056b3;
-  border-color: #bfc2d6;
-}
-
 .guest-mode-btn-topright {
   position: absolute;
   top: 18px;
   right: 18px;
-  background: #f5f6fa;
-  color: #007bff;
-  border: none;
-  border-radius: 18px;
-  padding: 6px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px #1ef1f122;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #0077b6 !important;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 0 !important;
+  padding: 0 4px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s, border 0.18s;
-  outline: none;
+  transition: color 0.18s;
   z-index: 3;
 }
 .guest-mode-btn-topright:hover {
-  background: #e6f0ff;
-  color: #0056b3;
+  text-decoration: underline;
+  color: #0056b3 !important;
 }
 
 body.dark-theme .auth-wrapper input,
@@ -203,3 +184,21 @@ body.dark-theme .auth-wrapper textarea {
   color: #232323 !important;
   background: #fff !important;
 }
+
+body.light-theme .auth-tab.active,
+body.light-theme .auth-tab:hover {
+  color: #0077b6 !important;
+  border-bottom-color: #0077b6 !important;
+}
+
+.page-bg-blur {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.page-bg-blur.pink   { background: #ffb6c1; width: 340px; height: 220px; }
+.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
