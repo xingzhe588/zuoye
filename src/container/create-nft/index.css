@@ -702,16 +702,16 @@
     padding-bottom: 60px !important;
   }
   .create-nft-main-content.create-nft-cool-layout {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
   }
   .create-nft-rectangle,
   .create-nft-rectangle .content {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
     margin: 0 auto !important;
@@ -731,8 +731,8 @@
   }
   /* 1. 让图片生成卡片和右侧面板居中且宽度合适 */
   .create-nft-right-panel {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
     padding: 0 !important;
     display: flex;
@@ -740,7 +740,7 @@
     align-items: center;
   }
   .cool-image-card {
-    width: 90vw !important;
+    width: 96% !important;
     max-width: 420px !important;
     margin: 0 auto !important;
     padding: 0 !important;
@@ -811,9 +811,15 @@ body.dark-theme .cool-image-placeholder p {
   pointer-events: none;
   transition: opacity 0.3s;
 }
-.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
-.page-bg-blur.green  { background: #7fffd4; width: 320px; height: 200px; }
-.page-bg-blur.yellow { background: #fff9a6; width: 400px; height: 240px; }
+.page-bg-blur.blue, .page-bg-blur.green, .page-bg-blur.yellow {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .page-bg-blur.blue { width: 90vw !important; }
+  .page-bg-blur.green { width: 70vw !important; }
+  .page-bg-blur.yellow { width: 80vw !important; }
+}
 
 body.light-theme .guest-notice-welcome {
   color: #0077b6 !important;

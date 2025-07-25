@@ -336,56 +336,50 @@
     min-width: 0;
     padding: 12px;
     box-shadow: none;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .user-center-avatar {
     margin-right: 0;
     margin-bottom: 18px;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .user-center-form {
-    max-width: 100%;
-  }
-  .user-center-avatar {
-    max-width: 95vw !important;
-    width: 100% !important;
-    margin: 0 auto 18px auto !important;
-    padding: 0 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .user-center-wrapper {
-    max-width: 99vw !important;
-    width: 100% !important;
-    padding: 0 2vw !important;
-    margin: 0 auto !important;
-  }
-  .user-center-form {
-    max-width: 99vw !important;
+    max-width: 100% !important;
     width: 100% !important;
     margin: 0 auto !important;
     padding: 0 2vw !important;
+    box-sizing: border-box !important;
   }
   .user-center-card {
     margin-top: 12px;
     margin-bottom: 24px;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 
 .contact-main, .contact-container, .user-center-main {
-    max-width: 1100px !important;
+    max-width: 100% !important;
     width: 100%;
     margin: 32px auto !important;
     border-radius: 18px !important;
     box-shadow: 0 8px 32px #1ef1f144, 0 0 16px #1ef1f1aa inset !important;
     background: rgba(30, 34, 54, 0.85) !important;
     padding: 32px 32px 32px 32px !important;
+    box-sizing: border-box !important;
 }
 @media (max-width: 900px) {
     .contact-main, .contact-container, .user-center-main {
-        max-width: 98vw !important;
+        max-width: 100% !important;
         margin: 8px auto !important;
         padding: 12px 4vw !important;
         border-radius: 12px !important;
+        box-sizing: border-box !important;
     }
 }
 
@@ -666,8 +660,16 @@ button.lang-toggle-btn:focus, button.theme-toggle-btn:focus {
   pointer-events: none;
   transition: opacity 0.3s;
 }
-.page-bg-blur.blue   { background: #1ef1f1; width: 420px; height: 320px; }
-.page-bg-blur.purple { background: #a084ee; width: 380px; height: 260px; }
+.page-bg-blur.blue, .page-bg-blur.purple, .page-bg-blur.yellow, .page-bg-blur.green {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .page-bg-blur.blue { width: 90vw !important; }
+  .page-bg-blur.purple { width: 70vw !important; }
+  .page-bg-blur.yellow { width: 80vw !important; }
+  .page-bg-blur.green { width: 60vw !important; }
+}
 
 .usercenter-switchers-mobile {
   display: none;

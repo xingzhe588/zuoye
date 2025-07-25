@@ -94,17 +94,23 @@ body:not(.dark-theme) .contact-name {
         flex-direction: column;
         gap: 28px;
         align-items: center;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
     .contact-border {
-        min-width: 220px;
-        max-width: 98vw;
-        padding: 18px 10vw 14px 10vw;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 18px 4vw 14px 4vw;
+        box-sizing: border-box !important;
     }
     .contact-card {
-        min-width: 220px;
-        max-width: 98vw;
-        padding: 18px 10vw 14px 10vw;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 18px 4vw 14px 4vw;
         margin: 0 auto 18px auto;
+        box-sizing: border-box !important;
     }
 }
 
@@ -116,15 +122,16 @@ body:not(.dark-theme) .contact-name {
   .contact-first-borders {
     gap: 12px !important;         /* 卡片间距更紧凑 */
     margin: 0 auto !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     align-items: flex-start !important;
+    box-sizing: border-box !important;
   }
   .contact-card {
     min-width: 0 !important;
-    width: 92vw !important;
-    max-width: 98vw !important;
-    padding: 12px 3vw 10px 3vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 2vw 10px 2vw !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
     border-radius: 18px !important;
@@ -227,3 +234,11 @@ body:not(.dark-theme) .contact-name {
 }
 .page-bg-blur.yellow { background: #fff9a6; width: 400px; height: 240px; }
 .page-bg-blur.green  { background: #7fffd4; width: 320px; height: 200px; }
+.page-bg-blur.yellow, .page-bg-blur.green {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .page-bg-blur.yellow { width: 80vw !important; }
+  .page-bg-blur.green { width: 60vw !important; }
+}
