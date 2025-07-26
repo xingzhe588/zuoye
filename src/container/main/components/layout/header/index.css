@@ -1,7 +1,8 @@
-html, body {
+html, body, #app {
   overflow-x: hidden !important;
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 .header-header {
     display: flex;
@@ -194,13 +195,14 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%; /* 修正横向溢出 */
-    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
     height: 60px;
     background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
     box-shadow: 0 -2px 12px #007bff11;
     z-index: 1200;
-    border-top: 1px solid #eee;
+    border-top: none !important;
     align-items: center;
     justify-content: center;
   }

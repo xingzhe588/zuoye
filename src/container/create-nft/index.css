@@ -1040,20 +1040,52 @@ html, body, #app {
     height: auto !important;
     max-height: none !important;
     min-height: auto !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
-  /* 隐藏Webkit滚动条 */
-  .create-nft-page-first::-webkit-scrollbar,
-  .create-nft-main-content::-webkit-scrollbar,
-  .create-nft-right-panel::-webkit-scrollbar,
-  .cool-image-card::-webkit-scrollbar,
-  .create-nft-image-card::-webkit-scrollbar,
-  .create-nft-rectangle::-webkit-scrollbar,
-  .content::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
+  /* 确保页面整体不能横向滚动 */
+  html, body, #app {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* 确保所有容器都不会超出视口宽度 */
+  .create-nft-page-first,
+  .create-nft-main-content,
+  .create-nft-right-panel,
+  .cool-image-card,
+  .create-nft-image-card,
+  .create-nft-rectangle {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* 最终修正：确保页面完全不能横向滚动 */
+  html, body, #app, .create-nft-page-first {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* 确保所有内容都在视口内 */
+  .create-nft-page-first *,
+  .create-nft-main-content *,
+  .create-nft-right-panel *,
+  .cool-image-card *,
+  .create-nft-image-card *,
+  .create-nft-rectangle * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
