@@ -31,7 +31,7 @@ body, #root, .app, .container, .wrapper, .main-page, .collection-page, .user-cen
     background: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
 } 

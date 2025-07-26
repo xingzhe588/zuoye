@@ -32,7 +32,7 @@
     background: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -277,7 +277,7 @@
   padding: 8px 0;
   box-shadow: 0 2px 8px #1ef1f122;
   width: 100%;
-  max-width: 98vw;
+  max-width: 100%;
   display: block;
 }
 .guest-attempts-tip.danger {
@@ -679,7 +679,7 @@
 
 @media (max-width: 768px) {
   .create-nft-page-first {
-    padding-bottom: 60px !important;
+    padding-bottom: 0 !important;
     min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
@@ -690,7 +690,8 @@
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    flex: 1 !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
   }
   .create-nft-rectangle,
   .create-nft-rectangle .content {
@@ -706,6 +707,8 @@
     overflow-x: hidden !important;
     overflow-y: auto !important;
     justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .create-nft-rectangle .content {
     justify-content: center !important;
@@ -723,6 +726,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 0 !important;
   }
   .cool-image-card {
     width: 96% !important;
@@ -731,6 +735,8 @@
     padding: 0 !important;
     box-sizing: border-box !important;
     min-height: 160px !important;
+    overflow: hidden !important;
+    min-width: 0 !important;
   }
 
   /* 2. 统一按钮样式 */
@@ -760,13 +766,13 @@
   .create-nft-main-content,
   .create-nft-right-panel,
   .cool-image-card {
-    padding-bottom: 80px !important;
+    padding-bottom: 60px !important;
     box-sizing: border-box !important;
   }
   .cool-image-card,
   .create-nft-rectangle,
   .create-nft-rectangle .content {
-    overflow: visible !important;
+    overflow: hidden !important;
     overflow-y: visible !important;
     height: auto !important;
     max-height: none !important;
@@ -821,13 +827,13 @@ body.dark-theme .cool-image-placeholder p {
   transition: opacity 0.3s;
 }
 .page-bg-blur.blue, .page-bg-blur.green, .page-bg-blur.yellow {
-  max-width: 100vw;
+  max-width: 100%;
   box-sizing: border-box;
 }
 @media (max-width: 480px) {
-  .page-bg-blur.blue { width: 90vw !important; }
-  .page-bg-blur.green { width: 70vw !important; }
-  .page-bg-blur.yellow { width: 80vw !important; }
+  .page-bg-blur.blue { width: 90% !important; }
+  .page-bg-blur.green { width: 70% !important; }
+  .page-bg-blur.yellow { width: 80% !important; }
 }
 
 body.light-theme .guest-notice-welcome {
@@ -835,7 +841,7 @@ body.light-theme .guest-notice-welcome {
 }
 
 
-/* 移除全局vw宽度限制，统一用百分比 */
+/* 全局样式：统一用百分比，防止横向滚动 */
 html, body, #app {
   width: 100% !important;
   max-width: 100% !important;
@@ -849,9 +855,11 @@ html, body, #app {
 .cool-image-card {
   width: 100% !important;
   max-width: 100% !important;
+  min-width: 0 !important;
   overflow: visible !important;
   height: auto !important;
   max-height: none !important;
+  box-sizing: border-box !important;
 }
 .mobile-bottom-nav,
 .header-header {
@@ -859,14 +867,15 @@ html, body, #app {
   left: 0 !important;
   right: 0 !important;
   box-sizing: border-box !important;
+  max-width: 100% !important;
 }
 .create-nft-main-content {
-  padding-bottom: 80px !important;
+  padding-bottom: 60px !important;
 }
 .create-nft-main-content,
 .create-nft-right-panel,
 .cool-image-card {
-  padding-bottom: 80px !important;
+  padding-bottom: 60px !important;
 }
 .mobile-bottom-nav {
   left: 0 !important;
@@ -888,6 +897,7 @@ html, body, #app {
 .cool-image-card {
   max-width: 100% !important;
   width: 100% !important;
+  min-width: 0 !important;
   box-sizing: border-box !important;
   overflow-x: hidden !important;
 }
@@ -901,4 +911,46 @@ html, body, #app {
   display: block;
   box-sizing: border-box;
   border-radius: 0 0 18px 18px;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .create-nft-page-first {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .create-nft-main-content.create-nft-cool-layout {
+    flex: 1 1 auto !important;
+    min-height: 300px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .cool-image-card {
+    flex: 1 1 auto !important;
+    min-height: 220px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: visible !important;
+  }
+  .create-nft-main-content,
+  .create-nft-right-panel,
+  .cool-image-card {
+    padding-bottom: 60px !important;
+  }
+  .cool-image-card {
+    min-height: 220px !important;
+    background: rgba(30,34,54,0.92) !important;
+  }
+  .create-nft-main-content.create-nft-cool-layout {
+    flex: 1 1 auto !important;
+    min-height: 300px !important;
+    background: var(--main-bg) !important;
+  }
+  .create-nft-page-first {
+    min-height: 100vh !important;
+    background: var(--main-bg) !important;
+  }
 }
