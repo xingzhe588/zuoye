@@ -337,3 +337,32 @@ body:not(.dark-theme) .collection-meta span {
   color: #232946 !important;
   text-shadow: 0 1px 4px #fff, 0 1px 2px #23294622;
 }
+body.dark-theme .collection-name {
+  color: #00eaff !important;
+  text-shadow: 0 2px 8px #000a, 0 1px 2px #00eaff88;
+}
+body.dark-theme .collection-meta,
+body.dark-theme .collection-info {
+  color: #fff !important;
+  text-shadow: 0 1px 4px #000a, 0 1px 2px #00eaff22;
+}
+body.dark-theme .collection-meta span {
+  color: #fff !important;
+  text-shadow: 0 1px 4px #000a, 0 1px 2px #00eaff22;
+}
+body.dark-theme .collection-meta span:nth-child(1) {
+  color: #00eaff !important;
+  font-weight: 800;
+  text-shadow: 0 2px 8px #00eaffcc, 0 1px 2px #0008;
+}
+body.dark-theme .collection-meta span:nth-child(2) {
+  color: #bfc2d6 !important;
+}
+body.dark-theme .collection-meta span:nth-child(3) {
+  color: #ffd700 !important;
+  font-weight: 900;
+  text-shadow: 0 2px 8px #ffd700cc, 0 1px 2px #0008;
+}
+body.dark-theme .collection-id {
+  color: #bfc2d6 !important;
+}
