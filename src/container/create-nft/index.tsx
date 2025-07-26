@@ -192,13 +192,7 @@ const CreateNFT = (): React.ReactElement => {
           onClose={() => setShowAuthPrompt(false)}
         />
       )}
-      {/* 礼花筒装饰，仅在图片生成成功后显示 */}
-      {imageSrc && !loading && (
-        <>
-          <div className="confetti-cannon confetti-cannon-left">🎉</div>
-          <div className="confetti-cannon confetti-cannon-right">🎉</div>
-        </>
-      )}
+
     </main>
   );
 };
