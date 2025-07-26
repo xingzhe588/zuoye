@@ -21,7 +21,7 @@
     padding: 32px 12px 32px 12px;
     box-sizing: border-box;
     background: var(--main-bg);
-    overflow: hidden;
+    overflow: visible;
 }
 .create-nft-header, .create-nft-box, .create-nft-left-panel, .create-nft-tips, .create-nft-input-field, .create-nft-rectangle, .create-nft-rectangle .content {
     position: relative;
@@ -547,7 +547,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   animation: cool-glow 2.5s infinite alternate;
 }
 @keyframes cool-glow {
@@ -683,6 +683,7 @@
     min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
+    overflow: visible !important;
   }
   .create-nft-main-content.create-nft-cool-layout {
     width: 100% !important;
@@ -735,7 +736,7 @@
     padding: 0 !important;
     box-sizing: border-box !important;
     min-height: 160px !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     min-width: 0 !important;
   }
 
@@ -772,7 +773,7 @@
   .cool-image-card,
   .create-nft-rectangle,
   .create-nft-rectangle .content {
-    overflow: hidden !important;
+    overflow: visible !important;
     overflow-y: visible !important;
     height: auto !important;
     max-height: none !important;
@@ -892,26 +893,26 @@ html, body, #app {
 html, body, #app {
   overflow-x: hidden !important;
 }
-.create-nft-main-content,
-.create-nft-right-panel,
-.cool-image-card {
-  max-width: 100% !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-  overflow-x: hidden !important;
-}
+  .create-nft-main-content,
+  .create-nft-right-panel,
+  .cool-image-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
 .cool-image-card img,
 .create-nft-rectangle .img {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
-  max-height: 100% !important;
+  max-height: none !important;
   object-fit: contain !important;
   display: block;
   box-sizing: border-box;
   border-radius: 0 0 18px 18px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (max-width: 900px) {
@@ -952,5 +953,107 @@ html, body, #app {
   .create-nft-page-first {
     min-height: 100vh !important;
     background: var(--main-bg) !important;
+  }
+}
+@media (max-width: 900px) {
+  .cool-image-card,
+  .create-nft-main-content,
+  .create-nft-right-panel,
+  .create-nft-rectangle,
+  .create-nft-rectangle .content,
+  .cool-image-card img,
+  .create-nft-rectangle .img,
+  .cool-image-card .content,
+  .create-nft-image-card,
+  .create-nft-image-card .content {
+    overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+/* 强制移除所有内部滚动条 - 最高优先级 */
+@media (max-width: 900px) {
+  .create-nft-page-first *,
+  .create-nft-main-content *,
+  .create-nft-right-panel *,
+  .cool-image-card *,
+  .create-nft-image-card *,
+  .create-nft-rectangle * {
+    overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+/* 终极解决方案：强制移除所有可能的滚动条 */
+@media (max-width: 900px) {
+  .create-nft-page-first,
+  .create-nft-page-first *,
+  .create-nft-main-content,
+  .create-nft-main-content *,
+  .create-nft-right-panel,
+  .create-nft-right-panel *,
+  .cool-image-card,
+  .cool-image-card *,
+  .create-nft-image-card,
+  .create-nft-image-card *,
+  .create-nft-rectangle,
+  .create-nft-rectangle *,
+  .content,
+  .content * {
+    overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+  }
+}
+
+/* 最终强制覆盖 - 使用最高优先级 */
+@media (max-width: 900px) {
+  .create-nft-page-first,
+  .create-nft-page-first *,
+  .create-nft-main-content,
+  .create-nft-main-content *,
+  .create-nft-right-panel,
+  .create-nft-right-panel *,
+  .cool-image-card,
+  .cool-image-card *,
+  .create-nft-image-card,
+  .create-nft-image-card *,
+  .create-nft-rectangle,
+  .create-nft-rectangle *,
+  .content,
+  .content *,
+  div[class*="content"],
+  div[class*="card"],
+  div[class*="panel"] {
+    overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  /* 隐藏Webkit滚动条 */
+  .create-nft-page-first::-webkit-scrollbar,
+  .create-nft-main-content::-webkit-scrollbar,
+  .create-nft-right-panel::-webkit-scrollbar,
+  .cool-image-card::-webkit-scrollbar,
+  .create-nft-image-card::-webkit-scrollbar,
+  .create-nft-rectangle::-webkit-scrollbar,
+  .content::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 }
